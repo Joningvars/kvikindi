@@ -1,0 +1,103 @@
+<section class="page-width pt-4 md:pt-6">
+  <div class="relative isolate flex min-h-[540px] overflow-hidden rounded-panel bg-brand-900 md:min-h-[640px]">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 2400
+        | image_tag:
+          widths: '750, 1100, 1500, 1800, 2400',
+          sizes: '(min-width: 1344px) 1280px, calc(100vw - 40px)',
+          class: 'absolute inset-0 -z-20 size-full object-cover',
+          loading: 'eager',
+          fetchpriority: 'high'
+      }}
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/90 via-brand-950/60 to-brand-950/10" style="opacity: {{ section.settings.overlay | divided_by: 100.0 }}"></div>
+    {%- else -%}
+      <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_80%_20%,var(--color-brand-600)_0%,transparent_55%),radial-gradient(ellipse_at_10%_100%,var(--color-brand-700)_0%,transparent_50%)] opacity-70"></div>
+      <div class="pointer-events-none absolute -right-16 -bottom-24 -z-10 hidden text-white/[0.06] md:block">
+        {%- render 'icon', icon: 'shield-check', class: 'size-[34rem]' -%}
+      </div>
+    {%- endif -%}
+
+    <div class="flex max-w-3xl flex-col justify-center px-6 pt-16 pb-36 sm:px-10 md:px-14 md:pb-44 lg:px-16">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold tracking-wide text-white uppercase backdrop-blur">
+          <span class="size-1.5 rounded-full bg-brand-400"></span>
+          {{ section.settings.eyebrow }}
+        </p>
+      {%- endif -%}
+      <h1 class="h-display text-white">{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}
+        <p class="mt-5 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">{{ section.settings.text }}</p>
+      {%- endif -%}
+      <div class="mt-8 flex flex-wrap gap-3">
+        {%- if section.settings.button_1_label != blank -%}
+          <a href="{{ section.settings.button_1_link | default: routes.all_products_collection_url }}" class="btn btn-primary">
+            {{ section.settings.button_1_label }}
+            {%- render 'icon', icon: 'arrow-right', class: 'size-4' -%}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.button_2_label != blank -%}
+          <a href="{{ section.settings.button_2_link | default: routes.collections_url }}" class="btn btn-ghost-light">{{ section.settings.button_2_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <ul class="relative z-10 mx-3 -mt-24 grid gap-px overflow-hidden rounded-panel border border-line bg-line shadow-float sm:mx-6 md:mx-10 md:-mt-28 {% case section.blocks.size %}{% when 2 %}md:grid-cols-2{% when 3 %}md:grid-cols-3{% when 4 %}md:grid-cols-4{% endcase %}">
+      {%- for block in section.blocks -%}
+        <li class="flex items-start gap-4 bg-white p-6 md:flex-col md:items-center md:p-8 md:text-center" {{ block.shopify_attributes }}>
+          <span class="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand-50 text-brand-600 md:size-14">
+            {%- render 'icon', icon: block.settings.icon, class: 'size-6' -%}
+          </span>
+          <div>
+            <h2 class="font-display text-lg font-bold">{{ block.settings.title }}</h2>
+            <p class="mt-1 text-sm text-muted md:mt-2">{{ block.settings.text }}</p>
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "div",
+  "class": "section-hero",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background image", "info": "Landscape, at least 2400 px wide. Without an image a green background is used." },
+    { "type": "range", "id": "overlay", "label": "Image darkening", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Meindýravarnir fyrir heimili og fyrirtæki" },
+    { "type": "textarea", "id": "heading", "label": "Heading", "default": "Losnaðu við meindýrin — fljótt og örugglega" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Gildrur, fælur og varnir sem virka. Við hjálpum þér að velja rétta lausn og sendum um allt land." },
+    { "type": "text", "id": "button_1_label", "label": "Primary button label", "default": "Versla núna" },
+    { "type": "url", "id": "button_1_link", "label": "Primary button link", "default": "/collections/all" },
+    { "type": "text", "id": "button_2_label", "label": "Secondary button label", "default": "Skoða vöruflokka" },
+    { "type": "url", "id": "button_2_link", "label": "Secondary button link", "default": "/collections" }
+  ],
+  "blocks": [
+    {
+      "type": "trust",
+      "name": "Trust card",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "shield-check", "options": [{"value":"rat","label":"Mouse / rat"},{"value":"bug","label":"Insect"},{"value":"snail","label":"Snail"},{"value":"bird","label":"Bird"},{"value":"squirrel","label":"Rodent (squirrel)"},{"value":"spray-can","label":"Spray"},{"value":"sprout","label":"Garden"},{"value":"flower-2","label":"Flower"},{"value":"house","label":"Home"},{"value":"warehouse","label":"Business"},{"value":"shield-check","label":"Shield"},{"value":"badge-check","label":"Badge"},{"value":"truck","label":"Delivery"},{"value":"leaf","label":"Leaf"},{"value":"headset","label":"Support"},{"value":"package-check","label":"Package"},{"value":"star","label":"Star"}] },
+        { "type": "text", "id": "title", "label": "Title", "default": "Virkar lausnir" },
+        { "type": "textarea", "id": "text", "label": "Text", "default": "Vörur sem fagfólk notar sjálft." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        { "type": "trust", "settings": { "icon": "badge-check", "title": "Valið af fagfólki", "text": "Vörur sem við notum sjálf í meindýravörnum." } },
+        { "type": "trust", "settings": { "icon": "truck", "title": "Sent um allt land", "text": "Pantaðu á netinu og fáðu sent heim." } },
+        { "type": "trust", "settings": { "icon": "headset", "title": "Ráðgjöf á íslensku", "text": "Ekki viss hvað þú þarft? Við hjálpum þér." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

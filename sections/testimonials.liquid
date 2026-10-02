@@ -1,0 +1,48 @@
+<section class="bg-mist">
+  <div class="page-width section-y">
+    <div class="mx-auto max-w-2xl text-center">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="h-section mt-4">{{ section.settings.heading }}</h2>
+    </div>
+    <ul class="mt-12 grid gap-5 md:grid-cols-3">
+      {%- for block in section.blocks -%}
+        <li class="card flex flex-col p-7" {{ block.shopify_attributes }}>
+          <div class="flex gap-0.5 text-brand-500" aria-label="{{ 'products.rating' | t: rating: block.settings.rating }}">
+            {%- for i in (1..block.settings.rating) -%}
+              {%- render 'icon', icon: 'star', class: 'size-4 fill-current' -%}
+            {%- endfor -%}
+          </div>
+          <blockquote class="mt-4 flex-1 text-[15px] leading-relaxed">“{{ block.settings.quote }}”</blockquote>
+          <p class="mt-6 font-display font-bold">{{ block.settings.name }}</p>
+          {%- if block.settings.place != blank -%}<p class="text-sm text-muted">{{ block.settings.place }}</p>{%- endif -%}
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "div",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "paragraph", "content": "Only use real customer reviews." },
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Umsagnir" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Það sem viðskiptavinir segja" }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "name", "label": "Name" },
+        { "type": "text", "id": "place", "label": "Location" },
+        { "type": "range", "id": "rating", "label": "Stars", "min": 1, "max": 5, "step": 1, "default": 5 }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Testimonials" }]
+}
+{% endschema %}

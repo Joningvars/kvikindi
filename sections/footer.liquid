@@ -1,57 +1,106 @@
-<footer>
-  <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
+<footer class="mt-auto bg-brand-950 text-white/70">
+  <div class="page-width grid gap-12 pt-16 pb-10 md:grid-cols-2 md:pt-20 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))]">
+    <div class="max-w-sm">
+      <a href="{{ routes.root_url }}" class="flex items-center gap-2 font-display text-2xl font-extrabold text-white">
+        <span class="flex size-8 items-center justify-center rounded-full bg-brand-500 text-white">{% render 'icon', icon: 'shield-check', class: 'size-[18px]' %}</span>
+        {{ shop.name }}
+      </a>
+      {%- if section.settings.text != blank -%}<p class="mt-4 text-sm leading-relaxed">{{ section.settings.text }}</p>{%- endif -%}
+
+      {%- if section.settings.show_newsletter -%}
+        <p class="mt-8 font-display font-bold text-white">{{ section.settings.newsletter_heading }}</p>
+        {%- form 'customer', id: 'FooterNewsletter', class: 'mt-3' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          {%- if form.posted_successfully? -%}
+            <p class="flex items-center gap-2 text-sm text-brand-300">{% render 'icon', icon: 'check', class: 'size-4' %}{{ 'newsletter.success' | t }}</p>
+          {%- else -%}
+            <div class="flex rounded-full bg-white/10 p-1 focus-within:ring-2 focus-within:ring-brand-400">
+              <label for="FooterNewsletter-email" class="sr-only">{{ 'newsletter.email' | t }}</label>
+              <input id="FooterNewsletter-email" type="email" name="contact[email]" required autocomplete="email" placeholder="{{ 'newsletter.email' | t }}" class="min-w-0 flex-1 bg-transparent px-4 text-sm text-white placeholder:text-white/50 focus:outline-none">
+              <button type="submit" class="btn btn-primary px-5 py-2.5">{{ 'newsletter.subscribe' | t }}</button>
+            </div>
+            {%- if form.errors -%}<p class="mt-2 text-sm text-red-300">{{ form.errors.translated_fields.email }} {{ form.errors.messages.email }}</p>{%- endif -%}
+          {%- endif -%}
+        {%- endform -%}
+      {%- endif -%}
+    </div>
+
+    {%- for i in (1..2) -%}
+      {%- liquid
+        if i == 1
+          assign menu = section.settings.menu_1
+          assign title = section.settings.menu_1_title
+        else
+          assign menu = section.settings.menu_2
+          assign title = section.settings.menu_2_title
+        endif
+      -%}
+      {%- if menu != blank and menu.links.size > 0 -%}
+        <nav aria-label="{{ title | default: menu.title }}">
+          <p class="font-display font-bold text-white">{{ title | default: menu.title }}</p>
+          <ul class="mt-4 flex flex-col gap-2.5 text-sm">
+            {%- for link in menu.links -%}
+              <li><a href="{{ link.url }}" class="hover:text-white">{{ link.title }}</a></li>
+            {%- endfor -%}
+          </ul>
+        </nav>
+      {%- endif -%}
+    {%- endfor -%}
+
+    <div>
+      <p class="font-display font-bold text-white">{{ 'footer.contact' | t }}</p>
+      <ul class="mt-4 flex flex-col gap-3 text-sm">
+        {%- if settings.contact_phone != blank -%}
+          <li><a href="tel:{{ settings.contact_phone | remove: ' ' | remove: '-' }}" class="flex items-center gap-2 hover:text-white">{% render 'icon', icon: 'phone', class: 'size-4 text-brand-400' %}{{ settings.contact_phone }}</a></li>
+        {%- endif -%}
+        {%- if settings.contact_email != blank -%}
+          <li><a href="mailto:{{ settings.contact_email }}" class="flex items-center gap-2 hover:text-white">{% render 'icon', icon: 'mail', class: 'size-4 text-brand-400' %}{{ settings.contact_email }}</a></li>
+        {%- endif -%}
+        {%- if settings.contact_address != blank -%}
+          <li class="flex items-start gap-2">{% render 'icon', icon: 'house', class: 'mt-0.5 size-4 shrink-0 text-brand-400' %}{{ settings.contact_address }}</li>
+        {%- endif -%}
+      </ul>
+      <div class="mt-6 flex gap-2">
+        {%- if settings.social_facebook != blank -%}
+          <a href="{{ settings.social_facebook }}" class="rounded-full border border-white/15 px-3 py-1.5 text-xs font-semibold hover:border-white/40 hover:text-white" target="_blank" rel="noopener">Facebook</a>
+        {%- endif -%}
+        {%- if settings.social_instagram != blank -%}
+          <a href="{{ settings.social_instagram }}" class="rounded-full border border-white/15 px-3 py-1.5 text-xs font-semibold hover:border-white/40 hover:text-white" target="_blank" rel="noopener">Instagram</a>
+        {%- endif -%}
+      </div>
+    </div>
   </div>
 
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
-
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
-      {% endfor %}
-    {% endif %}
+  <div class="border-t border-white/10">
+    <div class="page-width flex flex-col gap-4 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
+      <div class="flex flex-wrap items-center gap-4">
+        {% render 'language-switcher', active_class: 'bg-white/10 text-white' %}
+        {%- if section.settings.show_payment_icons -%}
+          <ul class="flex flex-wrap gap-1.5" aria-label="{{ 'footer.payment_methods' | t }}">
+            {%- for type in shop.enabled_payment_types -%}
+              <li>{{ type | payment_type_svg_tag: class: 'h-6 w-auto' }}</li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+    </div>
   </div>
 </footer>
 
-{% stylesheet %}
-  footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-  }
-  footer a {
-    text-decoration: none;
-    color: var(--color-foreground);
-  }
-  footer .footer__links,
-  footer .footer__payment {
-    display: flex;
-    gap: 1rem;
-  }
-{% endstylesheet %}
-
 {% schema %}
 {
-  "name": "t:general.footer",
+  "name": "Footer",
+  "enabled_on": { "groups": ["footer"] },
   "settings": [
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "t:labels.show_payment_icons",
-      "default": true
-    }
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Meindýravarnir og vörur fyrir heimili og fyrirtæki um allt land." },
+    { "type": "checkbox", "id": "show_newsletter", "label": "Show newsletter signup", "default": true },
+    { "type": "text", "id": "newsletter_heading", "label": "Newsletter heading", "default": "Fáðu ráð og tilboð í pósti" },
+    { "type": "link_list", "id": "menu_1", "label": "Menu 1", "default": "main-menu" },
+    { "type": "text", "id": "menu_1_title", "label": "Menu 1 title", "default": "Verslun" },
+    { "type": "link_list", "id": "menu_2", "label": "Menu 2", "default": "footer" },
+    { "type": "text", "id": "menu_2_title", "label": "Menu 2 title", "default": "Upplýsingar" },
+    { "type": "checkbox", "id": "show_payment_icons", "label": "Show payment icons", "default": true }
   ]
 }
 {% endschema %}

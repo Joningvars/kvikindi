@@ -1,0 +1,74 @@
+<section class="page-width section-y">
+  <div class="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-20">
+    <div class="lg:sticky lg:top-28 lg:self-start">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="h-section mt-4">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p class="lede mt-4">{{ section.settings.text }}</p>{%- endif -%}
+      {%- if settings.contact_email != blank or settings.contact_phone != blank -%}
+        <div class="mt-8 flex flex-col gap-3">
+          {%- if settings.contact_email != blank -%}
+            <a href="mailto:{{ settings.contact_email }}" class="flex w-fit items-center gap-3 font-semibold hover:text-brand-700">
+              <span class="flex size-10 items-center justify-center rounded-full bg-brand-50 text-brand-600">{% render 'icon', icon: 'mail', class: 'size-5' %}</span>
+              {{ settings.contact_email }}
+            </a>
+          {%- endif -%}
+          {%- if settings.contact_phone != blank -%}
+            <a href="tel:{{ settings.contact_phone | remove: ' ' | remove: '-' }}" class="flex w-fit items-center gap-3 font-semibold hover:text-brand-700">
+              <span class="flex size-10 items-center justify-center rounded-full bg-brand-50 text-brand-600">{% render 'icon', icon: 'phone', class: 'size-5' %}</span>
+              {{ settings.contact_phone }}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="flex flex-col gap-3">
+      {%- for block in section.blocks -%}
+        <details class="accordion card group/faq transition-colors open:border-brand-300 open:bg-brand-50/40" {% if forloop.first and section.settings.open_first %}open{% endif %} {{ block.shopify_attributes }}>
+          <summary class="px-5 py-5 font-display text-base font-bold md:px-7 md:text-lg">
+            {{ block.settings.question }}
+            <span class="accordion-icon flex size-8 shrink-0 items-center justify-center rounded-full bg-mist text-ink group-open/faq:bg-brand-600 group-open/faq:text-white">
+              {%- render 'icon', icon: 'plus', class: 'size-4' -%}
+            </span>
+          </summary>
+          <div class="rte px-5 pb-6 text-[15px] text-muted md:px-7">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "div",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Spurt og svarað" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Algengar spurningar" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Finnurðu ekki svarið? Hafðu samband og við svörum eins fljótt og við getum." },
+    { "type": "checkbox", "id": "open_first", "label": "Open first question", "default": true }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Spurning" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Svar</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ",
+      "blocks": [
+        { "type": "question", "settings": { "question": "Hvernig vel ég rétta vöru?", "answer": "<p>Byrjaðu á að velja meindýrið sem er að angra þig. Ef þú ert ekki viss, sendu okkur lýsingu eða mynd og við mælum með lausn sem hentar.</p>" } },
+        { "type": "question", "settings": { "question": "Eru vörurnar öruggar í kringum börn og gæludýr?", "answer": "<p>Það fer eftir vörunni. Á hverri vörusíðu kemur fram hvernig á að nota hana og hvaða varúðarráðstafanir gilda.</p>" } },
+        { "type": "question", "settings": { "question": "Hvað tekur langan tíma að fá pöntunina?", "answer": "<p>[Settu inn afhendingartíma og sendingarmáta.]</p>" } },
+        { "type": "question", "settings": { "question": "Get ég skilað vöru?", "answer": "<p>[Settu inn skilareglur verslunarinnar.]</p>" } },
+        { "type": "question", "settings": { "question": "Takið þið líka að ykkur meindýravarnir?", "answer": "<p>[Lýstu þjónustu Kvikinda og hvernig á að panta.]</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

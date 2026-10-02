@@ -11,13 +11,18 @@
     "comment_form_email": "Email",
     "comment_form_name": "Name",
     "comment_form_submit": "Post",
-    "comment_form_title": "Add a comment"
+    "comment_form_title": "Add a comment",
+    "read_more": "Read more"
   },
   "cart": {
     "checkout": "Checkout",
     "title": "Cart",
     "update": "Update",
-    "remove": "Remove"
+    "remove": "Remove",
+    "empty": "Your cart is empty",
+    "continue_shopping": "Continue shopping",
+    "subtotal": "Subtotal",
+    "taxes_shipping": "VAT included. Shipping is calculated at checkout."
   },
   "customers": {
     "login": {
@@ -28,7 +33,16 @@
     }
   },
   "collections": {
-    "title": "Collections"
+    "title": "Collections",
+    "products_count": {
+      "one": "{{ count }} product",
+      "other": "{{ count }} products"
+    },
+    "sort_by": "Sort by",
+    "apply": "Apply",
+    "empty": "No products here yet",
+    "all": "View all products",
+    "view": "View products"
   },
   "gift_card": {
     "add_to_apple_wallet": "Add to Apple Wallet",
@@ -54,6 +68,48 @@
   },
   "header": {
     "language": "Language",
-    "language_link": "Switch to {{ language }}"
+    "language_link": "Switch to {{ language }}",
+    "menu": "Menu",
+    "account": "Account",
+    "cart_count": {
+      "one": "Cart, {{ count }} item",
+      "other": "Cart, {{ count }} items"
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content"
+  },
+  "breadcrumbs": {
+    "label": "Breadcrumbs",
+    "home": "Home"
+  },
+  "products": {
+    "sold_out": "Sold out",
+    "sale": "Sale",
+    "from_price": "From {{ price }}",
+    "add_to_cart": "Add to cart",
+    "add_to_cart_named": "Add {{ title }} to cart",
+    "placeholder_tag": "Product",
+    "placeholder_title": "Product name",
+    "quantity": "Quantity",
+    "decrease": "Decrease quantity",
+    "increase": "Increase quantity",
+    "description": "Description",
+    "tax_included": "VAT included.",
+    "rating": "{{ rating }} out of 5 stars"
+  },
+  "newsletter": {
+    "email": "Email address",
+    "subscribe": "Subscribe",
+    "success": "Thanks for subscribing!"
+  },
+  "footer": {
+    "contact": "Contact",
+    "payment_methods": "Payment methods"
+  },
+  "pagination": {
+    "label": "Pagination",
+    "previous": "Previous page",
+    "next": "Next page"
   }
 }

@@ -6,16 +6,17 @@
   https://shopify.dev/docs/storefronts/themes/architecture/templates/article
 {% endcomment %}
 
-{% if article.image %}
-  {{ article.image | image_url: width: 1000 | image_tag }}
-{% endif %}
-
-<h1>{{ article.title }}</h1>
+<div class="page-width section-y">
+<header class="mx-auto max-w-3xl text-center">
+  <h1 class="h-section">{{ article.title }}</h1>
 
 {% assign date = article.published_at | time_tag: format: 'date' %}
-<p>{{ 'blog.article_metadata_html' | t: date: date, author: article.author }}</p>
-
-{{ article.content }}
+<p class="mt-4 text-sm text-muted">{{ 'blog.article_metadata_html' | t: date: date, author: article.author }}</p>
+</header>
+{% if article.image %}
+  <div class="mx-auto mt-10 max-w-5xl overflow-hidden rounded-panel">{{ article.image | image_url: width: 1800 | image_tag: widths: '600, 900, 1200, 1800', sizes: '(min-width: 1100px) 1024px, 100vw', class: 'w-full' }}</div>
+{% endif %}
+<div class="rte mx-auto mt-10 max-w-3xl text-base md:text-[17px]">{{ article.content }}</div>
 
 {% if blog.comments_enabled? %}
   <h2>{{ 'blog.article_comments' | t }}</h2>
@@ -59,6 +60,8 @@
     <input type="submit" value="{{ 'blog.comment_form_submit' | t }}">
   {% endform %}
 {% endif %}
+
+</div>
 
 {% schema %}
 {

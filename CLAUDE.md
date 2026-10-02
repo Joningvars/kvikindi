@@ -16,3 +16,13 @@ Custom Shopify theme (Online Store 2.0: JSON templates + sections + theme blocks
 - Store/environment config is in `shopify.theme.toml` (`development` environment); scripts pass `-e development`.
 - `npm run dev` (Tailwind watch + `shopify theme dev`), `npm run check` (Theme Check), `npm run push` (unpublished theme).
 - Never push to or publish the live theme from the CLI; use `--unpublished` and publish from Shopify admin.
+
+## Design system (Kvikindi v1, PestQuell-inspired)
+- Tokens live in `src/tailwind.css` `@theme`: brand greens (`brand-50…950`; 500 = accent/icons, 600 = buttons/links for AA contrast), `ink`, `muted`, `mist` (soft card bg), `line`, `sale`; radii `rounded-card` (16px) / `rounded-panel` (24px); shadows `shadow-card` / `shadow-float`.
+- Fonts are self-hosted in `assets/` (Fontsource, OFL) via `snippets/theme-fonts.liquid`: Red Hat Display (`font-display`, headings) + Inter (`font-sans`, body).
+- Component classes (in `@layer components`): `page-width`, `section-y`, `eyebrow`, `h-display`, `h-section`, `lede`, `btn` + `btn-primary|secondary|white|ghost-light`, `card`, `chip`, `field`, `link-arrow`, `rte`, `details.accordion`.
+- Icons: `{% render 'icon', icon: 'rat', class: 'size-6' %}` (Lucide, ISC). To add one, regenerate `snippets/icon.liquid` from `lucide-static`.
+- Pest tags: product tags prefixed `meindýr:` (e.g. `meindýr:Mýs`) render as chips on product cards and product pages.
+- Homepage sections: `hero` (trust-card blocks), `pest-grid` (pest blocks → collections), `featured-products`, `why-us`, `faq`, `cta-banner`; optional `testimonials` (real reviews only). Header group: `announcement-bar` + `header`.
+- Default content is Icelandic; bracketed text like `[Settu inn …]` is placeholder copy that must be replaced before launch.
+- Contact details (phone/email/address) come from Theme settings → Contact.

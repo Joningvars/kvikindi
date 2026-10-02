@@ -11,13 +11,18 @@
     "comment_form_email": "Netfang",
     "comment_form_name": "Nafn",
     "comment_form_submit": "Senda",
-    "comment_form_title": "Skrifa athugasemd"
+    "comment_form_title": "Skrifa athugasemd",
+    "read_more": "Lesa meira"
   },
   "cart": {
     "checkout": "Ganga frá pöntun",
     "title": "Karfa",
     "update": "Uppfæra",
-    "remove": "Fjarlægja"
+    "remove": "Fjarlægja",
+    "empty": "Karfan þín er tóm",
+    "continue_shopping": "Halda áfram að versla",
+    "subtotal": "Samtals",
+    "taxes_shipping": "Verð með VSK. Sendingarkostnaður reiknast við greiðslu."
   },
   "customers": {
     "login": {
@@ -28,7 +33,16 @@
     }
   },
   "collections": {
-    "title": "Vöruflokkar"
+    "title": "Vöruflokkar",
+    "products_count": {
+      "one": "{{ count }} vara",
+      "other": "{{ count }} vörur"
+    },
+    "sort_by": "Raða eftir",
+    "apply": "Nota",
+    "empty": "Engar vörur hér ennþá",
+    "all": "Skoða allar vörur",
+    "view": "Skoða vörur"
   },
   "gift_card": {
     "add_to_apple_wallet": "Bæta í Apple Wallet",
@@ -54,6 +68,48 @@
   },
   "header": {
     "language": "Tungumál",
-    "language_link": "Skipta yfir á {{ language }}"
+    "language_link": "Skipta yfir á {{ language }}",
+    "menu": "Valmynd",
+    "account": "Aðgangur",
+    "cart_count": {
+      "one": "Karfa, {{ count }} vara",
+      "other": "Karfa, {{ count }} vörur"
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Fara beint í efni"
+  },
+  "breadcrumbs": {
+    "label": "Brauðmolar",
+    "home": "Forsíða"
+  },
+  "products": {
+    "sold_out": "Uppselt",
+    "sale": "Tilboð",
+    "from_price": "Frá {{ price }}",
+    "add_to_cart": "Setja í körfu",
+    "add_to_cart_named": "Setja {{ title }} í körfu",
+    "placeholder_tag": "Vara",
+    "placeholder_title": "Heiti vöru",
+    "quantity": "Magn",
+    "decrease": "Fækka",
+    "increase": "Fjölga",
+    "description": "Lýsing",
+    "tax_included": "Verð með VSK.",
+    "rating": "{{ rating }} af 5 stjörnum"
+  },
+  "newsletter": {
+    "email": "Netfang",
+    "subscribe": "Skrá mig",
+    "success": "Takk fyrir skráninguna!"
+  },
+  "footer": {
+    "contact": "Hafðu samband",
+    "payment_methods": "Greiðsluleiðir"
+  },
+  "pagination": {
+    "label": "Síður",
+    "previous": "Fyrri síða",
+    "next": "Næsta síða"
   }
 }

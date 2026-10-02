@@ -1,0 +1,82 @@
+<section id="meindyr" class="page-width section-y">
+  <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div class="max-w-2xl">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="h-section mt-4">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p class="lede mt-4">{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+    {%- if section.settings.link_label != blank -%}
+      <a href="{{ section.settings.link | default: routes.collections_url }}" class="btn btn-secondary shrink-0 self-start md:self-auto">{{ section.settings.link_label }}</a>
+    {%- endif -%}
+  </div>
+
+  <ul class="mt-10 grid gap-4 sm:grid-cols-2 md:mt-14 md:gap-5 lg:grid-cols-3">
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign c = block.settings.collection
+        assign url = c.url | default: routes.all_products_collection_url
+      -%}
+      <li {{ block.shopify_attributes }}>
+        <a href="{{ url }}" class="group card relative flex h-full flex-col p-6 transition duration-200 hover:-translate-y-0.5 hover:border-brand-400 hover:shadow-card md:p-8">
+          <div class="flex items-start justify-between">
+            <span class="flex size-14 items-center justify-center rounded-2xl bg-brand-50 text-brand-600 transition-colors duration-200 group-hover:bg-brand-600 group-hover:text-white">
+              {%- render 'icon', icon: block.settings.icon, class: 'size-7' -%}
+            </span>
+            {%- if c != blank and c.products_count > 0 -%}
+              <span class="text-xs font-medium text-muted">{{ 'collections.products_count' | t: count: c.products_count }}</span>
+            {%- endif -%}
+          </div>
+          <h3 class="mt-6 font-display text-xl font-bold">{{ block.settings.title | default: c.title }}</h3>
+          {%- if block.settings.text != blank -%}
+            <p class="mt-2 text-sm leading-relaxed text-muted">{{ block.settings.text }}</p>
+          {%- endif -%}
+          <span class="link-arrow mt-auto pt-6">
+            {{ section.settings.card_link_label }}
+            {%- render 'icon', icon: 'arrow-right', class: 'size-4' -%}
+          </span>
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{
+  "name": "Shop by pest",
+  "tag": "div",
+  "max_blocks": 9,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Verslaðu eftir meindýri" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Hvaða kvikindi er að angra þig?" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Veldu meindýrið og við sýnum þér lausnirnar sem virka best." },
+    { "type": "text", "id": "card_link_label", "label": "Card link label", "default": "Skoða lausnir" },
+    { "type": "text", "id": "link_label", "label": "Button label", "default": "Allir vöruflokkar" },
+    { "type": "url", "id": "link", "label": "Button link", "default": "/collections" }
+  ],
+  "blocks": [
+    {
+      "type": "pest",
+      "name": "Pest",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        { "type": "select", "id": "icon", "label": "Icon", "default": "bug", "options": [{"value":"rat","label":"Mouse / rat"},{"value":"bug","label":"Insect"},{"value":"snail","label":"Snail"},{"value":"bird","label":"Bird"},{"value":"squirrel","label":"Rodent (squirrel)"},{"value":"spray-can","label":"Spray"},{"value":"sprout","label":"Garden"},{"value":"flower-2","label":"Flower"},{"value":"house","label":"Home"},{"value":"warehouse","label":"Business"},{"value":"shield-check","label":"Shield"},{"value":"badge-check","label":"Badge"},{"value":"truck","label":"Delivery"},{"value":"leaf","label":"Leaf"},{"value":"headset","label":"Support"},{"value":"package-check","label":"Package"},{"value":"star","label":"Star"}] },
+        { "type": "text", "id": "title", "label": "Title", "info": "Defaults to the collection title" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by pest",
+      "blocks": [
+        { "type": "pest", "settings": { "icon": "rat", "title": "Mýs", "text": "Gildrur og varnir fyrir heimili, geymslur og sumarhús." } },
+        { "type": "pest", "settings": { "icon": "squirrel", "title": "Rottur", "text": "Öflugar gildrur og beitustöðvar fyrir rottur." } },
+        { "type": "pest", "settings": { "icon": "bug", "title": "Geitungar", "text": "Gildrur og úðar til að halda geitungum frá." } },
+        { "type": "pest", "settings": { "icon": "spray-can", "title": "Skordýr", "text": "Lausnir gegn maurum, kakkalökkum, flugum og fleiru." } },
+        { "type": "pest", "settings": { "icon": "snail", "title": "Sniglar", "text": "Verndaðu garðinn og matjurtirnar." } },
+        { "type": "pest", "settings": { "icon": "bird", "title": "Fuglar", "text": "Fuglafælur fyrir þök, svalir og byggingar." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

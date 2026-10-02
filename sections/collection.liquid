@@ -1,47 +1,59 @@
-{% comment %}
-  This section is used in the collection template to render collection page
-  listing all products within a collection.
+{%- liquid
+  assign sort_by = collection.sort_by | default: collection.default_sort_by
+-%}
+{% render 'page-header',
+  title: collection.title,
+  eyebrow: section.settings.eyebrow,
+  text: collection.description
+%}
 
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/collection
-{% endcomment %}
-
-<h1>{{ collection.title }}</h1>
-
-<div class="collection-products">
-  {% paginate collection.products by 20 %}
-    {% for product in collection.products %}
-      <div class="collection-product">
-        {% if product.featured_image %}
-          {% render 'image',
-            class: 'collection-product__image',
-            image: product.featured_image,
-            url: product.url,
-            width: 400,
-            height: 400,
-            crop: 'center'
-          %}
-        {% endif %}
-        <div class="collection-product__content">
-          <p>{{ product.title | escape | link_to: product.url }}</p>
-          <p>{{ product.price | money }}</p>
+<div class="page-width section-y !pt-10">
+  {%- paginate collection.products by section.settings.per_page -%}
+    <div class="flex flex-col gap-4 border-b border-line pb-6 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-sm text-muted">{{ 'collections.products_count' | t: count: collection.products_count }}</p>
+      <form method="get" class="flex items-center gap-3">
+        {%- for filter in collection.filters -%}
+          {%- for value in filter.active_values -%}
+            <input type="hidden" name="{{ value.param_name }}" value="{{ value.value }}">
+          {%- endfor -%}
+        {%- endfor -%}
+        <label for="SortBy" class="text-sm text-muted">{{ 'collections.sort_by' | t }}</label>
+        <div class="relative">
+          <select id="SortBy" name="sort_by" class="appearance-none rounded-full border border-line bg-white py-2.5 pr-10 pl-4 text-sm font-medium focus:border-brand-500 focus:outline-none" onchange="this.form.submit()">
+            {%- for option in collection.sort_options -%}
+              <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>{{ option.name }}</option>
+            {%- endfor -%}
+          </select>
+          <span class="pointer-events-none absolute top-1/2 right-3.5 -translate-y-1/2">{% render 'icon', icon: 'chevron-down', class: 'size-4' %}</span>
         </div>
+        <noscript><button type="submit" class="btn btn-secondary py-2">{{ 'collections.apply' | t }}</button></noscript>
+      </form>
+    </div>
+
+    {%- if collection.products.size > 0 -%}
+      <ul class="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
+        {%- for product in collection.products -%}
+          <li>{% render 'product-card', product: product %}</li>
+        {%- endfor -%}
+      </ul>
+    {%- else -%}
+      <div class="mx-auto max-w-md py-20 text-center">
+        <span class="mx-auto flex size-14 items-center justify-center rounded-full bg-brand-50 text-brand-600">{% render 'icon', icon: 'search', class: 'size-6' %}</span>
+        <p class="mt-4 font-display text-xl font-bold">{{ 'collections.empty' | t }}</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary mt-6">{{ 'collections.all' | t }}</a>
       </div>
-    {% endfor %}
+    {%- endif -%}
 
-    {{ paginate | default_pagination }}
-  {% endpaginate %}
+    {% render 'pagination', paginate: paginate %}
+  {%- endpaginate -%}
 </div>
-
-{% stylesheet %}
-  .collection-products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  }
-{% endstylesheet %}
 
 {% schema %}
 {
-  "name": "t:general.collection",
-  "settings": []
+  "name": "Collection",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Vörur" },
+    { "type": "range", "id": "per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 }
+  ]
 }
 {% endschema %}

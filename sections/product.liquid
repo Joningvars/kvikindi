@@ -1,52 +1,243 @@
-{% comment %}
-  This section is used in the product template to render product page with
-  media, content, and add-to-cart form.
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign collection_ref = collection | default: product.collections.first
+  assign on_sale = false
+  if current_variant.compare_at_price > current_variant.price
+    assign on_sale = true
+  endif
+-%}
+<div class="page-width pt-6 pb-16 md:pt-8 md:pb-24" data-product-section="{{ section.id }}">
+  <nav class="mb-6 flex flex-wrap items-center gap-1.5 text-sm text-muted" aria-label="{{ 'breadcrumbs.label' | t }}">
+    <a href="{{ routes.root_url }}" class="hover:text-ink">{{ 'breadcrumbs.home' | t }}</a>
+    {%- if collection_ref -%}
+      <span aria-hidden="true">/</span>
+      <a href="{{ collection_ref.url }}" class="hover:text-ink">{{ collection_ref.title }}</a>
+    {%- endif -%}
+    <span aria-hidden="true">/</span>
+    <span class="text-ink" aria-current="page">{{ product.title }}</span>
+  </nav>
 
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/product
-{% endcomment %}
+  <div class="grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
+    {%- comment -%} Media {%- endcomment -%}
+    <div>
+      {%- if product.media.size > 0 -%}
+        <ul class="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0">
+          {%- for media in product.media -%}
+            {%- liquid
+              assign media_loading = 'lazy'
+              if forloop.first
+                assign media_loading = 'eager'
+              endif
+            -%}
+            <li class="aspect-square w-[85%] shrink-0 snap-center overflow-hidden rounded-card bg-mist md:w-auto {% if forloop.first %}md:col-span-2{% endif %}">
+              {%- if media.media_type == 'image' -%}
+                {{
+                  media
+                  | image_url: width: 1600
+                  | image_tag:
+                    widths: '400, 600, 800, 1100, 1400, 1600',
+                    sizes: '(min-width: 1024px) 700px, 85vw',
+                    class: 'size-full object-contain p-6 mix-blend-multiply md:p-10',
+                    loading: media_loading,
+                    alt: media.alt | default: product.title
+                }}
+              {%- else -%}
+                {{ media | media_tag: image_size: '1600x', class: 'size-full object-contain' }}
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- else -%}
+        <div class="aspect-square overflow-hidden rounded-card bg-mist">
+          {{ 'product-1' | placeholder_svg_tag: 'size-full fill-brand-200 p-12' }}
+        </div>
+      {%- endif -%}
+    </div>
 
-<div class="product-images">
-  {% for image in product.images %}
-    {% render 'image', class: 'product-image', image: image %}
-  {% endfor %}
+    {%- comment -%} Info {%- endcomment -%}
+    <div class="lg:sticky lg:top-28 lg:self-start">
+      {%- capture pest_tags -%}
+        {%- for tag in product.tags -%}
+          {%- if tag contains 'meindýr:' -%}<span class="chip">{{ tag | remove_first: 'meindýr:' | strip }}</span>{%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- if pest_tags != blank -%}<div class="mb-3 flex flex-wrap gap-1.5">{{ pest_tags }}</div>{%- endif -%}
+
+      <h1 class="font-display text-3xl leading-tight font-bold tracking-tight md:text-4xl">{{ product.title }}</h1>
+
+      <p class="mt-4 flex items-baseline gap-3 text-2xl font-semibold" data-price>
+        <span class="{% if on_sale %}text-sale{% endif %}" data-price-current>{{ current_variant.price | money }}</span>
+        <s class="text-base font-normal text-muted {% unless on_sale %}hidden{% endunless %}" data-price-compare>{{ current_variant.compare_at_price | money }}</s>
+      </p>
+      {%- if section.settings.show_tax_note -%}
+        <p class="mt-1 text-xs text-muted">{{ 'products.tax_included' | t }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.show_excerpt and product.description != blank -%}
+        <p class="mt-5 text-[15px] leading-relaxed text-muted">{{ product.description | strip_html | truncatewords: 32 }}</p>
+      {%- endif -%}
+
+      {%- form 'product', product, class: 'mt-8 flex flex-col gap-5', data-product-form: '' -%}
+        {%- unless product.has_only_default_variant -%}
+          <div>
+            <label for="Variant-{{ section.id }}" class="mb-2 block text-sm font-semibold">{{ product.options | join: ' / ' }}</label>
+            <div class="relative">
+              <select id="Variant-{{ section.id }}" name="id" class="w-full appearance-none rounded-full border border-line bg-white py-3 pr-10 pl-5 text-sm font-medium focus:border-brand-500 focus:outline-none" data-variant-select>
+                {%- for variant in product.variants -%}
+                  <option
+                    value="{{ variant.id }}"
+                    data-price="{{ variant.price | money | escape }}"
+                    data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money | escape }}{% endif %}"
+                    data-available="{{ variant.available }}"
+                    {% if variant == current_variant %}selected{% endif %}
+                  >
+                    {{ variant.title }}{% unless variant.available %} — {{ 'products.sold_out' | t }}{% endunless %}
+                  </option>
+                {%- endfor -%}
+              </select>
+              <span class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2">{% render 'icon', icon: 'chevron-down', class: 'size-4' %}</span>
+            </div>
+          </div>
+        {%- else -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}">
+        {%- endunless -%}
+
+        <div class="flex gap-3">
+          <div class="flex items-center rounded-full border border-line" data-qty>
+            <button type="button" class="flex size-12 items-center justify-center rounded-full hover:bg-mist" data-qty-step="-1" aria-label="{{ 'products.decrease' | t }}">{% render 'icon', icon: 'minus', class: 'size-4' %}</button>
+            <label for="Quantity-{{ section.id }}" class="sr-only">{{ 'products.quantity' | t }}</label>
+            <input id="Quantity-{{ section.id }}" type="number" name="quantity" value="1" min="1" inputmode="numeric" class="w-10 [appearance:textfield] bg-transparent text-center text-sm font-semibold focus:outline-none [&::-webkit-inner-spin-button]:appearance-none">
+            <button type="button" class="flex size-12 items-center justify-center rounded-full hover:bg-mist" data-qty-step="1" aria-label="{{ 'products.increase' | t }}">{% render 'icon', icon: 'plus', class: 'size-4' %}</button>
+          </div>
+          <button type="submit" class="btn btn-primary flex-1 py-3.5" data-add-button data-label-add="{{ 'products.add_to_cart' | t }}" data-label-soldout="{{ 'products.sold_out' | t }}" {% unless current_variant.available %}disabled{% endunless %}>
+            {%- render 'icon', icon: 'shopping-bag', class: 'size-[18px]' -%}
+            <span data-add-label>{% if current_variant.available %}{{ 'products.add_to_cart' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}</span>
+          </button>
+        </div>
+        {%- if section.settings.show_dynamic_checkout -%}
+          {{ form | payment_button }}
+        {%- endif -%}
+      {%- endform -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="mt-8 grid gap-3 rounded-card bg-mist p-5 text-sm">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'perk' -%}
+              <li class="flex items-start gap-3" {{ block.shopify_attributes }}>
+                <span class="mt-0.5 text-brand-600">{% render 'icon', icon: block.settings.icon, class: 'size-5' %}</span>
+                <span><strong class="font-semibold">{{ block.settings.title }}</strong>{% if block.settings.text != blank %} <span class="text-muted">{{ block.settings.text }}</span>{% endif %}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      <div class="mt-8 divide-y divide-line border-y border-line">
+        {%- if product.description != blank -%}
+          <details class="accordion group/acc" open>
+            <summary class="py-5 font-display text-base font-bold">
+              {{ 'products.description' | t }}
+              <span class="accordion-icon">{% render 'icon', icon: 'plus', class: 'size-5' %}</span>
+            </summary>
+            <div class="rte pb-6 text-[15px]">{{ product.description }}</div>
+          </details>
+        {%- endif -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'collapsible' -%}
+            <details class="accordion group/acc" {{ block.shopify_attributes }}>
+              <summary class="py-5 font-display text-base font-bold">
+                {{ block.settings.title }}
+                <span class="accordion-icon">{% render 'icon', icon: 'plus', class: 'size-5' %}</span>
+              </summary>
+              <div class="rte pb-6 text-[15px]">
+                {{ block.settings.content }}
+                {%- if block.settings.page != blank -%}{{ block.settings.page.content }}{%- endif -%}
+              </div>
+            </details>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="product-info">
-  <h1>{{ product.title }}</h1>
-  <p>{{ product.price | money }}</p>
-  <p>{{ product.description }}</p>
-</div>
-
-<div class="product-form">
-  {% form 'product', product %}
-    {% assign current_variant = product.selected_or_first_available_variant %}
-
-    <select name="id">
-      {% for variant in product.variants %}
-        <option
-          value="{{ variant.id }}"
-          {% if variant == current_variant %}
-            selected="selected"
-          {% endif %}
-        >
-          {{ variant.title }} - {{ variant.price | money }}
-        </option>
-      {% endfor %}
-    </select>
-
-    <input type="text" name="quantity" min="1" value="1">
-
-    <input type="submit" value="Add to cart">
-    {{ form | payment_button }}
-  {% endform %}
-</div>
+{%- unless product.has_only_default_variant -%}
+  <script>
+    (() => {
+      const root = document.querySelector('[data-product-section="{{ section.id }}"]');
+      if (!root) return;
+      const select = root.querySelector('[data-variant-select]');
+      const current = root.querySelector('[data-price-current]');
+      const compare = root.querySelector('[data-price-compare]');
+      const button = root.querySelector('[data-add-button]');
+      const label = root.querySelector('[data-add-label]');
+      select?.addEventListener('change', () => {
+        const opt = select.selectedOptions[0];
+        current.textContent = opt.dataset.price;
+        compare.textContent = opt.dataset.compare;
+        compare.classList.toggle('hidden', !opt.dataset.compare);
+        current.classList.toggle('text-sale', !!opt.dataset.compare);
+        const available = opt.dataset.available === 'true';
+        button.disabled = !available;
+        label.textContent = available ? button.dataset.labelAdd : button.dataset.labelSoldout;
+        const url = new URL(location.href);
+        url.searchParams.set('variant', select.value);
+        history.replaceState(null, '', url);
+      });
+    })();
+  </script>
+{%- endunless -%}
+<script>
+  document.querySelectorAll('[data-qty]').forEach((wrap) => {
+    if (wrap.dataset.bound) return;
+    wrap.dataset.bound = '1';
+    const input = wrap.querySelector('input');
+    wrap.querySelectorAll('[data-qty-step]').forEach((btn) =>
+      btn.addEventListener('click', () => {
+        input.value = Math.max(1, (parseInt(input.value, 10) || 1) + Number(btn.dataset.qtyStep));
+      })
+    );
+  });
+</script>
 
 {% schema %}
 {
-  "name": "t:general.product",
-  "settings": [],
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  }
+  "name": "Product",
+  "settings": [
+    { "type": "checkbox", "id": "show_excerpt", "label": "Show short description under price", "default": true },
+    { "type": "checkbox", "id": "show_tax_note", "label": "Show 'VAT included' note", "default": true },
+    { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show express checkout buttons", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "perk",
+      "name": "Perk",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "select", "id": "icon", "label": "Icon", "default": "truck",
+          "options": [
+            { "value": "truck", "label": "Delivery" },
+            { "value": "headset", "label": "Support" },
+            { "value": "shield-check", "label": "Shield" },
+            { "value": "badge-check", "label": "Badge" },
+            { "value": "package-check", "label": "Package" },
+            { "value": "leaf", "label": "Leaf" }
+          ]
+        },
+        { "type": "text", "id": "title", "label": "Title", "default": "Sent um allt land" },
+        { "type": "text", "id": "text", "label": "Text" }
+      ]
+    },
+    {
+      "type": "collapsible",
+      "name": "Collapsible tab",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Notkun og öryggi" },
+        { "type": "richtext", "id": "content", "label": "Content" },
+        { "type": "page", "id": "page", "label": "Or show content from a page" }
+      ]
+    }
+  ]
 }
 {% endschema %}

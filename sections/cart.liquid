@@ -1,37 +1,77 @@
-{% comment %}
-  This section is used in the cart template to render /cart page with an
-  overview of the items in customer's cart.
+<div class="page-width pt-8 pb-16 md:pt-12 md:pb-24">
+  <h1 class="h-section">{{ 'cart.title' | t }}</h1>
 
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/cart
-{% endcomment %}
+  {%- if cart.item_count == 0 -%}
+    <div class="mt-10 rounded-panel bg-mist px-6 py-20 text-center">
+      <span class="mx-auto flex size-16 items-center justify-center rounded-full bg-white text-brand-600 shadow-card">{% render 'icon', icon: 'shopping-bag', class: 'size-7' %}</span>
+      <p class="mt-5 font-display text-2xl font-bold">{{ 'cart.empty' | t }}</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary mt-6">{{ 'cart.continue_shopping' | t }}</a>
+    </div>
+  {%- else -%}
+    <form action="{{ routes.cart_url }}" method="post" class="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_380px] lg:gap-14">
+      <ul class="divide-y divide-line border-y border-line">
+        {%- for item in cart.items -%}
+          <li class="flex gap-4 py-6 sm:gap-6">
+            <a href="{{ item.url }}" class="size-24 shrink-0 overflow-hidden rounded-card bg-mist sm:size-28">
+              {%- if item.image -%}
+                {{ item.image | image_url: width: 300 | image_tag: class: 'size-full object-contain p-2 mix-blend-multiply', loading: 'lazy', alt: item.product.title }}
+              {%- endif -%}
+            </a>
+            <div class="flex min-w-0 flex-1 flex-col">
+              <div class="flex justify-between gap-4">
+                <div class="min-w-0">
+                  <a href="{{ item.url }}" class="font-display font-bold hover:text-brand-700">{{ item.product.title }}</a>
+                  {%- unless item.product.has_only_default_variant -%}
+                    <p class="mt-0.5 text-sm text-muted">{{ item.variant.title }}</p>
+                  {%- endunless -%}
+                  <p class="mt-1 text-sm text-muted">{{ item.final_price | money }}</p>
+                </div>
+                <p class="shrink-0 font-semibold">{{ item.final_line_price | money }}</p>
+              </div>
+              <div class="mt-auto flex items-center justify-between pt-4">
+                <div class="flex items-center rounded-full border border-line" data-qty>
+                  <button type="button" class="flex size-9 items-center justify-center rounded-full hover:bg-mist" data-qty-step="-1" aria-label="{{ 'products.decrease' | t }}">{% render 'icon', icon: 'minus', class: 'size-3.5' %}</button>
+                  <label for="Qty-{{ forloop.index }}" class="sr-only">{{ 'products.quantity' | t }}</label>
+                  <input id="Qty-{{ forloop.index }}" type="number" name="updates[]" value="{{ item.quantity }}" min="0" class="w-9 [appearance:textfield] bg-transparent text-center text-sm font-semibold focus:outline-none [&::-webkit-inner-spin-button]:appearance-none">
+                  <button type="button" class="flex size-9 items-center justify-center rounded-full hover:bg-mist" data-qty-step="1" aria-label="{{ 'products.increase' | t }}">{% render 'icon', icon: 'plus', class: 'size-3.5' %}</button>
+                </div>
+                <a href="{{ item.url_to_remove }}" class="flex items-center gap-1.5 text-sm text-muted hover:text-sale">
+                  {%- render 'icon', icon: 'trash-2', class: 'size-4' -%}
+                  {{ 'cart.remove' | t }}
+                </a>
+              </div>
+            </div>
+          </li>
+        {%- endfor -%}
+      </ul>
 
-<h1>{{ 'cart.title' | t }}</h1>
-
-<form action="{{ routes.cart_url }}" method="post">
-  <table>
-    {% for item in cart.items %}
-      <tr>
-        <td>
-          {% render 'image', image: item.image, url: item.url %}
-        </td>
-        <td>
-          <p>{{ item.product.title }}</p>
-          {{ 'cart.remove' | t | link_to: item.url_to_remove }}
-        </td>
-        <td>
-          <input type="text" name="updates[]" value="{{ item.quantity }}">
-          <input type="submit" value="{{ 'cart.update' | t }}">
-        </td>
-      </tr>
-    {% endfor %}
-  </table>
-
-  <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
-</form>
+      <aside class="h-fit rounded-panel bg-mist p-6 md:p-8 lg:sticky lg:top-28">
+        <dl class="flex items-baseline justify-between">
+          <dt class="font-display text-lg font-bold">{{ 'cart.subtotal' | t }}</dt>
+          <dd class="text-xl font-semibold">{{ cart.total_price | money }}</dd>
+        </dl>
+        <p class="mt-2 text-sm text-muted">{{ 'cart.taxes_shipping' | t }}</p>
+        <button type="submit" name="checkout" class="btn btn-primary mt-6 w-full py-3.5">{{ 'cart.checkout' | t }}</button>
+        <button type="submit" name="update" class="btn btn-secondary mt-3 w-full">{{ 'cart.update' | t }}</button>
+        <a href="{{ routes.all_products_collection_url }}" class="link-arrow mt-5 w-full justify-center">{{ 'cart.continue_shopping' | t }}</a>
+      </aside>
+    </form>
+    <script>
+      document.querySelectorAll('[data-qty]').forEach((wrap) => {
+        const input = wrap.querySelector('input');
+        wrap.querySelectorAll('[data-qty-step]').forEach((btn) =>
+          btn.addEventListener('click', () => {
+            input.value = Math.max(0, (parseInt(input.value, 10) || 0) + Number(btn.dataset.qtyStep));
+          })
+        );
+      });
+    </script>
+  {%- endif -%}
+</div>
 
 {% schema %}
 {
-  "name": "t:general.cart",
+  "name": "Cart",
   "settings": []
 }
 {% endschema %}

@@ -1,35 +1,34 @@
-{% comment %}
-  This section is used in the blog template to render the blog page listing all
-  articles within a blog.
-
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/blog
-{% endcomment %}
-
-<h1>{{ blog.title }}</h1>
-
-{% paginate blog.articles by 5 %}
-  {% for article in blog.articles %}
-    <div>
-      {% if article.image %}
-        {{ article.image | image_url: width: 1000 | image_tag }}
-      {% endif %}
-      <h2>
-        {{ article.title | link_to: article.url }}
-      </h2>
-      {% assign date = article.published_at | time_tag: format: 'date' %}
-      <p>{{ 'blog.article_metadata_html' | t: date: date, author: article.author }}</p>
-      <p>{{ article.excerpt }}</p>
-    </div>
-  {% endfor %}
-
-  {%- if paginate.pages > 1 -%}
-    {{- paginate | default_pagination -}}
-  {%- endif -%}
-{% endpaginate %}
+{% render 'page-header', title: blog.title %}
+<div class="page-width section-y !pt-10">
+  {%- paginate blog.articles by 9 -%}
+    <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {%- for article in blog.articles -%}
+        <li>
+          <a href="{{ article.url }}" class="group card flex h-full flex-col overflow-hidden hover:border-brand-400">
+            <div class="aspect-[16/10] overflow-hidden bg-mist">
+              {%- if article.image -%}
+                {{ article.image | image_url: width: 900 | image_tag: widths: '400, 600, 900', sizes: '(min-width: 1024px) 400px, 100vw', class: 'size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]', loading: 'lazy' }}
+              {%- else -%}
+                {{ 'lifestyle-2' | placeholder_svg_tag: 'size-full fill-brand-200' }}
+              {%- endif -%}
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <p class="text-xs text-muted">{{ article.published_at | time_tag: format: 'date' }}</p>
+              <h2 class="mt-2 font-display text-lg font-bold group-hover:text-brand-700">{{ article.title }}</h2>
+              <p class="mt-2 text-sm text-muted">{{ article.excerpt_or_content | strip_html | truncatewords: 22 }}</p>
+              <span class="link-arrow mt-auto pt-5">{{ 'blog.read_more' | t }}{% render 'icon', icon: 'arrow-right', class: 'size-4' %}</span>
+            </div>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+    {% render 'pagination', paginate: paginate %}
+  {%- endpaginate -%}
+</div>
 
 {% schema %}
 {
-  "name": "t:general.blog",
+  "name": "Blog",
   "settings": []
 }
 {% endschema %}

@@ -1,0 +1,94 @@
+<section class="page-width section-y">
+  <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+    <div class="relative {% if section.settings.image_right %}lg:order-2{% endif %}">
+      <div class="aspect-[4/5] overflow-hidden rounded-panel bg-brand-50 sm:aspect-[5/4] lg:aspect-[4/5]">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1400
+            | image_tag: widths: '600, 900, 1200, 1400', sizes: '(min-width: 1024px) 600px, 100vw', class: 'size-full object-cover', loading: 'lazy'
+          }}
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'size-full fill-brand-200' }}
+        {%- endif -%}
+      </div>
+      {%- if section.settings.badge_title != blank -%}
+        <div class="absolute -bottom-6 left-4 flex max-w-[18rem] items-center gap-4 rounded-card bg-white p-4 pr-6 shadow-float sm:left-8">
+          <span class="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white">
+            {%- render 'icon', icon: 'badge-check', class: 'size-6' -%}
+          </span>
+          <div>
+            <p class="font-display text-lg leading-tight font-bold">{{ section.settings.badge_title }}</p>
+            <p class="text-sm text-muted">{{ section.settings.badge_text }}</p>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div>
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="h-section mt-4">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p class="lede mt-4">{{ section.settings.text }}</p>{%- endif -%}
+
+      <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+        {%- for block in section.blocks -%}
+          <li class="rounded-card bg-mist p-5" {{ block.shopify_attributes }}>
+            <span class="flex size-10 items-center justify-center rounded-full bg-white text-brand-600 shadow-card">
+              {%- render 'icon', icon: block.settings.icon, class: 'size-5' -%}
+            </span>
+            <h3 class="mt-4 font-display text-base font-bold">{{ block.settings.title }}</h3>
+            <p class="mt-1 text-sm text-muted">{{ block.settings.text }}</p>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="btn btn-primary mt-8">
+          {{ section.settings.button_label }}
+          {%- render 'icon', icon: 'arrow-right', class: 'size-4' -%}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why us",
+  "tag": "div",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "checkbox", "id": "image_right", "label": "Image on the right", "default": false },
+    { "type": "text", "id": "badge_title", "label": "Badge title", "default": "Íslenskt fyrirtæki" },
+    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "Þjónusta og ráðgjöf á íslensku" },
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Af hverju Kvikindi" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Fagþekking úr meindýravörnum — beint heim til þín" },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Við vinnum við meindýravarnir alla daga. Í versluninni finnurðu vörurnar sem við treystum sjálf, með skýrum leiðbeiningum um hvernig á að nota þær." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Skoða vörur" },
+    { "type": "url", "id": "button_link", "label": "Button link", "default": "/collections/all" }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "default": "check", "options": [{"value":"rat","label":"Mouse / rat"},{"value":"bug","label":"Insect"},{"value":"snail","label":"Snail"},{"value":"bird","label":"Bird"},{"value":"squirrel","label":"Rodent (squirrel)"},{"value":"spray-can","label":"Spray"},{"value":"sprout","label":"Garden"},{"value":"flower-2","label":"Flower"},{"value":"house","label":"Home"},{"value":"warehouse","label":"Business"},{"value":"shield-check","label":"Shield"},{"value":"badge-check","label":"Badge"},{"value":"truck","label":"Delivery"},{"value":"leaf","label":"Leaf"},{"value":"headset","label":"Support"},{"value":"package-check","label":"Package"},{"value":"star","label":"Star"},{"value":"check","label":"Check"}] },
+        { "type": "text", "id": "title", "label": "Title", "default": "Kostur" },
+        { "type": "textarea", "id": "text", "label": "Text" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why us",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "badge-check", "title": "Prófaðar lausnir", "text": "Við seljum það sem við notum sjálf í starfi." } },
+        { "type": "feature", "settings": { "icon": "house", "title": "Fyrir heimilið", "text": "Lausnir fyrir íbúðir, hús og sumarhús." } },
+        { "type": "feature", "settings": { "icon": "warehouse", "title": "Fyrir fyrirtæki", "text": "Varnir fyrir lagera, veitingastaði og verslanir." } },
+        { "type": "feature", "settings": { "icon": "headset", "title": "Persónuleg ráðgjöf", "text": "Hafðu samband og við hjálpum þér að velja." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -11,10 +11,19 @@
   "sections": {
     "main": {
       "type": "product",
+      "blocks": {
+        "perk_1": { "type": "perk", "settings": { "icon": "truck", "title": "Sent um allt land" } },
+        "perk_2": { "type": "perk", "settings": { "icon": "headset", "title": "Ráðgjöf á íslensku", "text": "Ekki viss? Hafðu samband." } },
+        "tab_1": { "type": "collapsible", "settings": { "title": "Notkun og öryggi", "content": "<p>[Settu inn leiðbeiningar og varúðarráðstafanir fyrir vöruna.]</p>" } },
+        "tab_2": { "type": "collapsible", "settings": { "title": "Sending og skil", "content": "<p>[Settu inn upplýsingar um sendingu og skilarétt.]</p>" } }
+      },
+      "block_order": ["perk_1", "perk_2", "tab_1", "tab_2"],
       "settings": {}
+    },
+    "related": {
+      "type": "featured-products",
+      "settings": { "eyebrow": "Þér gæti líka líkað", "heading": "Fleiri vörur", "link_label": "" }
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["main", "related"]
 }

@@ -1,0 +1,70 @@
+<div class="bg-brand-800 text-white">
+  <div class="page-width flex min-h-10 items-center justify-between gap-4 py-2 text-[13px]">
+    <p class="flex min-w-0 items-center gap-2">
+      {%- render 'icon', icon: section.settings.icon, class: 'size-4 shrink-0 text-brand-300' -%}
+      {%- if section.settings.link != blank -%}
+        <a href="{{ section.settings.link }}" class="truncate hover:underline">{{ section.settings.text }}</a>
+      {%- else -%}
+        <span class="truncate">{{ section.settings.text }}</span>
+      {%- endif -%}
+    </p>
+    <div class="flex shrink-0 items-center gap-5">
+      {%- if section.settings.show_contact -%}
+        {%- if settings.contact_phone != blank -%}
+          <a href="tel:{{ settings.contact_phone | remove: ' ' | remove: '-' }}" class="hidden items-center gap-1.5 hover:underline md:flex">
+            {%- render 'icon', icon: 'phone', class: 'size-3.5' -%}
+            {{ settings.contact_phone }}
+          </a>
+        {%- endif -%}
+        {%- if settings.contact_email != blank -%}
+          <a href="mailto:{{ settings.contact_email }}" class="hidden items-center gap-1.5 hover:underline lg:flex">
+            {%- render 'icon', icon: 'mail', class: 'size-3.5' -%}
+            {{ settings.contact_email }}
+          </a>
+        {%- endif -%}
+      {%- endif -%}
+      {% render 'language-switcher' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "announcement-bar",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Sent um allt land · Ráðgjöf frá fagfólki"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "select",
+      "id": "icon",
+      "label": "Icon",
+      "default": "truck",
+      "options": [
+        { "value": "truck", "label": "Truck" },
+        { "value": "shield-check", "label": "Shield" },
+        { "value": "leaf", "label": "Leaf" },
+        { "value": "headset", "label": "Support" },
+        { "value": "badge-check", "label": "Badge" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_contact",
+      "label": "Show phone and email",
+      "info": "Set them in Theme settings → Contact",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

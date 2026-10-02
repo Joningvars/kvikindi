@@ -8,5 +8,9 @@
  * ------------------------------------------------------------
  */
 {
-  "current": {}
+  "current": {
+    "contact_phone": "",
+    "contact_email": "",
+    "contact_address": ""
+  }
 }

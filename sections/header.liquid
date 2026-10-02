@@ -1,121 +1,158 @@
-<header>
-  <h2 class="header__title">
-    {{ shop.name | link_to: routes.root_url }}
-  </h2>
+{%- liquid
+  assign menu = section.settings.menu
+-%}
+<header class="border-b border-line bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+  <div class="page-width flex h-[4.5rem] items-center gap-6 md:h-20">
+    {%- comment -%} Mobile menu {%- endcomment -%}
+    <details class="group/menu lg:hidden" scroll-lock>
+      <summary class="-ml-2 flex size-10 cursor-pointer list-none items-center justify-center rounded-full hover:bg-mist [&::-webkit-details-marker]:hidden" aria-label="{{ 'header.menu' | t }}">
+        <span class="group-open/menu:hidden">{% render 'icon', icon: 'menu', class: 'size-6' %}</span>
+        <span class="hidden group-open/menu:block">{% render 'icon', icon: 'x', class: 'size-6' %}</span>
+      </summary>
+      <div class="absolute inset-x-0 top-full z-40 h-[calc(100dvh-4.5rem)] overflow-y-auto border-t border-line bg-white px-5 pt-4 pb-24">
+        <nav aria-label="{{ 'header.menu' | t }}">
+          <ul class="divide-y divide-line">
+            {%- for link in menu.links -%}
+              <li>
+                <a href="{{ link.url }}" class="flex items-center justify-between py-4 font-display text-lg font-semibold {% if link.active %}text-brand-700{% endif %}">
+                  {{ link.title }}
+                  {%- render 'icon', icon: 'arrow-right', class: 'size-4 text-muted' -%}
+                </a>
+                {%- if link.links.size > 0 -%}
+                  <ul class="-mt-2 grid grid-cols-2 gap-x-4 gap-y-2 pb-4">
+                    {%- for child in link.links -%}
+                      <li><a href="{{ child.url }}" class="text-sm text-muted hover:text-ink">{{ child.title }}</a></li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+        </nav>
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn-primary mt-6 w-full">{{ section.settings.cta_label }}</a>
+        {%- endif -%}
+      </div>
+    </details>
 
-  <div class="header__menu">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
-
-  <div class="header__icons">
-    {%- if localization.available_languages.size > 1 -%}
-      {%- liquid
-        assign current_path = request.path
-        if request.locale.root_url != '/'
-          assign current_path = current_path | remove_first: request.locale.root_url
-        endif
-        if current_path == blank
-          assign current_path = '/'
-        endif
-      -%}
-      <nav class="header__languages" aria-label="{{ 'header.language' | t }}">
-        {%- for language in localization.available_languages -%}
-          {%- liquid
-            if language.root_url == '/'
-              assign language_url = current_path
-            elsif current_path == '/'
-              assign language_url = language.root_url
-            else
-              assign language_url = language.root_url | append: current_path
-            endif
-          -%}
-          <a
-            href="{{ language_url }}"
-            hreflang="{{ language.iso_code }}"
-            lang="{{ language.iso_code }}"
-            {% if language.iso_code == request.locale.iso_code %}
-              aria-current="true"
-            {% else %}
-              aria-label="{{ 'header.language_link' | t: language: language.endonym_name }}"
-            {% endif %}
-          >
-            {{- language.iso_code | upcase -}}
-          </a>
-        {%- endfor -%}
-      </nav>
-    {%- endif -%}
-
-    {% if shop.customer_accounts_enabled %}
-      <shopify-account menu="{{ section.settings.customer_account_menu }}">
-        {{ 'icon-account.svg' | inline_asset_content }}
-      </shopify-account>
-    {% endif %}
-
-    <a href="{{ routes.cart_url }}">
-      {% if cart.item_count > 0 %}
-        <sup>{{ cart.item_count }}</sup>
-      {% endif %}
-
-      {{ 'icon-cart.svg' | inline_asset_content }}
+    {%- comment -%} Logo {%- endcomment -%}
+    <a href="{{ routes.root_url }}" class="flex shrink-0 items-center" aria-label="{{ shop.name }}">
+      {%- if section.settings.logo != blank -%}
+        {%- assign logo_style = 'width: ' | append: section.settings.logo_width | append: 'px; height: auto;' -%}
+        {{
+          section.settings.logo
+          | image_url: width: 600
+          | image_tag:
+            widths: '160, 240, 320, 480, 600',
+            sizes: '240px',
+            alt: shop.name,
+            style: logo_style,
+            loading: 'eager'
+        }}
+      {%- else -%}
+        <span class="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight text-brand-800">
+          <span class="flex size-8 items-center justify-center rounded-full bg-brand-500 text-white">
+            {%- render 'icon', icon: 'shield-check', class: 'size-[18px]' -%}
+          </span>
+          {{ shop.name }}
+        </span>
+      {%- endif -%}
     </a>
+
+    {%- comment -%} Desktop nav {%- endcomment -%}
+    <nav class="hidden flex-1 justify-center lg:flex" aria-label="{{ 'header.menu' | t }}">
+      <ul class="flex items-center gap-1">
+        {%- for link in menu.links -%}
+          <li class="group/nav relative">
+            <a
+              href="{{ link.url }}"
+              class="flex items-center gap-1 rounded-full px-4 py-2 text-[15px] font-medium transition-colors hover:bg-mist {% if link.active or link.child_active %}text-brand-700{% else %}text-ink/80 hover:text-ink{% endif %}"
+              {% if link.active %}aria-current="page"{% endif %}
+            >
+              {{ link.title }}
+              {%- if link.links.size > 0 -%}
+                {%- render 'icon', icon: 'chevron-down', class: 'size-4 opacity-60 transition-transform group-hover/nav:rotate-180' -%}
+              {%- endif -%}
+            </a>
+            {%- if link.links.size > 0 -%}
+              <div class="invisible absolute top-full left-1/2 z-30 -translate-x-1/2 translate-y-1 pt-3 opacity-0 transition duration-150 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:opacity-100 group-focus-within/nav:visible group-focus-within/nav:opacity-100">
+                <ul class="min-w-56 rounded-card border border-line bg-white p-2 shadow-float">
+                  {%- for child in link.links -%}
+                    <li>
+                      <a href="{{ child.url }}" class="block rounded-lg px-3 py-2 text-sm text-ink/80 hover:bg-mist hover:text-ink">{{ child.title }}</a>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+              </div>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    {%- comment -%} Actions {%- endcomment -%}
+    <div class="ml-auto flex items-center gap-1 lg:ml-0">
+      <a href="{{ routes.search_url }}" class="flex size-10 items-center justify-center rounded-full hover:bg-mist" aria-label="{{ 'search.title' | t }}">
+        {%- render 'icon', icon: 'search', class: 'size-5' -%}
+      </a>
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="hidden size-10 items-center justify-center rounded-full hover:bg-mist sm:flex" aria-label="{{ 'header.account' | t }}">
+          {%- render 'icon', icon: 'user', class: 'size-5' -%}
+        </a>
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="relative flex size-10 items-center justify-center rounded-full hover:bg-mist" aria-label="{{ 'header.cart_count' | t: count: cart.item_count }}">
+        {%- render 'icon', icon: 'shopping-bag', class: 'size-5' -%}
+        {%- if cart.item_count > 0 -%}
+          <span class="absolute top-0.5 right-0.5 flex min-w-[1.125rem] items-center justify-center rounded-full bg-brand-600 px-1 text-[10px] leading-[1.125rem] font-bold text-white">{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+      {%- if section.settings.cta_label != blank -%}
+        <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn-primary ml-3 hidden lg:inline-flex">
+          {{ section.settings.cta_label }}
+        </a>
+      {%- endif -%}
+    </div>
   </div>
 </header>
 
-{% stylesheet %}
-  header {
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header a {
-    position: relative;
-    text-decoration: none;
-    color: var(--color-foreground);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  header a sup {
-    position: absolute;
-    left: 100%;
-    overflow: hidden;
-    max-width: var(--page-margin);
-  }
-  header .header__languages {
-    display: flex;
-    gap: 0.5rem;
-    font-size: 0.875rem;
-  }
-  header .header__languages a[aria-current] {
-    font-weight: 700;
-  }
-  header svg {
-    width: 2rem;
-  }
-  header .header__menu,
-  header .header__icons {
-    display: flex;
-    gap: 1rem;
-  }
-{% endstylesheet %}
-
 {% schema %}
 {
-  "name": "t:general.header",
+  "name": "Header",
+  "class": "site-header sticky top-0 z-50",
+  "enabled_on": { "groups": ["header"] },
   "settings": [
     {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo width",
+      "min": 80,
+      "max": 240,
+      "step": 4,
+      "unit": "px",
+      "default": 140
     },
     {
       "type": "link_list",
-      "id": "customer_account_menu",
-      "label": "t:labels.customer_account_menu",
-      "default": "customer-account-main-menu"
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Versla núna"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link",
+      "default": "/collections/all"
     }
   ]
 }

@@ -1,0 +1,28 @@
+{%- doc -%}
+  Rounded pagination for paginate blocks.
+  @param {object} paginate - The paginate object
+  @param {string} [anchor] - Optional anchor appended to links
+{%- enddoc -%}
+{%- if paginate.pages > 1 -%}
+  <nav class="mt-14 flex items-center justify-center gap-1.5" aria-label="{{ 'pagination.label' | t }}">
+    {%- if paginate.previous -%}
+      <a href="{{ paginate.previous.url }}{{ anchor }}" class="flex size-10 items-center justify-center rounded-full border border-line hover:border-brand-500" aria-label="{{ 'pagination.previous' | t }}">
+        {%- render 'icon', icon: 'arrow-right', class: 'size-4 rotate-180' -%}
+      </a>
+    {%- endif -%}
+    {%- for part in paginate.parts -%}
+      {%- if part.is_link -%}
+        <a href="{{ part.url }}{{ anchor }}" class="flex size-10 items-center justify-center rounded-full text-sm font-semibold hover:bg-mist">{{ part.title }}</a>
+      {%- elsif part.title == paginate.current_page -%}
+        <span class="flex size-10 items-center justify-center rounded-full bg-brand-600 text-sm font-semibold text-white" aria-current="page">{{ part.title }}</span>
+      {%- else -%}
+        <span class="flex size-10 items-center justify-center text-sm text-muted">{{ part.title }}</span>
+      {%- endif -%}
+    {%- endfor -%}
+    {%- if paginate.next -%}
+      <a href="{{ paginate.next.url }}{{ anchor }}" class="flex size-10 items-center justify-center rounded-full border border-line hover:border-brand-500" aria-label="{{ 'pagination.next' | t }}">
+        {%- render 'icon', icon: 'arrow-right', class: 'size-4' -%}
+      </a>
+    {%- endif -%}
+  </nav>
+{%- endif -%}

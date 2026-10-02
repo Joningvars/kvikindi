@@ -1,0 +1,94 @@
+{%- doc -%}
+  Product card used in grids. Shows pest tags from product tags prefixed "meindýr:" (e.g. "meindýr:Mýs").
+  @param {product} [product] - The product. Without it a placeholder card is rendered.
+  @param {number} [index] - Placeholder number (1–6)
+  @param {string} [sizes] - sizes attribute for the image
+{%- enddoc -%}
+{%- liquid
+  assign sizes = sizes | default: '(min-width: 1024px) 300px, (min-width: 640px) 33vw, 50vw'
+  if product
+    assign variant = product.selected_or_first_available_variant
+    assign on_sale = false
+    if product.compare_at_price > product.price
+      assign on_sale = true
+    endif
+  endif
+-%}
+<article class="group relative flex h-full flex-col">
+  {%- if product -%}
+    <a href="{{ product.url }}" class="relative block aspect-square overflow-hidden rounded-card bg-mist" tabindex="-1" aria-hidden="true">
+      {%- if product.featured_media -%}
+        {{
+          product.featured_media
+          | image_url: width: 900
+          | image_tag:
+            widths: '300, 450, 600, 900',
+            sizes: sizes,
+            class: 'size-full object-contain p-5 mix-blend-multiply transition-transform duration-500 group-hover:scale-[1.04] md:p-8',
+            loading: 'lazy',
+            alt: product.featured_media.alt | default: product.title
+        }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'size-full fill-brand-200 p-8' }}
+      {%- endif -%}
+      <span class="absolute top-3 left-3 flex flex-col gap-1.5">
+        {%- if product.available == false -%}
+          <span class="rounded-full bg-ink px-2.5 py-1 text-[11px] font-semibold text-white">{{ 'products.sold_out' | t }}</span>
+        {%- elsif on_sale -%}
+          <span class="rounded-full bg-sale px-2.5 py-1 text-[11px] font-semibold text-white">{{ 'products.sale' | t }}</span>
+        {%- endif -%}
+      </span>
+    </a>
+
+    <div class="mt-4 flex flex-1 flex-col">
+      {%- capture pest_tags -%}
+        {%- for tag in product.tags -%}
+          {%- if tag contains 'meindýr:' -%}<span class="chip">{{ tag | remove_first: 'meindýr:' | strip }}</span>{%- endif -%}
+        {%- endfor -%}
+      {%- endcapture -%}
+      {%- if pest_tags != blank -%}
+        <div class="mb-2 flex flex-wrap gap-1.5">{{ pest_tags }}</div>
+      {%- endif -%}
+
+      <h3 class="font-display text-base leading-snug font-bold md:text-lg">
+        <a href="{{ product.url }}" class="after:absolute after:inset-0 after:content-[''] hover:text-brand-700">{{ product.title }}</a>
+      </h3>
+
+      <div class="mt-auto flex items-end justify-between gap-3 pt-3">
+        <p class="flex flex-wrap items-baseline gap-x-2 text-[15px] font-semibold">
+          {%- if product.price_varies -%}
+            <span>{{ 'products.from_price' | t: price: product.price_min | money }}</span>
+          {%- else -%}
+            <span class="{% if on_sale %}text-sale{% endif %}">{{ product.price | money }}</span>
+          {%- endif -%}
+          {%- if on_sale -%}
+            <s class="text-xs font-normal text-muted">{{ product.compare_at_price | money }}</s>
+          {%- endif -%}
+        </p>
+
+        {%- if product.available and product.has_only_default_variant -%}
+          {%- form 'product', product, class: 'relative z-10' -%}
+            <input type="hidden" name="id" value="{{ variant.id }}">
+            <button
+              type="submit"
+              class="flex size-10 items-center justify-center rounded-full border border-line bg-white text-ink transition-colors hover:border-brand-600 hover:bg-brand-600 hover:text-white"
+              aria-label="{{ 'products.add_to_cart_named' | t: title: product.title }}"
+            >
+              {%- render 'icon', icon: 'plus', class: 'size-5' -%}
+            </button>
+          {%- endform -%}
+        {%- endif -%}
+      </div>
+    </div>
+  {%- else -%}
+    {%- assign n = index | default: 1 | modulo: 6 | plus: 1 -%}
+    <div class="aspect-square overflow-hidden rounded-card bg-mist">
+      {{ 'product-' | append: n | placeholder_svg_tag: 'size-full fill-brand-200 p-8' }}
+    </div>
+    <div class="mt-4">
+      <span class="chip">{{ 'products.placeholder_tag' | t }}</span>
+      <h3 class="mt-2 font-display text-lg font-bold text-ink/70">{{ 'products.placeholder_title' | t }}</h3>
+      <p class="mt-3 text-[15px] font-semibold text-muted">{{ 4990 | times: 100 | money }}</p>
+    </div>
+  {%- endif -%}
+</article>
