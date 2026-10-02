@@ -1,0 +1,25 @@
+{
+  "name": "shopify-theme",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Custom Shopify theme (Liquid + Tailwind), built with Shopify CLI",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n css,theme -c cyan,magenta \"npm:css:watch\" \"npm:theme:dev\"",
+    "theme:dev": "shopify theme dev -e development",
+    "css:watch": "tailwindcss -i ./src/tailwind.css -o ./assets/tailwind.css --watch",
+    "css:build": "tailwindcss -i ./src/tailwind.css -o ./assets/tailwind.css --minify",
+    "check": "shopify theme check",
+    "push": "npm run css:build && shopify theme push -e development --unpublished",
+    "pull": "shopify theme pull -e development",
+    "login": "shopify auth login"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^4.8.4",
+    "@tailwindcss/cli": "^4.3.3",
+    "concurrently": "^10.0.5",
+    "tailwindcss": "^4.3.3"
+  }
+}

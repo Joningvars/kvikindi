@@ -1,0 +1,15 @@
+/* Tailwind entry point. Built to assets/tailwind.css by `npm run css:watch` / `css:build`.
+   Edit this file, never assets/tailwind.css directly. */
+@import "tailwindcss" source(none);
+
+@source "../layout";
+@source "../templates";
+@source "../blocks";
+@source "../snippets";
+@source "../assets/*.js";
+
+@theme {
+  /* Design tokens go here, e.g.:
+     --color-brand: #ff6b4a;
+     --font-display: "Your Font", sans-serif; */
+}
