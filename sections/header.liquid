@@ -50,12 +50,7 @@
             loading: 'eager'
         }}
       {%- else -%}
-        <span class="flex items-center gap-2 font-display text-2xl font-extrabold tracking-tight text-brand-800">
-          <span class="flex size-8 items-center justify-center rounded-full bg-brand-500 text-white">
-            {%- render 'icon', icon: 'shield-check', class: 'size-[18px]' -%}
-          </span>
-          {{ shop.name }}
-        </span>
+        <img src="{{ 'kvikindi-logo.svg' | asset_url }}" alt="{{ shop.name | escape }}" width="148" height="44" class="h-9 w-auto md:h-11" fetchpriority="high">
       {%- endif -%}
     </a>
 
