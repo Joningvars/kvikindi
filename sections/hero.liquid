@@ -20,12 +20,6 @@
     {%- endif -%}
 
     <div class="flex max-w-3xl flex-col justify-center px-6 pt-16 pb-36 sm:px-10 md:px-14 md:pb-44 lg:px-16">
-      {%- if section.settings.eyebrow != blank -%}
-        <p class="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold tracking-wide text-white uppercase backdrop-blur">
-          <span class="size-1.5 rounded-full bg-brand-400"></span>
-          {{ section.settings.eyebrow }}
-        </p>
-      {%- endif -%}
       <h1 class="h-display text-white">{{ section.settings.heading }}</h1>
       {%- if section.settings.text != blank -%}
         <p class="mt-5 max-w-xl text-base leading-relaxed text-white/80 md:text-lg">{{ section.settings.text }}</p>
@@ -70,7 +64,6 @@
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Background image", "info": "Landscape, at least 2400 px wide. Without an image a green background is used." },
     { "type": "range", "id": "overlay", "label": "Image darkening", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 100 },
-    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Meindýravarnir fyrir heimili og fyrirtæki" },
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "Losnaðu við meindýrin — fljótt og örugglega" },
     { "type": "textarea", "id": "text", "label": "Text", "default": "Gildrur, fælur og varnir sem virka. Við hjálpum þér að velja rétta lausn og sendum um allt land." },
     { "type": "text", "id": "button_1_label", "label": "Primary button label", "default": "Versla núna" },
