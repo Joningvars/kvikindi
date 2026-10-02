@@ -1,0 +1,59 @@
+{
+  "404": {
+    "title": "404",
+    "not_found": "Síðan fannst ekki.",
+    "back_to_shopping": "Aftur í verslunina"
+  },
+  "blog": {
+    "article_comments": "Athugasemdir",
+    "article_metadata_html": "{{ date }} · {{ author }}",
+    "comment_form_body": "Athugasemd",
+    "comment_form_email": "Netfang",
+    "comment_form_name": "Nafn",
+    "comment_form_submit": "Senda",
+    "comment_form_title": "Skrifa athugasemd"
+  },
+  "cart": {
+    "checkout": "Ganga frá pöntun",
+    "title": "Karfa",
+    "update": "Uppfæra",
+    "remove": "Fjarlægja"
+  },
+  "customers": {
+    "login": {
+      "email": "Netfang",
+      "password": "Lykilorð",
+      "submit": "Skrá inn",
+      "title": "Innskráning"
+    }
+  },
+  "collections": {
+    "title": "Vöruflokkar"
+  },
+  "gift_card": {
+    "add_to_apple_wallet": "Bæta í Apple Wallet",
+    "card": "Gjafabréf",
+    "expired": "Þetta gjafabréf er útrunnið",
+    "expires_on": "Gildir til {{ expires_on }}",
+    "use_at_checkout": "Notaðu gjafabréfið þegar þú gengur frá pöntun"
+  },
+  "password": {
+    "title": "Verslunin er lokuð í bili",
+    "password": "Lykilorð",
+    "enter": "Áfram"
+  },
+  "search": {
+    "title": "Leit",
+    "placeholder": "Leita að vörum, greinum eða síðum",
+    "submit": "Leita",
+    "no_results_html": "Engar niðurstöður fyrir {{ terms }}",
+    "results_for_html": {
+      "one": "{{ count }} niðurstaða fyrir {{ terms }}",
+      "other": "{{ count }} niðurstöður fyrir {{ terms }}"
+    }
+  },
+  "header": {
+    "language": "Tungumál",
+    "language_link": "Skipta yfir á {{ language }}"
+  }
+}

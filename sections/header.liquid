@@ -10,6 +10,43 @@
   </div>
 
   <div class="header__icons">
+    {%- if localization.available_languages.size > 1 -%}
+      {%- liquid
+        assign current_path = request.path
+        if request.locale.root_url != '/'
+          assign current_path = current_path | remove_first: request.locale.root_url
+        endif
+        if current_path == blank
+          assign current_path = '/'
+        endif
+      -%}
+      <nav class="header__languages" aria-label="{{ 'header.language' | t }}">
+        {%- for language in localization.available_languages -%}
+          {%- liquid
+            if language.root_url == '/'
+              assign language_url = current_path
+            elsif current_path == '/'
+              assign language_url = language.root_url
+            else
+              assign language_url = language.root_url | append: current_path
+            endif
+          -%}
+          <a
+            href="{{ language_url }}"
+            hreflang="{{ language.iso_code }}"
+            lang="{{ language.iso_code }}"
+            {% if language.iso_code == request.locale.iso_code %}
+              aria-current="true"
+            {% else %}
+              aria-label="{{ 'header.language_link' | t: language: language.endonym_name }}"
+            {% endif %}
+          >
+            {{- language.iso_code | upcase -}}
+          </a>
+        {%- endfor -%}
+      </nav>
+    {%- endif -%}
+
     {% if shop.customer_accounts_enabled %}
       <shopify-account menu="{{ section.settings.customer_account_menu }}">
         {{ 'icon-account.svg' | inline_asset_content }}
@@ -46,6 +83,14 @@
     left: 100%;
     overflow: hidden;
     max-width: var(--page-margin);
+  }
+  header .header__languages {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  header .header__languages a[aria-current] {
+    font-weight: 700;
   }
   header svg {
     width: 2rem;
