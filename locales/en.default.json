@@ -137,5 +137,11 @@
     "success": "Thanks! We've received your request and will be in touch soon.",
     "required_note": "Fields marked * are required.",
     "source_label": "Sent from page"
+  },
+  "credentials": {
+    "holder": "Holder",
+    "number": "Certificate no.",
+    "date": "Issued",
+    "view": "View certificate"
   }
 }

@@ -137,5 +137,11 @@
     "success": "Takk! Beiðnin þín er komin til okkar og við höfum samband fljótlega.",
     "required_note": "Reitir merktir * eru nauðsynlegir.",
     "source_label": "Sent af síðu"
+  },
+  "credentials": {
+    "holder": "Handhafi",
+    "number": "Skírteini nr.",
+    "date": "Útgefið",
+    "view": "Skoða skírteini"
   }
 }

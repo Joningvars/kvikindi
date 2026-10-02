@@ -181,11 +181,33 @@
         "text": "Gildrur og varnir gegn skordýrum úr vefversluninni.",
         "link_label": "Skoða vefverslun"
       }
+    },
+    "credentials": {
+      "type": "credentials",
+      "blocks": {
+        "cert_1": {
+          "type": "certificate",
+          "settings": {
+            "title": "Principles of Insect Control Certificate",
+            "issuer": "BASIS Registration Board · þjálfun hjá Killgerm Training",
+            "holder": "Robert Arnarson",
+            "number": "PIC/1293",
+            "date": "17. september 2026"
+          }
+        }
+      },
+      "block_order": [
+        "cert_1"
+      ],
+      "settings": {
+        "text": "Meðhöndlun skordýra krefst þekkingar á tegundum, lífsferli þeirra og öruggri notkun efna."
+      }
     }
   },
   "order": [
     "hero",
     "info",
+    "credentials",
     "steps",
     "faq",
     "shop",
