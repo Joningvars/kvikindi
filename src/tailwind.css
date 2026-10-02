@@ -4,6 +4,7 @@
 
 @source "../layout";
 @source "../templates";
+@source "../sections";
 @source "../blocks";
 @source "../snippets";
 @source "../assets/*.js";

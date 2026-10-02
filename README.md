@@ -35,26 +35,28 @@ changes hot-reload. Nothing touches the live theme.
 | `npm run dev` | Tailwind watch + local preview against the store |
 | `npm run check` | Theme Check (Liquid lint, performance, accessibility) |
 | `npm run push` | Builds CSS and uploads as a new **unpublished** theme |
-| `npm run pull` | Pulls the theme from the store (e.g. settings changed in the theme editor) |
+| `npm run pull` | Pulls the theme from the store. Do this after content or layout changes in the theme editor, which edits `templates/*.json` and `config/settings_data.json` |
 
 Any Shopify CLI command also works through npx, e.g. `npx shopify theme list -e development`.
 
 ## Structure
 
+Standard Online Store 2.0 layout:
+
 ```
 layout/      theme.liquid (page shell), password.liquid
-templates/   one Liquid file per page type: the composition root for each page
-blocks/      reusable building blocks, rendered with {% block 'name' %}
+templates/   JSON templates: which sections appear on each page type (the theme editor writes these)
+sections/    the building blocks merchants add, remove and reorder in the theme editor
+blocks/      theme blocks that can be nested inside sections
 snippets/    small partials, rendered with {% render 'name' %}
 assets/      CSS, JS, images (served from Shopify's CDN)
 config/      theme settings schema + saved values
-locales/     translations (every visible string goes through | t)
+locales/     translations (visible strings go through | t)
 src/         source files that get built into assets/ (Tailwind entry)
 ```
 
-Read `AGENTS.md` for the Skeleton theme's conventions. The main rules: no
-`sections/`, no JSON templates, all CSS/JS lives in `assets/`, and visible text
-goes through `{{ 'key' | t }}`.
+Build pages as sections with `{% schema %}` settings and presets so they can be
+edited in the theme editor without code.
 
 ## Tailwind
 
@@ -62,7 +64,7 @@ goes through `{{ 'key' | t }}`.
 - Commit the built `assets/tailwind.css`. Shopify's GitHub integration deploys
   whatever is in the repo, so the built file has to be there. Run
   `npm run css:build` before committing.
-- Tailwind's preflight reset loads after `base.css`. Trim `base.css` as you
+- Tailwind's preflight reset loads after `critical.css`. Trim `critical.css` as you
   replace it with utilities.
 
 ## Deploying
