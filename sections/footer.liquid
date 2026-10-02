@@ -2,7 +2,7 @@
   <div class="page-width grid gap-12 pt-16 pb-10 md:grid-cols-2 md:pt-20 lg:grid-cols-[minmax(0,1.4fr)_repeat(3,minmax(0,1fr))]">
     <div class="max-w-sm">
       <a href="{{ routes.root_url }}" class="inline-block" aria-label="{{ shop.name | escape }}">
-        <img src="{{ 'kvikindi-logo-white.svg' | asset_url }}" alt="{{ shop.name | escape }}" width="215" height="64" loading="lazy" class="h-14 w-auto md:h-16">
+        <img src="{{ 'kvikindi-logo-white.svg' | asset_url }}" alt="{{ shop.name | escape }}" width="215" height="64" loading="lazy" style="height: 4rem; width: auto;">
       </a>
       {%- if section.settings.text != blank -%}<p class="mt-4 text-sm leading-relaxed">{{ section.settings.text }}</p>{%- endif -%}
 

@@ -50,7 +50,7 @@
             loading: 'eager'
         }}
       {%- else -%}
-        <img src="{{ 'kvikindi-logo.svg' | asset_url }}" alt="{{ shop.name | escape }}" width="148" height="44" class="h-9 w-auto md:h-11" fetchpriority="high">
+        <img src="{{ 'kvikindi-logo.svg' | asset_url }}" alt="{{ shop.name | escape }}" width="148" height="44" style="height: 2.5rem; width: auto;" fetchpriority="high">
       {%- endif -%}
     </a>
 
