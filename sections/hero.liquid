@@ -13,10 +13,18 @@
       }}
       <div class="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/90 via-brand-950/60 to-brand-950/10" style="opacity: {{ section.settings.overlay | divided_by: 100.0 }}"></div>
     {%- else -%}
-      <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_80%_20%,var(--color-brand-600)_0%,transparent_55%),radial-gradient(ellipse_at_10%_100%,var(--color-brand-700)_0%,transparent_50%)] opacity-70"></div>
-      <div class="pointer-events-none absolute -right-16 -bottom-24 -z-10 hidden text-white/[0.06] md:block">
-        {%- render 'icon', icon: 'shield-check', class: 'size-[34rem]' -%}
-      </div>
+      {%- assign hero_asset = 'kvikindi-hero-house.jpg' -%}
+      <img
+        src="{{ hero_asset | asset_img_url: '1500x' }}"
+        srcset="{{ hero_asset | asset_img_url: '750x' }} 750w, {{ hero_asset | asset_img_url: '1100x' }} 1100w, {{ hero_asset | asset_img_url: '1500x' }} 1500w, {{ hero_asset | asset_img_url: 'master' }} 2400w"
+        sizes="(min-width: 1344px) 1280px, calc(100vw - 40px)"
+        alt=""
+        width="2400"
+        height="1029"
+        class="absolute inset-0 -z-20 size-full object-cover object-[70%_center]"
+        fetchpriority="high"
+      >
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-brand-950/90 via-brand-950/60 to-brand-950/10" style="opacity: {{ section.settings.overlay | divided_by: 100.0 }}"></div>
     {%- endif -%}
 
     <div class="flex max-w-3xl flex-col justify-center px-6 pt-16 pb-36 sm:px-10 md:px-14 md:pb-44 lg:px-16">
@@ -62,7 +70,7 @@
   "class": "section-hero",
   "max_blocks": 4,
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Background image", "info": "Landscape, at least 2400 px wide. Without an image a green background is used." },
+    { "type": "image_picker", "id": "image", "label": "Background image", "info": "Landscape, at least 2400 px wide. Without an image the built-in placeholder photo is used." },
     { "type": "range", "id": "overlay", "label": "Image darkening", "min": 0, "max": 100, "step": 5, "unit": "%", "default": 100 },
     { "type": "textarea", "id": "heading", "label": "Heading", "default": "Losnaðu við meindýrin — fljótt og örugglega" },
     { "type": "textarea", "id": "text", "label": "Text", "default": "Gildrur, fælur og varnir sem virka. Við hjálpum þér að velja rétta lausn og sendum um allt land." },

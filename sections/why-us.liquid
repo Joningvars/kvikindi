@@ -9,7 +9,17 @@
             | image_tag: widths: '600, 900, 1200, 1400', sizes: '(min-width: 1024px) 600px, 100vw', class: 'size-full object-cover', loading: 'lazy'
           }}
         {%- else -%}
-          {{ 'lifestyle-1' | placeholder_svg_tag: 'size-full fill-brand-200' }}
+          {%- assign why_asset = 'kvikindi-why-kitchen.jpg' -%}
+          <img
+            src="{{ why_asset | asset_img_url: '900x' }}"
+            srcset="{{ why_asset | asset_img_url: '600x' }} 600w, {{ why_asset | asset_img_url: '900x' }} 900w, {{ why_asset | asset_img_url: 'master' }} 1400w"
+            sizes="(min-width: 1024px) 600px, 100vw"
+            alt=""
+            width="1400"
+            height="1867"
+            loading="lazy"
+            class="size-full object-cover"
+          >
         {%- endif -%}
       </div>
       {%- if section.settings.badge_title != blank -%}
