@@ -1,5 +1,18 @@
 {%- liquid
   assign sort_by = collection.sort_by | default: collection.default_sort_by
+  assign has_filters = false
+  if section.settings.show_filters and collection.filters.size > 0
+    assign has_filters = true
+  endif
+  assign active_filter_count = 0
+  for filter in collection.filters
+    assign active_filter_count = active_filter_count | plus: filter.active_values.size
+    if filter.type == 'price_range'
+      if filter.min_value.value != nil or filter.max_value.value != nil
+        assign active_filter_count = active_filter_count | plus: 1
+      endif
+    endif
+  endfor
 -%}
 {% render 'page-header',
   title: collection.title,
@@ -7,15 +20,28 @@
   text: collection.description
 %}
 
-<div class="page-width section-y !pt-10">
+<div class="page-width section-y !pt-10" id="ProductGrid">
   {%- paginate collection.products by section.settings.per_page -%}
     <div class="flex flex-col gap-4 border-b border-line pb-6 sm:flex-row sm:items-center sm:justify-between">
-      <p class="text-sm text-muted">{{ 'collections.products_count' | t: count: collection.products_count }}</p>
+      <div class="flex items-center gap-3">
+        {%- if has_filters -%}
+          <button type="button" class="btn btn-secondary py-2.5 lg:hidden" data-filter-open aria-controls="FilterDrawer">
+            {%- render 'icon', icon: 'menu', class: 'size-4' -%}
+            {{ 'filters.title' | t }}
+            {%- if active_filter_count > 0 -%}<span class="rounded-full bg-brand-600 px-1.5 text-[11px] text-white">{{ active_filter_count }}</span>{%- endif -%}
+          </button>
+        {%- endif -%}
+        <p class="text-sm text-muted">{{ 'collections.products_count' | t: count: collection.products_count }}</p>
+      </div>
       <form method="get" class="flex items-center gap-3">
         {%- for filter in collection.filters -%}
           {%- for value in filter.active_values -%}
             <input type="hidden" name="{{ value.param_name }}" value="{{ value.value }}">
           {%- endfor -%}
+          {%- if filter.type == 'price_range' -%}
+            {%- if filter.min_value.value != nil -%}<input type="hidden" name="{{ filter.min_value.param_name }}" value="{{ filter.min_value.value | divided_by: 100 }}">{%- endif -%}
+            {%- if filter.max_value.value != nil -%}<input type="hidden" name="{{ filter.max_value.param_name }}" value="{{ filter.max_value.value | divided_by: 100 }}">{%- endif -%}
+          {%- endif -%}
         {%- endfor -%}
         <label for="SortBy" class="text-sm text-muted">{{ 'collections.sort_by' | t }}</label>
         <div class="relative">
@@ -30,30 +56,115 @@
       </form>
     </div>
 
-    {%- if collection.products.size > 0 -%}
-      <ul class="mt-10 grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-6 lg:grid-cols-3 xl:grid-cols-4">
-        {%- for product in collection.products -%}
-          <li>{% render 'product-card', product: product %}</li>
+    {%- if active_filter_count > 0 -%}
+      <div class="mt-5 flex flex-wrap items-center gap-2">
+        {%- for filter in collection.filters -%}
+          {%- for value in filter.active_values -%}
+            <a href="{{ value.url_to_remove }}" class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 py-1.5 pr-2.5 pl-3.5 text-sm font-medium text-brand-800 hover:bg-brand-100" aria-label="{{ 'filters.remove' | t: label: value.label }}">
+              {{ value.label }}{% render 'icon', icon: 'x', class: 'size-3.5' %}
+            </a>
+          {%- endfor -%}
+          {%- if filter.type == 'price_range' -%}
+            {%- if filter.min_value.value != nil or filter.max_value.value != nil -%}
+              <a href="{{ filter.url_to_remove }}" class="inline-flex items-center gap-1.5 rounded-full bg-brand-50 py-1.5 pr-2.5 pl-3.5 text-sm font-medium text-brand-800 hover:bg-brand-100">
+                {{ filter.min_value.value | default: 0 | money }} – {% if filter.max_value.value != nil %}{{ filter.max_value.value | money }}{% else %}{{ filter.range_max | money }}{% endif %}
+                {%- render 'icon', icon: 'x', class: 'size-3.5' -%}
+              </a>
+            {%- endif -%}
+          {%- endif -%}
         {%- endfor -%}
-      </ul>
-    {%- else -%}
-      <div class="mx-auto max-w-md py-20 text-center">
-        <span class="mx-auto flex size-14 items-center justify-center rounded-full bg-brand-50 text-brand-600">{% render 'icon', icon: 'search', class: 'size-6' %}</span>
-        <p class="mt-4 font-display text-xl font-bold">{{ 'collections.empty' | t }}</p>
-        <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary mt-6">{{ 'collections.all' | t }}</a>
+        <a href="{{ collection.url }}?sort_by={{ sort_by }}" class="px-2 text-sm font-semibold text-brand-700 underline underline-offset-2">{{ 'filters.clear_all' | t }}</a>
       </div>
     {%- endif -%}
 
-    {% render 'pagination', paginate: paginate %}
+    {%- for block in section.blocks -%}
+      {%- if block.type == '@app' -%}<div class="mt-6">{% render block %}</div>{%- endif -%}
+    {%- endfor -%}
+
+    <div class="mt-8 {% if has_filters %}lg:grid lg:grid-cols-[15rem_minmax(0,1fr)] lg:gap-10 xl:gap-14{% endif %}">
+      {%- if has_filters -%}
+        <aside class="hidden lg:block">
+          <div class="sticky top-28">
+            <p class="mb-2 font-display text-lg font-bold">{{ 'filters.title' | t }}</p>
+            {% render 'facet-filters', results: collection, sort_by: sort_by, id: 'FiltersDesktop' %}
+          </div>
+        </aside>
+
+        <dialog id="FilterDrawer" class="m-0 ml-auto h-dvh max-h-none w-[min(24rem,90vw)] max-w-none bg-white p-0 backdrop:bg-ink/40 lg:hidden" scroll-lock data-filter-drawer>
+          <div class="flex h-full flex-col">
+            <div class="flex items-center justify-between border-b border-line px-5 py-4">
+              <p class="font-display text-lg font-bold">{{ 'filters.title' | t }}</p>
+              <button type="button" class="flex size-10 items-center justify-center rounded-full hover:bg-mist" data-filter-close aria-label="{{ 'filters.close' | t }}">{% render 'icon', icon: 'x', class: 'size-5' %}</button>
+            </div>
+            <div class="flex-1 overflow-y-auto px-5">
+              {% render 'facet-filters', results: collection, sort_by: sort_by, id: 'FiltersMobile' %}
+            </div>
+            <div class="grid grid-cols-2 gap-3 border-t border-line p-5">
+              <a href="{{ collection.url }}?sort_by={{ sort_by }}" class="btn btn-secondary">{{ 'filters.clear_all' | t }}</a>
+              <button type="submit" form="FiltersMobile" class="btn btn-primary">{{ 'filters.show_results' | t }}</button>
+            </div>
+          </div>
+        </dialog>
+      {%- endif -%}
+
+      <div>
+        {%- if collection.products.size > 0 -%}
+          <ul class="grid grid-cols-2 gap-x-4 gap-y-10 md:gap-x-6 {% if has_filters %}xl:grid-cols-3{% else %}lg:grid-cols-3 xl:grid-cols-4{% endif %}">
+            {%- for product in collection.products -%}
+              <li>{% render 'product-card', product: product %}</li>
+            {%- endfor -%}
+          </ul>
+        {%- else -%}
+          <div class="mx-auto max-w-md py-20 text-center">
+            <span class="mx-auto flex size-14 items-center justify-center rounded-full bg-brand-50 text-brand-600">{% render 'icon', icon: 'search', class: 'size-6' %}</span>
+            {%- if active_filter_count > 0 -%}
+              <p class="mt-4 font-display text-xl font-bold">{{ 'filters.no_results' | t }}</p>
+              <a href="{{ collection.url }}?sort_by={{ sort_by }}" class="btn btn-primary mt-6">{{ 'filters.clear_all' | t }}</a>
+            {%- else -%}
+              <p class="mt-4 font-display text-xl font-bold">{{ 'collections.empty' | t }}</p>
+              <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary mt-6">{{ 'collections.all' | t }}</a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {% render 'pagination', paginate: paginate %}
+      </div>
+    </div>
   {%- endpaginate -%}
 </div>
+
+{%- if has_filters -%}
+  <script>
+    (() => {
+      const drawer = document.querySelector('[data-filter-drawer]');
+      document.querySelector('[data-filter-open]')?.addEventListener('click', () => drawer?.showModal());
+      drawer?.querySelector('[data-filter-close]')?.addEventListener('click', () => drawer.close());
+      drawer?.addEventListener('click', (e) => { if (e.target === drawer) drawer.close(); });
+      const desktop = document.getElementById('FiltersDesktop');
+      if (desktop) {
+        let t;
+        desktop.addEventListener('change', (e) => {
+          clearTimeout(t);
+          t = setTimeout(() => desktop.requestSubmit(), e.target.type === 'number' ? 600 : 0);
+        });
+      }
+      document.querySelectorAll('[data-filter-form]').forEach((form) =>
+        form.addEventListener('submit', () => {
+          form.querySelectorAll('input[type=number]').forEach((i) => { if (i.value === '') i.disabled = true; });
+        })
+      );
+    })();
+  </script>
+{%- endif -%}
 
 {% schema %}
 {
   "name": "Collection",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Vörur" },
-    { "type": "range", "id": "per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 }
-  ]
+    { "type": "range", "id": "per_page", "label": "Products per page", "min": 8, "max": 48, "step": 4, "default": 24 },
+    { "type": "checkbox", "id": "show_filters", "label": "Show filters", "info": "Choose filters in the Search & Discovery app", "default": true }
+  ],
+  "blocks": [{ "type": "@app" }]
 }
 {% endschema %}

@@ -1,0 +1,17 @@
+<div class="page-width {% if section.settings.padding %}section-y{% endif %}">
+  {%- for block in section.blocks -%}
+    {% render block %}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Apps",
+  "tag": "div",
+  "settings": [
+    { "type": "checkbox", "id": "padding", "label": "Add spacing above and below", "default": true }
+  ],
+  "blocks": [{ "type": "@app" }],
+  "presets": [{ "name": "Apps" }]
+}
+{% endschema %}

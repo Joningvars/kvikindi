@@ -1,0 +1,80 @@
+{%- doc -%}
+  Storefront filters (Shopify Search & Discovery). Renders a GET form; checkboxes and price submit on change.
+  Price values are whole currency units (ISK has no decimals).
+  @param {object} results - The collection (or search) with .filters
+  @param {string} sort_by - Current sort value to keep
+  @param {string} id - Unique form id
+{%- enddoc -%}
+<form id="{{ id }}" method="get" class="flex flex-col divide-y divide-line border-y border-line" data-filter-form>
+  {%- if sort_by != blank -%}<input type="hidden" name="sort_by" value="{{ sort_by }}">{%- endif -%}
+  {%- for filter in results.filters -%}
+    {%- liquid
+      assign active_count = filter.active_values.size
+      if filter.type == 'price_range'
+        if filter.min_value.value != nil or filter.max_value.value != nil
+          assign active_count = 1
+        endif
+      endif
+    -%}
+    <details class="accordion group/f" {% if forloop.index <= 3 or active_count > 0 %}open{% endif %}>
+      <summary class="py-4 text-sm font-semibold">
+        <span>
+          {{ filter.label }}
+          {%- if active_count > 0 -%}<span class="ml-1.5 rounded-full bg-brand-600 px-1.5 py-0.5 text-[10px] text-white">{{ active_count }}</span>{%- endif -%}
+        </span>
+        <span class="accordion-icon">{% render 'icon', icon: 'plus', class: 'size-4' %}</span>
+      </summary>
+      <div class="pb-5">
+        {%- case filter.type -%}
+          {%- when 'list', 'boolean' -%}
+            <ul class="flex flex-col gap-2.5">
+              {%- for value in filter.values -%}
+                {%- assign disabled = false -%}
+                {%- if value.count == 0 and value.active == false -%}{%- assign disabled = true -%}{%- endif -%}
+                <li>
+                  <label class="flex cursor-pointer items-center gap-3 text-sm {% if disabled %}cursor-not-allowed opacity-40{% endif %}">
+                    <input
+                      type="checkbox"
+                      name="{{ value.param_name }}"
+                      value="{{ value.value }}"
+                      class="size-[18px] rounded border-line accent-brand-600"
+                      {% if value.active %}checked{% endif %}
+                      {% if disabled %}disabled{% endif %}
+                    >
+                    <span class="flex-1">{{ value.label }}</span>
+                    <span class="text-xs text-muted">{{ value.count }}</span>
+                  </label>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {%- when 'price_range' -%}
+            <div class="flex items-center gap-2">
+              <label class="flex-1">
+                <span class="sr-only">{{ 'filters.from' | t }}</span>
+                <input
+                  type="number" inputmode="numeric" min="0"
+                  name="{{ filter.min_value.param_name }}"
+                  {% if filter.min_value.value != nil %}value="{{ filter.min_value.value | divided_by: 100 }}"{% endif %}
+                  placeholder="{{ 'filters.from' | t }} 0"
+                  class="field px-4 py-2.5"
+                >
+              </label>
+              <span class="text-muted">–</span>
+              <label class="flex-1">
+                <span class="sr-only">{{ 'filters.to' | t }}</span>
+                <input
+                  type="number" inputmode="numeric" min="0"
+                  name="{{ filter.max_value.param_name }}"
+                  {% if filter.max_value.value != nil %}value="{{ filter.max_value.value | divided_by: 100 }}"{% endif %}
+                  placeholder="{{ 'filters.to' | t }} {{ filter.range_max | divided_by: 100 }}"
+                  class="field px-4 py-2.5"
+                >
+              </label>
+            </div>
+            <p class="mt-2 text-xs text-muted">{{ cart.currency.iso_code }}</p>
+        {%- endcase -%}
+      </div>
+    </details>
+  {%- endfor -%}
+  <noscript><button type="submit" class="btn btn-primary my-4">{{ 'filters.apply' | t }}</button></noscript>
+</form>

@@ -26,3 +26,6 @@ Custom Shopify theme (Online Store 2.0: JSON templates + sections + theme blocks
 - Homepage sections: `hero` (trust-card blocks), `pest-grid` (pest blocks → collections), `featured-products`, `why-us`, `faq`, `cta-banner`; optional `testimonials` (real reviews only). Header group: `announcement-bar` + `header`.
 - Default content is Icelandic; bracketed text like `[Settu inn …]` is placeholder copy that must be replaced before launch.
 - Contact details (phone/email/address) come from Theme settings → Contact.
+- Product page: per-option pill picker (radios + variants JSON in `sections/product.liquid`), variant image jumps to front, `@app` blocks supported. Recommendations come from `sections/product-recommendations.liquid` (Section Rendering API, Shopify's automatic recommendations).
+- Collection page: storefront filters from Search & Discovery via `snippets/facet-filters.liquid` (desktop sidebar auto-submits; mobile uses a `<dialog>` drawer). Price filter uses whole currency units (`divided_by: 100`), which suits ISK.
+- App blocks: `product`, `collection` and the generic `apps` section accept `@app` blocks.

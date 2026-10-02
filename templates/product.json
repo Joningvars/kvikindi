@@ -21,8 +21,8 @@
       "settings": {}
     },
     "related": {
-      "type": "featured-products",
-      "settings": { "eyebrow": "Þér gæti líka líkað", "heading": "Fleiri vörur", "link_label": "" }
+      "type": "product-recommendations",
+      "settings": {}
     }
   },
   "order": ["main", "related"]

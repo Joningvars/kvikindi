@@ -96,7 +96,8 @@
     "increase": "Increase quantity",
     "description": "Description",
     "tax_included": "VAT included.",
-    "rating": "{{ rating }} out of 5 stars"
+    "rating": "{{ rating }} out of 5 stars",
+    "unavailable": "Unavailable"
   },
   "newsletter": {
     "email": "Email address",
@@ -111,5 +112,16 @@
     "label": "Pagination",
     "previous": "Previous page",
     "next": "Next page"
+  },
+  "filters": {
+    "title": "Filter",
+    "from": "From",
+    "to": "To",
+    "apply": "Apply",
+    "clear_all": "Clear all",
+    "remove": "Remove filter: {{ label }}",
+    "show_results": "Show results",
+    "close": "Close filters",
+    "no_results": "No products match these filters"
   }
 }

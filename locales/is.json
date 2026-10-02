@@ -96,7 +96,8 @@
     "increase": "Fjölga",
     "description": "Lýsing",
     "tax_included": "Verð með VSK.",
-    "rating": "{{ rating }} af 5 stjörnum"
+    "rating": "{{ rating }} af 5 stjörnum",
+    "unavailable": "Ekki í boði"
   },
   "newsletter": {
     "email": "Netfang",
@@ -111,5 +112,16 @@
     "label": "Síður",
     "previous": "Fyrri síða",
     "next": "Næsta síða"
+  },
+  "filters": {
+    "title": "Sía",
+    "from": "Frá",
+    "to": "Til",
+    "apply": "Nota",
+    "clear_all": "Hreinsa allt",
+    "remove": "Fjarlægja síu: {{ label }}",
+    "show_results": "Sýna vörur",
+    "close": "Loka síum",
+    "no_results": "Engar vörur passa við þessar síur"
   }
 }

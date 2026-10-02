@@ -21,7 +21,7 @@
     {%- comment -%} Media {%- endcomment -%}
     <div>
       {%- if product.media.size > 0 -%}
-        <ul class="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0">
+        <ul data-gallery class="-mx-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 pb-2 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0">
           {%- for media in product.media -%}
             {%- liquid
               assign media_loading = 'lazy'
@@ -29,7 +29,7 @@
                 assign media_loading = 'eager'
               endif
             -%}
-            <li class="aspect-square w-[85%] shrink-0 snap-center overflow-hidden rounded-card bg-mist md:w-auto {% if forloop.first %}md:col-span-2{% endif %}">
+            <li data-media-id="{{ media.id }}" class="aspect-square w-[85%] shrink-0 snap-center overflow-hidden rounded-card bg-mist md:w-auto {% if forloop.first %}md:col-span-2{% endif %}">
               {%- if media.media_type == 'image' -%}
                 {{
                   media
@@ -79,25 +79,53 @@
 
       {%- form 'product', product, class: 'mt-8 flex flex-col gap-5', data-product-form: '' -%}
         {%- unless product.has_only_default_variant -%}
-          <div>
-            <label for="Variant-{{ section.id }}" class="mb-2 block text-sm font-semibold">{{ product.options | join: ' / ' }}</label>
-            <div class="relative">
-              <select id="Variant-{{ section.id }}" name="id" class="w-full appearance-none rounded-full border border-line bg-white py-3 pr-10 pl-5 text-sm font-medium focus:border-brand-500 focus:outline-none" data-variant-select>
-                {%- for variant in product.variants -%}
-                  <option
-                    value="{{ variant.id }}"
-                    data-price="{{ variant.price | money | escape }}"
-                    data-compare="{% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money | escape }}{% endif %}"
-                    data-available="{{ variant.available }}"
-                    {% if variant == current_variant %}selected{% endif %}
-                  >
-                    {{ variant.title }}{% unless variant.available %} — {{ 'products.sold_out' | t }}{% endunless %}
-                  </option>
+          {%- for option in product.options_with_values -%}
+            {%- assign option_index = forloop.index0 -%}
+            <fieldset data-option-index="{{ option_index }}">
+              <legend class="mb-2.5 text-sm">
+                <span class="font-semibold">{{ option.name }}:</span>
+                <span class="text-muted" data-option-selected>{{ option.selected_value }}</span>
+              </legend>
+              <div class="flex flex-wrap gap-2">
+                {%- for value in option.values -%}
+                  <label class="relative cursor-pointer rounded-full border border-line bg-white px-4 py-2 text-sm font-medium transition-colors hover:border-brand-500 has-[:checked]:border-brand-600 has-[:checked]:bg-brand-600 has-[:checked]:text-white has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-brand-500 data-[unavailable]:text-muted data-[unavailable]:line-through has-[:checked]:data-[unavailable]:text-white/80" data-option-label>
+                    <input
+                      type="radio"
+                      name="option-{{ section.id }}-{{ option_index }}"
+                      value="{{ value | escape }}"
+                      class="sr-only"
+                      {% if option.selected_value == value %}checked{% endif %}
+                      data-option-input
+                    >
+                    {{- value -}}
+                  </label>
                 {%- endfor -%}
-              </select>
-              <span class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2">{% render 'icon', icon: 'chevron-down', class: 'size-4' %}</span>
-            </div>
-          </div>
+              </div>
+            </fieldset>
+          {%- endfor -%}
+          <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+          <noscript>
+            <label for="VariantFallback-{{ section.id }}" class="mb-2 block text-sm font-semibold">{{ product.options | join: ' / ' }}</label>
+            <select id="VariantFallback-{{ section.id }}" name="id" class="field">
+              {%- for variant in product.variants -%}
+                <option value="{{ variant.id }}" {% if variant == current_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>{{ variant.title }} — {{ variant.price | money }}</option>
+              {%- endfor -%}
+            </select>
+          </noscript>
+          <script type="application/json" data-variants>
+            [
+              {%- for variant in product.variants -%}
+                {
+                  "id": {{ variant.id }},
+                  "options": {{ variant.options | json }},
+                  "available": {{ variant.available }},
+                  "price": {{ variant.price | money | json }},
+                  "compare": {% if variant.compare_at_price > variant.price %}{{ variant.compare_at_price | money | json }}{% else %}null{% endif %},
+                  "media": {% if variant.featured_media %}{{ variant.featured_media.id }}{% else %}null{% endif %}
+                }{% unless forloop.last %},{% endunless %}
+              {%- endfor -%}
+            ]
+          </script>
         {%- else -%}
           <input type="hidden" name="id" value="{{ current_variant.id }}">
         {%- endunless -%}
@@ -109,7 +137,7 @@
             <input id="Quantity-{{ section.id }}" type="number" name="quantity" value="1" min="1" inputmode="numeric" class="w-10 [appearance:textfield] bg-transparent text-center text-sm font-semibold focus:outline-none [&::-webkit-inner-spin-button]:appearance-none">
             <button type="button" class="flex size-12 items-center justify-center rounded-full hover:bg-mist" data-qty-step="1" aria-label="{{ 'products.increase' | t }}">{% render 'icon', icon: 'plus', class: 'size-4' %}</button>
           </div>
-          <button type="submit" class="btn btn-primary flex-1 py-3.5" data-add-button data-label-add="{{ 'products.add_to_cart' | t }}" data-label-soldout="{{ 'products.sold_out' | t }}" {% unless current_variant.available %}disabled{% endunless %}>
+          <button type="submit" class="btn btn-primary flex-1 py-3.5" data-add-button data-label-add="{{ 'products.add_to_cart' | t }}" data-label-soldout="{{ 'products.sold_out' | t }}" data-label-unavailable="{{ 'products.unavailable' | t }}" {% unless current_variant.available %}disabled{% endunless %}>
             {%- render 'icon', icon: 'shopping-bag', class: 'size-[18px]' -%}
             <span data-add-label>{% if current_variant.available %}{{ 'products.add_to_cart' | t }}{% else %}{{ 'products.sold_out' | t }}{% endif %}</span>
           </button>
@@ -118,6 +146,12 @@
           {{ form | payment_button }}
         {%- endif -%}
       {%- endform -%}
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == '@app' -%}
+          <div class="mt-6">{% render block %}</div>
+        {%- endif -%}
+      {%- endfor -%}
 
       {%- if section.blocks.size > 0 -%}
         <ul class="mt-8 grid gap-3 rounded-card bg-mist p-5 text-sm">
@@ -166,24 +200,63 @@
     (() => {
       const root = document.querySelector('[data-product-section="{{ section.id }}"]');
       if (!root) return;
-      const select = root.querySelector('[data-variant-select]');
+      const variants = JSON.parse(root.querySelector('[data-variants]').textContent);
+      const idInput = root.querySelector('[data-variant-id]');
+      const fieldsets = [...root.querySelectorAll('[data-option-index]')];
       const current = root.querySelector('[data-price-current]');
       const compare = root.querySelector('[data-price-compare]');
       const button = root.querySelector('[data-add-button]');
       const label = root.querySelector('[data-add-label]');
-      select?.addEventListener('change', () => {
-        const opt = select.selectedOptions[0];
-        current.textContent = opt.dataset.price;
-        compare.textContent = opt.dataset.compare;
-        compare.classList.toggle('hidden', !opt.dataset.compare);
-        current.classList.toggle('text-sale', !!opt.dataset.compare);
-        const available = opt.dataset.available === 'true';
-        button.disabled = !available;
-        label.textContent = available ? button.dataset.labelAdd : button.dataset.labelSoldout;
+      const gallery = root.querySelector('[data-gallery]');
+
+      const selected = () => fieldsets.map((fs) => fs.querySelector('input:checked')?.value);
+
+      const markAvailability = (opts) => {
+        fieldsets.forEach((fs, i) => {
+          fs.querySelectorAll('[data-option-label]').forEach((lab) => {
+            const value = lab.querySelector('input').value;
+            const ok = variants.some((v) => v.available && v.options[i] === value &&
+              v.options.every((o, j) => j === i || o === opts[j]));
+            lab.toggleAttribute('data-unavailable', !ok);
+          });
+        });
+      };
+
+      const update = () => {
+        const opts = selected();
+        fieldsets.forEach((fs, i) => { fs.querySelector('[data-option-selected]').textContent = opts[i] ?? ''; });
+        markAvailability(opts);
+        const v = variants.find((x) => x.options.every((o, i) => o === opts[i]));
+        if (!v) {
+          button.disabled = true;
+          label.textContent = button.dataset.labelUnavailable;
+          return;
+        }
+        idInput.value = v.id;
+        current.textContent = v.price;
+        compare.textContent = v.compare ?? '';
+        compare.classList.toggle('hidden', !v.compare);
+        current.classList.toggle('text-sale', !!v.compare);
+        button.disabled = !v.available;
+        label.textContent = v.available ? button.dataset.labelAdd : button.dataset.labelSoldout;
+        if (v.media && gallery) {
+          const item = gallery.querySelector(`[data-media-id="${v.media}"]`);
+          if (item) {
+            if (window.matchMedia('(min-width: 768px)').matches) {
+              gallery.prepend(item);
+              gallery.querySelectorAll('[data-media-id]').forEach((el, i) => el.classList.toggle('md:col-span-2', i === 0));
+            } else {
+              gallery.scrollTo({ left: item.offsetLeft - gallery.offsetLeft, behavior: 'smooth' });
+            }
+          }
+        }
         const url = new URL(location.href);
-        url.searchParams.set('variant', select.value);
+        url.searchParams.set('variant', v.id);
         history.replaceState(null, '', url);
-      });
+      };
+
+      root.addEventListener('change', (e) => { if (e.target.matches('[data-option-input]')) update(); });
+      markAvailability(selected());
     })();
   </script>
 {%- endunless -%}
@@ -209,6 +282,7 @@
     { "type": "checkbox", "id": "show_dynamic_checkout", "label": "Show express checkout buttons", "default": false }
   ],
   "blocks": [
+    { "type": "@app" },
     {
       "type": "perk",
       "name": "Perk",
