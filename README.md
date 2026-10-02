@@ -35,6 +35,7 @@ changes hot-reload. Nothing touches the live theme.
 | `npm run dev` | Tailwind watch + local preview against the store |
 | `npm run check` | Theme Check (Liquid lint, performance, accessibility) |
 | `npm run push` | Builds CSS and uploads as a new **unpublished** theme |
+| `npm run deploy` | Builds CSS and updates the **kvikindi** theme (#193050575140). Once that theme is published, this changes the live site |
 | `npm run pull` | Pulls the theme from the store. Do this after content or layout changes in the theme editor, which edits `templates/*.json` and `config/settings_data.json` |
 
 Any Shopify CLI command also works through npx, e.g. `npx shopify theme list -e development`.

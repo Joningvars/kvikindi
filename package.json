@@ -14,7 +14,8 @@
     "check": "shopify theme check",
     "push": "npm run css:build && shopify theme push -e development --unpublished",
     "pull": "shopify theme pull -e development",
-    "login": "shopify auth login"
+    "login": "shopify auth login",
+    "deploy": "npm run css:build && shopify theme push -e development --theme 193050575140"
   },
   "devDependencies": {
     "@shopify/cli": "^4.8.4",
