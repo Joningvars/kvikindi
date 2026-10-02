@@ -1,0 +1,201 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "service-hero",
+      "settings": {
+        "eyebrow": "Þjónusta",
+        "heading": "Meindýravarnir fyrir heimili og fyrirtæki",
+        "text": "Hvort sem það eru mýs í geymslunni, geitungabú undir þakskegginu eða skordýr í eldhúsinu — við finnum lausnina og fylgjum henni eftir.",
+        "fallback_image": "kvikindi-hero-house.jpg"
+      },
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Skoðun og mat á aðstæðum"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Lausnir sem henta heimilum, börnum og gæludýrum"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Ráðgjöf um forvarnir"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ]
+    },
+    "services": {
+      "type": "service-grid",
+      "settings": {
+        "eyebrow": "Það sem við gerum",
+        "heading": "Hvernig getum við aðstoðað?",
+        "text": ""
+      },
+      "blocks": {
+        "s1": {
+          "type": "service",
+          "settings": {
+            "icon": "rat",
+            "title": "Mýs og rottur",
+            "text": "Við finnum hvaðan nagdýrin koma, fjarlægjum þau og lokum leiðunum inn.",
+            "points": "Heimili, sumarhús og fyrirtæki\nGildrur og beitustöðvar\nRáðgjöf um forvarnir",
+            "link": "/pages/mys-og-rottur"
+          }
+        },
+        "s2": {
+          "type": "service",
+          "settings": {
+            "icon": "bug",
+            "title": "Geitungar",
+            "text": "Við fjarlægjum geitungabú á öruggan hátt — í þakskeggi, veggjum, jörð og gróðri.",
+            "points": "Réttur búnaður og hlífðarfatnaður\nBú á erfiðum stöðum\nRáð gegn nýjum búum",
+            "link": "/pages/geitungar"
+          }
+        },
+        "s3": {
+          "type": "service",
+          "settings": {
+            "icon": "spray-can",
+            "title": "Skordýr",
+            "text": "Veggjalús, kakkalakkar, silfurskottur, maurar og fleiri skordýr.",
+            "points": "Greining á tegund og umfangi\nMarkviss meðhöndlun\nLeiðbeiningar og eftirfylgni",
+            "link": "/pages/skordyr"
+          }
+        },
+        "s4": {
+          "type": "service",
+          "settings": {
+            "icon": "warehouse",
+            "title": "Fyrirtækjaþjónusta",
+            "text": "Reglubundið eftirlit og varnir fyrir veitingastaði, verslanir, lagera, hótel og húsfélög.",
+            "points": "Reglulegt eftirlit eftir þörfum\nFyrirbyggjandi varnir\nViðbrögð þegar vandamál koma upp",
+            "link": "/pages/fyrirtaekjathjonusta"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
+    },
+    "steps": {
+      "type": "process-steps",
+      "settings": {},
+      "blocks": {
+        "st1": {
+          "type": "step",
+          "settings": {
+            "title": "Þú hefur samband",
+            "text": "Sendu beiðni hér á síðunni eða hringdu. Segðu okkur hvað þú hefur séð og hvar."
+          }
+        },
+        "st2": {
+          "type": "step",
+          "settings": {
+            "title": "Skoðun",
+            "text": "Við metum aðstæður, finnum hvaðan meindýrin koma og hversu umfangsmikið vandamálið er."
+          }
+        },
+        "st3": {
+          "type": "step",
+          "settings": {
+            "title": "Meðhöndlun",
+            "text": "Við beitum aðferðum sem henta aðstæðum og förum yfir hvað þarf að varast."
+          }
+        },
+        "st4": {
+          "type": "step",
+          "settings": {
+            "title": "Eftirfylgni",
+            "text": "Við fylgjum málinu eftir og ráðleggjum hvernig koma má í veg fyrir að vandinn komi aftur."
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3",
+        "st4"
+      ]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "Spurt og svarað",
+        "heading": "Algengar spurningar",
+        "text": "Finnurðu ekki svarið? Sendu okkur beiðni eða hringdu.",
+        "open_first": true
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Hvað kostar þjónustan?",
+            "answer": "<p>[Settu inn verðskrá eða útskýrðu hvernig verð er ákveðið, t.d. eftir skoðun.]</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Hvaða svæði þjónustið þið?",
+            "answer": "<p>[Settu inn þjónustusvæði.]</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Hversu fljótt getið þið komið?",
+            "answer": "<p>[Settu inn hefðbundinn biðtíma.]</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Get ég leyst vandamálið sjálf/ur?",
+            "answer": "<p>Minni vandamál má oft leysa með réttum vörum úr vefversluninni okkar. Ef vandinn er stór eða kemur aftur og aftur er best að fá fagmann.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ]
+    },
+    "request": {
+      "type": "service-request",
+      "settings": {
+        "preselect": ""
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "services",
+    "steps",
+    "faq",
+    "request"
+  ]
+}

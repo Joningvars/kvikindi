@@ -1,0 +1,134 @@
+{%- liquid
+  assign services = section.settings.services | split: ','
+  assign preselect = section.settings.preselect | strip
+-%}
+<section id="beidni" class="page-width section-y scroll-mt-28">
+  <div class="grid overflow-hidden rounded-panel bg-white ring-1 ring-line lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+    <div class="relative isolate overflow-hidden bg-brand-800 px-6 py-10 text-white sm:px-10 md:px-12 md:py-14">
+      <div class="pointer-events-none absolute -top-24 -right-24 -z-10 size-72 rounded-full bg-brand-600/40 blur-3xl"></div>
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow !text-brand-300">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="h-section mt-3 text-white">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p class="mt-4 text-white/75">{{ section.settings.text }}</p>{%- endif -%}
+      <ul class="mt-8 flex flex-col gap-4 text-sm">
+        {%- if settings.contact_phone != blank -%}
+          <li><a href="tel:{{ settings.contact_phone | remove: ' ' | remove: '-' }}" class="flex items-center gap-3 hover:underline"><span class="flex size-10 items-center justify-center rounded-full bg-white/10">{% render 'icon', icon: 'phone', class: 'size-5' %}</span><span class="font-semibold">{{ settings.contact_phone }}</span></a></li>
+        {%- endif -%}
+        {%- if settings.contact_email != blank -%}
+          <li><a href="mailto:{{ settings.contact_email }}" class="flex items-center gap-3 hover:underline"><span class="flex size-10 items-center justify-center rounded-full bg-white/10">{% render 'icon', icon: 'mail', class: 'size-5' %}</span><span class="font-semibold">{{ settings.contact_email }}</span></a></li>
+        {%- endif -%}
+        {%- if section.settings.note != blank -%}
+          <li class="flex items-center gap-3 text-white/75"><span class="flex size-10 items-center justify-center rounded-full bg-white/10">{% render 'icon', icon: 'headset', class: 'size-5' %}</span>{{ section.settings.note }}</li>
+        {%- endif -%}
+      </ul>
+    </div>
+
+    <div class="px-6 py-10 sm:px-10 md:px-12 md:py-14">
+      {%- form 'contact', id: 'ServiceRequest', class: 'grid gap-4 sm:grid-cols-2' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="flex items-start gap-3 rounded-card bg-brand-50 p-5 text-brand-800 sm:col-span-2" role="status">
+            {%- render 'icon', icon: 'check', class: 'mt-0.5 size-5 shrink-0' -%}
+            <p class="font-semibold">{{ 'service_form.success' | t }}</p>
+          </div>
+        {%- endif -%}
+        {%- if form.errors -%}
+          <div class="rounded-card bg-red-50 p-4 text-sm text-red-800 sm:col-span-2" role="alert">{{ form.errors | default_errors }}</div>
+        {%- endif -%}
+
+        <input type="hidden" name="contact[{{ 'service_form.source_label' | t }}]" value="{{ page.title | default: template.name }}">
+
+        <div>
+          <label for="SR-name" class="mb-1.5 block text-sm font-semibold">{{ 'service_form.name' | t }} *</label>
+          <input id="SR-name" class="field rounded-xl" type="text" name="contact[{{ 'service_form.name' | t }}]" autocomplete="name" required value="{{ form.name }}">
+        </div>
+        <div>
+          <label for="SR-phone" class="mb-1.5 block text-sm font-semibold">{{ 'service_form.phone' | t }} *</label>
+          <input id="SR-phone" class="field rounded-xl" type="tel" name="contact[{{ 'service_form.phone' | t }}]" autocomplete="tel" required value="{{ form.phone }}">
+        </div>
+        <div>
+          <label for="SR-email" class="mb-1.5 block text-sm font-semibold">{{ 'service_form.email' | t }} *</label>
+          <input id="SR-email" class="field rounded-xl" type="email" name="contact[email]" autocomplete="email" required value="{{ form.email }}">
+        </div>
+        <div>
+          <label for="SR-address" class="mb-1.5 block text-sm font-semibold">{{ 'service_form.address' | t }}</label>
+          <input id="SR-address" class="field rounded-xl" type="text" name="contact[{{ 'service_form.address' | t }}]" autocomplete="street-address">
+        </div>
+        <div class="sm:col-span-2">
+          <label for="SR-service" class="mb-1.5 block text-sm font-semibold">{{ 'service_form.service' | t }}</label>
+          <div class="relative">
+            <select id="SR-service" name="contact[{{ 'service_form.service' | t }}]" class="field appearance-none rounded-xl pr-10">
+              {%- for s in services -%}
+                {%- assign s = s | strip -%}
+                <option value="{{ s | escape }}" {% if s == preselect %}selected{% endif %}>{{ s }}</option>
+              {%- endfor -%}
+              <option value="{{ 'service_form.other' | t }}">{{ 'service_form.other' | t }}</option>
+            </select>
+            <span class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2">{% render 'icon', icon: 'chevron-down', class: 'size-4' %}</span>
+          </div>
+        </div>
+        <div class="sm:col-span-2">
+          <label for="SR-message" class="mb-1.5 block text-sm font-semibold">{{ 'service_form.message' | t }}</label>
+          <textarea id="SR-message" name="contact[body]" rows="5" class="field rounded-xl" placeholder="{{ 'service_form.message_placeholder' | t }}">{{ form.body }}</textarea>
+        </div>
+        <div class="flex flex-col gap-3 sm:col-span-2 sm:flex-row sm:items-center sm:justify-between">
+          <p class="text-xs text-muted">{{ 'service_form.required_note' | t }}</p>
+          <button type="submit" class="btn btn-primary">{{ 'service_form.submit' | t }}{% render 'icon', icon: 'arrow-right', class: 'size-4' %}</button>
+        </div>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Service request form",
+  "tag": "div",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Requests are emailed to the store's sender email (Settings → Notifications)."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "Beiðni um þjónustu"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Segðu okkur frá vandamálinu"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Fylltu út formið og við höfum samband til að finna tíma og lausn sem hentar."
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Small note",
+      "default": "[Settu inn svartíma, t.d. „Við svörum innan eins virks dags“]"
+    },
+    {
+      "type": "textarea",
+      "id": "services",
+      "label": "Services in the dropdown",
+      "info": "Comma separated",
+      "default": "Mýs og rottur, Geitungar, Skordýr, Fyrirtækjaþjónusta"
+    },
+    {
+      "type": "text",
+      "id": "preselect",
+      "label": "Preselected service",
+      "info": "Must match one of the services above"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Service request form"
+    }
+  ]
+}
+{% endschema %}

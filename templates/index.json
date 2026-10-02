@@ -12,25 +12,111 @@
     "hero": {
       "type": "hero",
       "blocks": {
-        "trust_1": { "type": "trust", "settings": { "icon": "badge-check", "title": "Valið af fagfólki", "text": "Vörur sem við notum sjálf í meindýravörnum." } },
-        "trust_2": { "type": "trust", "settings": { "icon": "truck", "title": "Sent um allt land", "text": "Pantaðu á netinu og fáðu sent heim." } },
-        "trust_3": { "type": "trust", "settings": { "icon": "headset", "title": "Ráðgjöf á íslensku", "text": "Ekki viss hvað þú þarft? Við hjálpum þér." } }
+        "trust_1": {
+          "type": "trust",
+          "settings": {
+            "icon": "badge-check",
+            "title": "Fagleg þjónusta",
+            "text": "Skoðun, meðhöndlun og eftirfylgni frá fagfólki."
+          }
+        },
+        "trust_2": {
+          "type": "trust",
+          "settings": {
+            "icon": "house",
+            "title": "Heimili og fyrirtæki",
+            "text": "Lausnir fyrir íbúðir, sumarhús, veitingastaði og lagera."
+          }
+        },
+        "trust_3": {
+          "type": "trust",
+          "settings": {
+            "icon": "truck",
+            "title": "Vefverslun",
+            "text": "Gildrur og varnir sendar heim til þín."
+          }
+        }
       },
-      "block_order": ["trust_1", "trust_2", "trust_3"],
-      "settings": {}
+      "block_order": [
+        "trust_1",
+        "trust_2",
+        "trust_3"
+      ],
+      "settings": {
+        "heading": "Meindýravarnir sem þú getur treyst",
+        "text": "Kvikindi sinnir meindýravörnum fyrir heimili og fyrirtæki — og í vefversluninni finnurðu vörurnar sem við notum sjálf.",
+        "button_1_label": "Panta þjónustu",
+        "button_1_link": "/pages/hafa-samband",
+        "button_2_label": "Versla vörur",
+        "button_2_link": "/collections/all"
+      }
     },
     "pests": {
       "type": "pest-grid",
       "blocks": {
-        "mys": { "type": "pest", "settings": { "icon": "rat", "title": "Mýs", "text": "Gildrur og varnir fyrir heimili, geymslur og sumarhús." } },
-        "rottur": { "type": "pest", "settings": { "icon": "squirrel", "title": "Rottur", "text": "Öflugar gildrur og beitustöðvar fyrir rottur." } },
-        "geitungar": { "type": "pest", "settings": { "icon": "bug", "title": "Geitungar", "text": "Gildrur og úðar til að halda geitungum frá." } },
-        "skordyr": { "type": "pest", "settings": { "icon": "spray-can", "title": "Skordýr", "text": "Lausnir gegn maurum, kakkalökkum, flugum og fleiru." } },
-        "sniglar": { "type": "pest", "settings": { "icon": "snail", "title": "Sniglar", "text": "Verndaðu garðinn og matjurtirnar." } },
-        "fuglar": { "type": "pest", "settings": { "icon": "bird", "title": "Fuglar", "text": "Fuglafælur fyrir þök, svalir og byggingar." } }
+        "mys": {
+          "type": "pest",
+          "settings": {
+            "icon": "rat",
+            "title": "Mýs",
+            "text": "Gildrur og varnir fyrir heimili, geymslur og sumarhús."
+          }
+        },
+        "rottur": {
+          "type": "pest",
+          "settings": {
+            "icon": "squirrel",
+            "title": "Rottur",
+            "text": "Öflugar gildrur og beitustöðvar fyrir rottur."
+          }
+        },
+        "geitungar": {
+          "type": "pest",
+          "settings": {
+            "icon": "bug",
+            "title": "Geitungar",
+            "text": "Gildrur og úðar til að halda geitungum frá."
+          }
+        },
+        "skordyr": {
+          "type": "pest",
+          "settings": {
+            "icon": "spray-can",
+            "title": "Skordýr",
+            "text": "Lausnir gegn maurum, kakkalökkum, flugum og fleiru."
+          }
+        },
+        "sniglar": {
+          "type": "pest",
+          "settings": {
+            "icon": "snail",
+            "title": "Sniglar",
+            "text": "Verndaðu garðinn og matjurtirnar."
+          }
+        },
+        "fuglar": {
+          "type": "pest",
+          "settings": {
+            "icon": "bird",
+            "title": "Fuglar",
+            "text": "Fuglafælur fyrir þök, svalir og byggingar."
+          }
+        }
       },
-      "block_order": ["mys", "rottur", "geitungar", "skordyr", "sniglar", "fuglar"],
-      "settings": {}
+      "block_order": [
+        "mys",
+        "rottur",
+        "geitungar",
+        "skordyr",
+        "sniglar",
+        "fuglar"
+      ],
+      "settings": {
+        "eyebrow": "Vefverslun",
+        "heading": "Viltu leysa málið sjálf/ur?",
+        "text": "Veldu meindýrið og við sýnum þér vörurnar sem virka best.",
+        "link_label": "Allir vöruflokkar"
+      }
     },
     "bestsellers": {
       "type": "featured-products",
@@ -39,30 +125,211 @@
     "why": {
       "type": "why-us",
       "blocks": {
-        "f1": { "type": "feature", "settings": { "icon": "badge-check", "title": "Prófaðar lausnir", "text": "Við seljum það sem við notum sjálf í starfi." } },
-        "f2": { "type": "feature", "settings": { "icon": "house", "title": "Fyrir heimilið", "text": "Lausnir fyrir íbúðir, hús og sumarhús." } },
-        "f3": { "type": "feature", "settings": { "icon": "warehouse", "title": "Fyrir fyrirtæki", "text": "Varnir fyrir lagera, veitingastaði og verslanir." } },
-        "f4": { "type": "feature", "settings": { "icon": "headset", "title": "Persónuleg ráðgjöf", "text": "Hafðu samband og við hjálpum þér að velja." } }
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "icon": "badge-check",
+            "title": "Prófaðar lausnir",
+            "text": "Við seljum það sem við notum sjálf í starfi."
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "icon": "house",
+            "title": "Fyrir heimilið",
+            "text": "Lausnir fyrir íbúðir, hús og sumarhús."
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "icon": "warehouse",
+            "title": "Fyrir fyrirtæki",
+            "text": "Varnir fyrir lagera, veitingastaði og verslanir."
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "icon": "headset",
+            "title": "Persónuleg ráðgjöf",
+            "text": "Hafðu samband og við hjálpum þér að velja."
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4"],
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
       "settings": {}
     },
     "faq": {
       "type": "faq",
       "blocks": {
-        "q1": { "type": "question", "settings": { "question": "Hvernig vel ég rétta vöru?", "answer": "<p>Byrjaðu á að velja meindýrið sem er að angra þig. Ef þú ert ekki viss, sendu okkur lýsingu eða mynd og við mælum með lausn sem hentar.</p>" } },
-        "q2": { "type": "question", "settings": { "question": "Eru vörurnar öruggar í kringum börn og gæludýr?", "answer": "<p>Það fer eftir vörunni. Á hverri vörusíðu kemur fram hvernig á að nota hana og hvaða varúðarráðstafanir gilda.</p>" } },
-        "q3": { "type": "question", "settings": { "question": "Hvað tekur langan tíma að fá pöntunina?", "answer": "<p>[Settu inn afhendingartíma og sendingarmáta.]</p>" } },
-        "q4": { "type": "question", "settings": { "question": "Get ég skilað vöru?", "answer": "<p>[Settu inn skilareglur verslunarinnar.]</p>" } },
-        "q5": { "type": "question", "settings": { "question": "Takið þið líka að ykkur meindýravarnir?", "answer": "<p>[Lýstu þjónustu Kvikinda og hvernig á að panta.]</p>" } }
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Hvernig vel ég rétta vöru?",
+            "answer": "<p>Byrjaðu á að velja meindýrið sem er að angra þig. Ef þú ert ekki viss, sendu okkur lýsingu eða mynd og við mælum með lausn sem hentar.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Eru vörurnar öruggar í kringum börn og gæludýr?",
+            "answer": "<p>Það fer eftir vörunni. Á hverri vörusíðu kemur fram hvernig á að nota hana og hvaða varúðarráðstafanir gilda.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Hvað tekur langan tíma að fá pöntunina?",
+            "answer": "<p>[Settu inn afhendingartíma og sendingarmáta.]</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Get ég skilað vöru?",
+            "answer": "<p>[Settu inn skilareglur verslunarinnar.]</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Takið þið líka að ykkur meindýravarnir?",
+            "answer": "<p>[Lýstu þjónustu Kvikinda og hvernig á að panta.]</p>"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ],
       "settings": {}
     },
     "cta": {
       "type": "cta-banner",
-      "settings": {}
+      "settings": {
+        "heading": "Stærra vandamál? Fáðu fagmann á staðinn.",
+        "text": "Sendu okkur beiðni og við finnum lausn sem hentar þér.",
+        "button_label": "Panta þjónustu",
+        "button_link": "/pages/hafa-samband"
+      }
+    },
+    "services": {
+      "type": "service-grid",
+      "settings": {
+        "eyebrow": "Þjónusta",
+        "heading": "Hvernig getum við aðstoðað?",
+        "text": "Við tökum að okkur meindýravarnir fyrir heimili og fyrirtæki.",
+        "link_label": "Öll þjónusta",
+        "link": "/pages/thjonusta"
+      },
+      "blocks": {
+        "s1": {
+          "type": "service",
+          "settings": {
+            "icon": "rat",
+            "title": "Mýs og rottur",
+            "text": "Við finnum hvaðan nagdýrin koma, fjarlægjum þau og lokum leiðunum inn.",
+            "points": "Heimili, sumarhús og fyrirtæki\nGildrur og beitustöðvar\nRáðgjöf um forvarnir",
+            "link": "/pages/mys-og-rottur"
+          }
+        },
+        "s2": {
+          "type": "service",
+          "settings": {
+            "icon": "bug",
+            "title": "Geitungar",
+            "text": "Við fjarlægjum geitungabú á öruggan hátt — í þakskeggi, veggjum, jörð og gróðri.",
+            "points": "Réttur búnaður og hlífðarfatnaður\nBú á erfiðum stöðum\nRáð gegn nýjum búum",
+            "link": "/pages/geitungar"
+          }
+        },
+        "s3": {
+          "type": "service",
+          "settings": {
+            "icon": "spray-can",
+            "title": "Skordýr",
+            "text": "Veggjalús, kakkalakkar, silfurskottur, maurar og fleiri skordýr.",
+            "points": "Greining á tegund og umfangi\nMarkviss meðhöndlun\nLeiðbeiningar og eftirfylgni",
+            "link": "/pages/skordyr"
+          }
+        },
+        "s4": {
+          "type": "service",
+          "settings": {
+            "icon": "warehouse",
+            "title": "Fyrirtækjaþjónusta",
+            "text": "Reglubundið eftirlit og varnir fyrir veitingastaði, verslanir, lagera, hótel og húsfélög.",
+            "points": "Reglulegt eftirlit eftir þörfum\nFyrirbyggjandi varnir\nViðbrögð þegar vandamál koma upp",
+            "link": "/pages/fyrirtaekjathjonusta"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
+    },
+    "steps": {
+      "type": "process-steps",
+      "settings": {},
+      "blocks": {
+        "st1": {
+          "type": "step",
+          "settings": {
+            "title": "Þú hefur samband",
+            "text": "Sendu beiðni hér á síðunni eða hringdu. Segðu okkur hvað þú hefur séð og hvar."
+          }
+        },
+        "st2": {
+          "type": "step",
+          "settings": {
+            "title": "Skoðun",
+            "text": "Við metum aðstæður, finnum hvaðan meindýrin koma og hversu umfangsmikið vandamálið er."
+          }
+        },
+        "st3": {
+          "type": "step",
+          "settings": {
+            "title": "Meðhöndlun",
+            "text": "Við beitum aðferðum sem henta aðstæðum og förum yfir hvað þarf að varast."
+          }
+        },
+        "st4": {
+          "type": "step",
+          "settings": {
+            "title": "Eftirfylgni",
+            "text": "Við fylgjum málinu eftir og ráðleggjum hvernig koma má í veg fyrir að vandinn komi aftur."
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3",
+        "st4"
+      ]
     }
   },
-  "order": ["hero", "pests", "bestsellers", "why", "faq", "cta"]
+  "order": [
+    "hero",
+    "services",
+    "steps",
+    "pests",
+    "bestsellers",
+    "why",
+    "faq",
+    "cta"
+  ]
 }

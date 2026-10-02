@@ -1,0 +1,105 @@
+<section class="{% if section.settings.dark %}bg-brand-900 text-white{% else %}bg-mist{% endif %}">
+  <div class="page-width section-y">
+    <div class="max-w-2xl">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow {% if section.settings.dark %}!text-brand-300{% endif %}">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="h-section mt-3 {% if section.settings.dark %}text-white{% endif %}">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p class="mt-4 text-base md:text-lg {% if section.settings.dark %}text-white/70{% else %}text-muted{% endif %}">{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+    <ol class="mt-10 grid gap-4 md:mt-14 md:grid-cols-2 {% case section.blocks.size %}{% when 3 %}lg:grid-cols-3{% when 4 %}lg:grid-cols-4{% endcase %}">
+      {%- for block in section.blocks -%}
+        <li class="relative rounded-card p-6 md:p-7 {% if section.settings.dark %}bg-white/5 ring-1 ring-white/10{% else %}bg-white ring-1 ring-line{% endif %}" {{ block.shopify_attributes }}>
+          <span class="font-display text-5xl font-extrabold {% if section.settings.dark %}text-brand-400/80{% else %}text-brand-200{% endif %}">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+          <h3 class="mt-4 font-display text-lg font-bold {% if section.settings.dark %}text-white{% endif %}">{{ block.settings.title }}</h3>
+          <p class="mt-2 text-sm leading-relaxed {% if section.settings.dark %}text-white/70{% else %}text-muted{% endif %}">{{ block.settings.text }}</p>
+        </li>
+      {%- endfor -%}
+    </ol>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Process steps",
+  "tag": "div",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "dark",
+      "label": "Dark background",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "Svona vinnum við"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frá fyrsta símtali að meindýralausu heimili"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Skref"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Process steps",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Þú hefur samband",
+            "text": "Sendu beiðni hér á síðunni eða hringdu. Segðu okkur hvað þú hefur séð og hvar."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Skoðun",
+            "text": "Við metum aðstæður, finnum hvaðan meindýrin koma og hversu umfangsmikið vandamálið er."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Meðhöndlun",
+            "text": "Við beitum aðferðum sem henta aðstæðum og förum yfir hvað þarf að varast."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Eftirfylgni",
+            "text": "Við fylgjum málinu eftir og ráðleggjum hvernig best er að koma í veg fyrir að vandinn komi aftur."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

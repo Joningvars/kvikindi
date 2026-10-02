@@ -1,0 +1,194 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "service-hero",
+      "settings": {
+        "eyebrow": "Þjónusta",
+        "heading": "Geitungar",
+        "text": "Geitungabú við hús, í garðinum eða undir þakskeggi geta verið hættuleg, sérstaklega þeim sem eru með ofnæmi. Við fjarlægjum búin á öruggan hátt.",
+        "fallback_image": "kvikindi-hero-house.jpg"
+      },
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Bú í þakskeggi, veggjum, jörð og gróðri"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Réttur búnaður og hlífðarfatnaður"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Ráð um hvernig draga má úr líkum á nýjum búum"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ]
+    },
+    "info": {
+      "type": "info-columns",
+      "settings": {
+        "heading": "Hvenær á að bregðast við?",
+        "show_page_content": true
+      },
+      "blocks": {
+        "c1": {
+          "type": "column",
+          "settings": {
+            "icon": "sprout",
+            "title": "Snemma sumars",
+            "text": "<p>Búin eru minnst snemma sumars og auðveldast að fjarlægja þau þá.</p>"
+          }
+        },
+        "c2": {
+          "type": "column",
+          "settings": {
+            "icon": "shield-check",
+            "title": "Ekki taka áhættu",
+            "text": "<p>Ef búið er stórt, hátt uppi eða inni í vegg er best að láta fagmann sjá um það.</p>"
+          }
+        },
+        "c3": {
+          "type": "column",
+          "settings": {
+            "icon": "headset",
+            "title": "Ofnæmi",
+            "text": "<p>Ef einhver á heimilinu er með ofnæmi fyrir stungum skaltu hafa samband sem fyrst.</p>"
+          }
+        },
+        "c4": {
+          "type": "column",
+          "settings": {
+            "icon": "flower-2",
+            "title": "Í garðinum",
+            "text": "<p>Gildrur geta fækkað geitungum við pallinn og útisvæði yfir sumarið.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ]
+    },
+    "steps": {
+      "type": "process-steps",
+      "settings": {},
+      "blocks": {
+        "st1": {
+          "type": "step",
+          "settings": {
+            "title": "Þú hefur samband",
+            "text": "Sendu beiðni hér á síðunni eða hringdu. Segðu okkur hvað þú hefur séð og hvar."
+          }
+        },
+        "st2": {
+          "type": "step",
+          "settings": {
+            "title": "Skoðun",
+            "text": "Við metum aðstæður, finnum hvaðan meindýrin koma og hversu umfangsmikið vandamálið er."
+          }
+        },
+        "st3": {
+          "type": "step",
+          "settings": {
+            "title": "Meðhöndlun",
+            "text": "Við beitum aðferðum sem henta aðstæðum og förum yfir hvað þarf að varast."
+          }
+        },
+        "st4": {
+          "type": "step",
+          "settings": {
+            "title": "Eftirfylgni",
+            "text": "Við fylgjum málinu eftir og ráðleggjum hvernig koma má í veg fyrir að vandinn komi aftur."
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3",
+        "st4"
+      ]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "Spurt og svarað",
+        "heading": "Algengar spurningar",
+        "text": "Finnurðu ekki svarið? Sendu okkur beiðni eða hringdu.",
+        "open_first": true
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Get ég fjarlægt búið sjálf/ur?",
+            "answer": "<p>Lítil bú má stundum fjarlægja með réttum búnaði, en stungur geta verið hættulegar. Ef þú ert í vafa, hafðu samband.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Hvað kostar að fjarlægja bú?",
+            "answer": "<p>[Settu inn verð eða hvernig verð er ákveðið.]</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Koma geitungarnir aftur?",
+            "answer": "<p>[Útskýrðu hvað gerist eftir að bú er fjarlægt og hvort nýtt bú geti myndast.]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ]
+    },
+    "request": {
+      "type": "service-request",
+      "settings": {
+        "preselect": "Geitungar"
+      }
+    },
+    "shop": {
+      "type": "featured-products",
+      "settings": {
+        "eyebrow": "Vefverslun",
+        "heading": "Geitungagildrur og varnir",
+        "text": "Vörur til að halda geitungum frá pallinum og garðinum.",
+        "link_label": "Skoða vefverslun"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "steps",
+    "faq",
+    "shop",
+    "request"
+  ]
+}

@@ -123,5 +123,19 @@
     "show_results": "Show results",
     "close": "Close filters",
     "no_results": "No products match these filters"
+  },
+  "service_form": {
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address / postcode",
+    "service": "Service",
+    "other": "Other",
+    "message": "Describe the problem",
+    "message_placeholder": "What have you noticed, where, and for how long?",
+    "submit": "Send request",
+    "success": "Thanks! We've received your request and will be in touch soon.",
+    "required_note": "Fields marked * are required.",
+    "source_label": "Sent from page"
   }
 }

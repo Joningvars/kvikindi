@@ -1,0 +1,191 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "service-hero",
+      "settings": {
+        "eyebrow": "Þjónusta",
+        "heading": "Fyrirtækjaþjónusta",
+        "text": "Reglubundið eftirlit og meindýravarnir fyrir veitingastaði, verslanir, lagera, hótel og húsfélög. Við setjum upp varnir sem henta starfseminni og fylgjumst með þeim.",
+        "fallback_image": "kvikindi-hero-house.jpg"
+      },
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Reglulegt eftirlit eftir þörfum"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Fyrirbyggjandi varnir"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Viðbrögð þegar vandamál koma upp"
+          }
+        },
+        "p4": {
+          "type": "point",
+          "settings": {
+            "text": "[Skýrslur fyrir eftirlitsaðila — staðfestið]"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
+    },
+    "info": {
+      "type": "info-columns",
+      "settings": {
+        "heading": "Fyrir hverja?",
+        "show_page_content": true
+      },
+      "blocks": {
+        "c1": {
+          "type": "column",
+          "settings": {
+            "icon": "warehouse",
+            "title": "Veitingastaðir og matvælafyrirtæki",
+            "text": "<p>Þar sem kröfur um hreinlæti eru miklar og ekkert má fara úrskeiðis.</p>"
+          }
+        },
+        "c2": {
+          "type": "column",
+          "settings": {
+            "icon": "package-check",
+            "title": "Verslanir og lagerar",
+            "text": "<p>Verndið vörur og húsnæði gegn nagdýrum og skordýrum.</p>"
+          }
+        },
+        "c3": {
+          "type": "column",
+          "settings": {
+            "icon": "house",
+            "title": "Hótel og gististaðir",
+            "text": "<p>Varnir og skjót viðbrögð til að vernda gesti og orðspor.</p>"
+          }
+        },
+        "c4": {
+          "type": "column",
+          "settings": {
+            "icon": "shield-check",
+            "title": "Húsfélög",
+            "text": "<p>Varnir í sameignum, geymslum og sorpgeymslum.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ]
+    },
+    "steps": {
+      "type": "process-steps",
+      "settings": {},
+      "blocks": {
+        "st1": {
+          "type": "step",
+          "settings": {
+            "title": "Þú hefur samband",
+            "text": "Sendu beiðni hér á síðunni eða hringdu. Segðu okkur hvað þú hefur séð og hvar."
+          }
+        },
+        "st2": {
+          "type": "step",
+          "settings": {
+            "title": "Skoðun",
+            "text": "Við metum aðstæður, finnum hvaðan meindýrin koma og hversu umfangsmikið vandamálið er."
+          }
+        },
+        "st3": {
+          "type": "step",
+          "settings": {
+            "title": "Meðhöndlun",
+            "text": "Við beitum aðferðum sem henta aðstæðum og förum yfir hvað þarf að varast."
+          }
+        },
+        "st4": {
+          "type": "step",
+          "settings": {
+            "title": "Eftirfylgni",
+            "text": "Við fylgjum málinu eftir og ráðleggjum hvernig koma má í veg fyrir að vandinn komi aftur."
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3",
+        "st4"
+      ]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "Spurt og svarað",
+        "heading": "Algengar spurningar",
+        "text": "Finnurðu ekki svarið? Sendu okkur beiðni eða hringdu.",
+        "open_first": true
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Hvernig virkar þjónustusamningur?",
+            "answer": "<p>[Lýstu samningum: tíðni heimsókna, hvað er innifalið og uppsagnarfrestur.]</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Hvað kostar fyrirtækjaþjónusta?",
+            "answer": "<p>[Útskýrðu verðlagningu, t.d. eftir stærð og fjölda heimsókna.]</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Fáum við skýrslur?",
+            "answer": "<p>[Lýstu skráningu og skýrslugerð ef hún er í boði.]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ]
+    },
+    "request": {
+      "type": "service-request",
+      "settings": {
+        "preselect": "Fyrirtækjaþjónusta"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "steps",
+    "faq",
+    "request"
+  ]
+}

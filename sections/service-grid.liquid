@@ -1,0 +1,199 @@
+<section class="page-width section-y" id="thjonusta">
+  <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+    <div class="max-w-2xl">
+      {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+      <h2 class="h-section mt-3">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p class="lede mt-4">{{ section.settings.text }}</p>{%- endif -%}
+    </div>
+    {%- if section.settings.link_label != blank -%}
+      <a href="{{ section.settings.link }}" class="btn btn-secondary shrink-0 self-start md:self-auto">{{ section.settings.link_label }}</a>
+    {%- endif -%}
+  </div>
+  <ul class="mt-10 grid gap-4 md:mt-14 md:grid-cols-2 md:gap-5 {% if section.blocks.size == 3 or section.blocks.size > 4 %}lg:grid-cols-3{% endif %}">
+    {%- for block in section.blocks -%}
+      <li {{ block.shopify_attributes }}>
+        <a href="{{ block.settings.link | default: '#' }}" class="group card flex h-full flex-col p-6 transition duration-200 hover:-translate-y-0.5 hover:border-brand-400 hover:shadow-card md:p-8">
+          <span class="flex size-14 items-center justify-center rounded-2xl bg-brand-600 text-white">{% render 'icon', icon: block.settings.icon, class: 'size-7' %}</span>
+          <h3 class="mt-6 font-display text-2xl font-bold">{{ block.settings.title }}</h3>
+          {%- if block.settings.text != blank -%}<p class="mt-2 text-[15px] leading-relaxed text-muted">{{ block.settings.text }}</p>{%- endif -%}
+          {%- if block.settings.points != blank -%}
+            <ul class="mt-5 flex flex-col gap-2 text-sm">
+              {%- assign points = block.settings.points | newline_to_br | split: '<br />' -%}
+              {%- for p in points -%}
+                {%- assign p = p | strip -%}
+                {%- if p != blank -%}<li class="flex items-start gap-2.5"><span class="mt-0.5 text-brand-600">{% render 'icon', icon: 'check', class: 'size-4' %}</span>{{ p }}</li>{%- endif -%}
+              {%- endfor -%}
+            </ul>
+          {%- endif -%}
+          <span class="link-arrow mt-auto pt-6">{{ section.settings.card_link_label }}{% render 'icon', icon: 'arrow-right', class: 'size-4' %}</span>
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+</section>
+
+{% schema %}
+{
+  "name": "Services",
+  "tag": "div",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Small label",
+      "default": "Þjónusta"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Meindýravarnir sem virka"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text"
+    },
+    {
+      "type": "text",
+      "id": "card_link_label",
+      "label": "Card link label",
+      "default": "Nánar um þjónustuna"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service",
+      "name": "Service",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "bug",
+          "options": [
+            {
+              "value": "rat",
+              "label": "Mouse / rat"
+            },
+            {
+              "value": "bug",
+              "label": "Insect"
+            },
+            {
+              "value": "snail",
+              "label": "Snail"
+            },
+            {
+              "value": "bird",
+              "label": "Bird"
+            },
+            {
+              "value": "squirrel",
+              "label": "Rodent (squirrel)"
+            },
+            {
+              "value": "spray-can",
+              "label": "Spray"
+            },
+            {
+              "value": "sprout",
+              "label": "Garden"
+            },
+            {
+              "value": "flower-2",
+              "label": "Flower"
+            },
+            {
+              "value": "house",
+              "label": "Home"
+            },
+            {
+              "value": "warehouse",
+              "label": "Business"
+            },
+            {
+              "value": "shield-check",
+              "label": "Shield"
+            },
+            {
+              "value": "badge-check",
+              "label": "Badge"
+            },
+            {
+              "value": "truck",
+              "label": "Delivery"
+            },
+            {
+              "value": "leaf",
+              "label": "Leaf"
+            },
+            {
+              "value": "headset",
+              "label": "Support"
+            },
+            {
+              "value": "package-check",
+              "label": "Package"
+            },
+            {
+              "value": "star",
+              "label": "Star"
+            },
+            {
+              "value": "check",
+              "label": "Check"
+            },
+            {
+              "value": "search",
+              "label": "Inspect"
+            },
+            {
+              "value": "phone",
+              "label": "Phone"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Þjónusta"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "textarea",
+          "id": "points",
+          "label": "Bullet points",
+          "info": "One per line"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (service page)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Services"
+    }
+  ]
+}
+{% endschema %}

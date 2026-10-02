@@ -1,0 +1,194 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "service-hero",
+      "settings": {
+        "eyebrow": "Þjónusta",
+        "heading": "Skordýr",
+        "text": "Veggjalús, kakkalakkar, silfurskottur, maurar og önnur skordýr. Við greinum tegundina og veljum meðhöndlun sem hentar aðstæðum.",
+        "fallback_image": "kvikindi-why-kitchen.jpg"
+      },
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Greining á tegund og umfangi"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Markviss meðhöndlun"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Leiðbeiningar um undirbúning og eftirfylgni"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ]
+    },
+    "info": {
+      "type": "info-columns",
+      "settings": {
+        "heading": "Algeng skordýr á heimilum",
+        "show_page_content": true
+      },
+      "blocks": {
+        "c1": {
+          "type": "column",
+          "settings": {
+            "icon": "bug",
+            "title": "Veggjalús",
+            "text": "<p>Smá, brún skordýr sem leynast í rúmum og húsgögnum og bíta á nóttunni. Breiðast auðveldlega út með farangri.</p>"
+          }
+        },
+        "c2": {
+          "type": "column",
+          "settings": {
+            "icon": "bug",
+            "title": "Kakkalakkar",
+            "text": "<p>Halda sig í hlýju og raka, oft í eldhúsum og við lagnir. Fjölga sér hratt.</p>"
+          }
+        },
+        "c3": {
+          "type": "column",
+          "settings": {
+            "icon": "bug",
+            "title": "Silfurskottur",
+            "text": "<p>Algengar í rökum rýmum eins og baðherbergjum og kjöllurum.</p>"
+          }
+        },
+        "c4": {
+          "type": "column",
+          "settings": {
+            "icon": "bug",
+            "title": "Maurar",
+            "text": "<p>Koma oft inn í leit að mat og fylgja föstum slóðum.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ]
+    },
+    "steps": {
+      "type": "process-steps",
+      "settings": {},
+      "blocks": {
+        "st1": {
+          "type": "step",
+          "settings": {
+            "title": "Þú hefur samband",
+            "text": "Sendu beiðni hér á síðunni eða hringdu. Segðu okkur hvað þú hefur séð og hvar."
+          }
+        },
+        "st2": {
+          "type": "step",
+          "settings": {
+            "title": "Skoðun",
+            "text": "Við metum aðstæður, finnum hvaðan meindýrin koma og hversu umfangsmikið vandamálið er."
+          }
+        },
+        "st3": {
+          "type": "step",
+          "settings": {
+            "title": "Meðhöndlun",
+            "text": "Við beitum aðferðum sem henta aðstæðum og förum yfir hvað þarf að varast."
+          }
+        },
+        "st4": {
+          "type": "step",
+          "settings": {
+            "title": "Eftirfylgni",
+            "text": "Við fylgjum málinu eftir og ráðleggjum hvernig koma má í veg fyrir að vandinn komi aftur."
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3",
+        "st4"
+      ]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "Spurt og svarað",
+        "heading": "Algengar spurningar",
+        "text": "Finnurðu ekki svarið? Sendu okkur beiðni eða hringdu.",
+        "open_first": true
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Hvernig undirbý ég heimilið fyrir meðhöndlun?",
+            "answer": "<p>[Settu inn leiðbeiningar fyrir hverja tegund.]</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Hversu margar heimsóknir þarf?",
+            "answer": "<p>[Útskýrðu hefðbundinn fjölda heimsókna.]</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Hvernig veit ég hvaða skordýr þetta er?",
+            "answer": "<p>Taktu mynd og sendu okkur með beiðninni — það hjálpar okkur að greina tegundina.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ]
+    },
+    "request": {
+      "type": "service-request",
+      "settings": {
+        "preselect": "Skordýr"
+      }
+    },
+    "shop": {
+      "type": "featured-products",
+      "settings": {
+        "eyebrow": "Vefverslun",
+        "heading": "Skordýravarnir",
+        "text": "Gildrur og varnir gegn skordýrum úr vefversluninni.",
+        "link_label": "Skoða vefverslun"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "steps",
+    "faq",
+    "shop",
+    "request"
+  ]
+}

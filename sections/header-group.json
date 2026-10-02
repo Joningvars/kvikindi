@@ -17,8 +17,14 @@
     },
     "header": {
       "type": "header",
-      "settings": {}
+      "settings": {
+        "cta_label": "Panta þjónustu",
+        "cta_link": "/pages/hafa-samband"
+      }
     }
   },
-  "order": ["announcement", "header"]
+  "order": [
+    "announcement",
+    "header"
+  ]
 }

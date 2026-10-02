@@ -1,0 +1,201 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "service-hero",
+      "settings": {
+        "eyebrow": "Þjónusta",
+        "heading": "Mýs og rottur",
+        "text": "Mýs og rottur geta valdið tjóni á húsnæði, raflögnum og matvælum. Við finnum hvaðan þær koma, fjarlægjum þær og lokum leiðunum inn.",
+        "fallback_image": "kvikindi-why-kitchen.jpg"
+      },
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Skoðun og mat á aðstæðum"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Gildrur og beitustöðvar á öruggum stöðum"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Ráðgjöf um þéttingar og forvarnir"
+          }
+        },
+        "p4": {
+          "type": "point",
+          "settings": {
+            "text": "Fyrir heimili, sumarhús og fyrirtæki"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
+    },
+    "info": {
+      "type": "info-columns",
+      "settings": {
+        "heading": "Merki um mýs eða rottur",
+        "show_page_content": true
+      },
+      "blocks": {
+        "c1": {
+          "type": "column",
+          "settings": {
+            "icon": "search",
+            "title": "Skítur og nagför",
+            "text": "<p>Lítill, dökkur skítur meðfram veggjum, í skápum og geymslum, og nagför á umbúðum eða timbri.</p>"
+          }
+        },
+        "c2": {
+          "type": "column",
+          "settings": {
+            "icon": "house",
+            "title": "Hljóð í veggjum og loftum",
+            "text": "<p>Krafs og tíst, sérstaklega á kvöldin og nóttunni.</p>"
+          }
+        },
+        "c3": {
+          "type": "column",
+          "settings": {
+            "icon": "package-check",
+            "title": "Skemmdar umbúðir",
+            "text": "<p>Nagaðar umbúðir og matarleifar á óvæntum stöðum.</p>"
+          }
+        },
+        "c4": {
+          "type": "column",
+          "settings": {
+            "icon": "leaf",
+            "title": "Hreiður",
+            "text": "<p>Tættur pappír, einangrun eða efni safnað saman í hornum og holrúmum.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ]
+    },
+    "steps": {
+      "type": "process-steps",
+      "settings": {},
+      "blocks": {
+        "st1": {
+          "type": "step",
+          "settings": {
+            "title": "Þú hefur samband",
+            "text": "Sendu beiðni hér á síðunni eða hringdu. Segðu okkur hvað þú hefur séð og hvar."
+          }
+        },
+        "st2": {
+          "type": "step",
+          "settings": {
+            "title": "Skoðun",
+            "text": "Við metum aðstæður, finnum hvaðan meindýrin koma og hversu umfangsmikið vandamálið er."
+          }
+        },
+        "st3": {
+          "type": "step",
+          "settings": {
+            "title": "Meðhöndlun",
+            "text": "Við beitum aðferðum sem henta aðstæðum og förum yfir hvað þarf að varast."
+          }
+        },
+        "st4": {
+          "type": "step",
+          "settings": {
+            "title": "Eftirfylgni",
+            "text": "Við fylgjum málinu eftir og ráðleggjum hvernig koma má í veg fyrir að vandinn komi aftur."
+          }
+        }
+      },
+      "block_order": [
+        "st1",
+        "st2",
+        "st3",
+        "st4"
+      ]
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "Spurt og svarað",
+        "heading": "Algengar spurningar",
+        "text": "Finnurðu ekki svarið? Sendu okkur beiðni eða hringdu.",
+        "open_first": true
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Hvað tekur meðhöndlun langan tíma?",
+            "answer": "<p>[Settu inn hefðbundinn tíma og fjölda heimsókna.]</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Þarf ég að fara að heiman?",
+            "answer": "<p>[Útskýrðu hvort og hvenær þess er þörf.]</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Hvernig kem ég í veg fyrir að þær komi aftur?",
+            "answer": "<p>Lokaðu glufum og opum, geymdu mat í lokuðum ílátum og haltu geymslum snyrtilegum. Við förum yfir þetta með þér í heimsókninni.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ]
+    },
+    "request": {
+      "type": "service-request",
+      "settings": {
+        "preselect": "Mýs og rottur"
+      }
+    },
+    "shop": {
+      "type": "featured-products",
+      "settings": {
+        "eyebrow": "Vefverslun",
+        "heading": "Gerðu það sjálf/ur",
+        "text": "Gildrur og varnir gegn músum og rottum úr vefversluninni.",
+        "link_label": "Skoða vefverslun"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "info",
+    "steps",
+    "faq",
+    "shop",
+    "request"
+  ]
+}

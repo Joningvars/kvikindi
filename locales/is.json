@@ -123,5 +123,19 @@
     "show_results": "Sýna vörur",
     "close": "Loka síum",
     "no_results": "Engar vörur passa við þessar síur"
+  },
+  "service_form": {
+    "name": "Nafn",
+    "phone": "Sími",
+    "email": "Netfang",
+    "address": "Heimilisfang / póstnúmer",
+    "service": "Þjónusta",
+    "other": "Annað",
+    "message": "Lýstu vandamálinu",
+    "message_placeholder": "Hvað hefurðu orðið var/vör við, hvar og hversu lengi?",
+    "submit": "Senda beiðni",
+    "success": "Takk! Beiðnin þín er komin til okkar og við höfum samband fljótlega.",
+    "required_note": "Reitir merktir * eru nauðsynlegir.",
+    "source_label": "Sent af síðu"
   }
 }
