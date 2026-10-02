@@ -14,24 +14,23 @@
   --font-display: "Red Hat Display Variable", ui-sans-serif, system-ui, sans-serif;
   --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  /* Brand olive, taken from the Kvikindi logo (#7b8d3e accent, #1b2312 dark).
-     500 = logo accent for icons/highlights, 600+ = text & buttons (AA on white) */
-  --color-brand-50: #f4f6ec;
-  --color-brand-100: #e6ebd3;
-  --color-brand-200: #cdd7a8;
-  --color-brand-300: #aebd74;
-  --color-brand-400: #93a652;
-  --color-brand-500: #7b8d3e;
-  --color-brand-600: #62722f;
-  --color-brand-700: #4d5a26;
-  --color-brand-800: #343f1c;
-  --color-brand-900: #232c15;
-  --color-brand-950: #1b2312;
+  /* Brand green (PestQuell-inspired). 500 = accents/icons, 600+ = text & buttons (AA on white) */
+  --color-brand-50: #eef9f1;
+  --color-brand-100: #d6f1de;
+  --color-brand-200: #ade3bd;
+  --color-brand-300: #74cd8f;
+  --color-brand-400: #3fb865;
+  --color-brand-500: #1aa444;
+  --color-brand-600: #12813a;
+  --color-brand-700: #10672f;
+  --color-brand-800: #155229;
+  --color-brand-900: #0e3a1e;
+  --color-brand-950: #08240f;
 
-  --color-ink: #161d10;
-  --color-muted: #5d6656;
-  --color-mist: #f5f6f0;
-  --color-line: #e3e6d9;
+  --color-ink: #0f1a13;
+  --color-muted: #5b6b61;
+  --color-mist: #f4f7f5;
+  --color-line: #e3e9e5;
   --color-sale: #c2410c;
 
   --radius-card: 1rem;
