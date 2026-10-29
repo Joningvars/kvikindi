@@ -255,6 +255,15 @@
             "title": "Skotvopnaleyfi",
             "holder": "Gísli Einarsson"
           }
+        },
+        "plontu_nam": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Endurmenntun LbhÍ",
+            "title": "Réttindanám í meðferð plöntuverndarvara",
+            "holder": "Róbert Arnarsson",
+            "date": "25. september 2026"
+          }
         }
       },
       "block_order": [
@@ -262,6 +271,7 @@
         "vinnueftirlit",
         "utrym",
         "plontu",
+        "plontu_nam",
         "basis",
         "bedbug",
         "haccp",
