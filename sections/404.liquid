@@ -2,8 +2,12 @@
   <p class="font-display text-7xl font-extrabold text-brand-500 md:text-8xl">404</p>
   <h1 class="h-section mt-4">{{ '404.not_found' | t }}</h1>
   <div class="mt-8 flex flex-wrap justify-center gap-3">
-    <a href="{{ routes.all_products_collection_url }}" class="btn btn-primary">{{ '404.back_to_shopping' | t }}</a>
-    <a href="{{ routes.root_url }}" class="btn btn-secondary">{{ 'breadcrumbs.home' | t }}</a>
+    <a href="{{ routes.root_url }}" class="btn btn-primary">{{ 'breadcrumbs.home' | t }}</a>
+    {%- if settings.shop_enabled -%}
+      <a href="{{ routes.all_products_collection_url }}" class="btn btn-secondary">{{ '404.back_to_shopping' | t }}</a>
+    {%- else -%}
+      <a href="{{ routes.root_url | append: '/' | replace: '//', '/' }}pages/hafa-samband" class="btn btn-secondary">{{ 'footer.contact' | t }}</a>
+    {%- endif -%}
   </div>
 </div>
 
