@@ -31,7 +31,7 @@
           "settings": {
             "name": "Róbert Arnarsson",
             "role": "Meindýraeyðir",
-            "certs": "Notendaleyfi fyrir útrýmingarefnum\nNotendaleyfi fyrir plöntuverndarvörum\nPrinciples of Insect Control (BASIS)"
+            "certs": "Notendaleyfi fyrir útrýmingarefnum\nNotendaleyfi fyrir plöntuverndarvörum\nPrinciples of Insect Control (BASIS)\nVeggjalúsavottun (Killgerm)"
           }
         },
         "gisli": {
@@ -39,7 +39,7 @@
           "settings": {
             "name": "Gísli Einarsson",
             "role": "Meindýraeyðir",
-            "certs": "Notendaleyfi fyrir útrýmingarefnum\nNotendaleyfi fyrir plöntuverndarvörum\nPrinciples of Insect Control (BASIS)\nSkotvopnaleyfi"
+            "certs": "Notendaleyfi fyrir útrýmingarefnum\nNotendaleyfi fyrir plöntuverndarvörum\nPrinciples of Insect Control (BASIS)\nVeggjalúsavottun (Killgerm)\nSkotvopnaleyfi"
           }
         }
       },
@@ -95,7 +95,8 @@
           "type": "certificate",
           "settings": {
             "issuer": "Killgerm Training",
-            "title": "Veggjalúsavottun (bed bugs)"
+            "title": "Veggjalúsavottun (bed bugs)",
+            "holder": "Róbert Arnarsson · Gísli Einarsson"
           }
         },
         "skotvopn": {

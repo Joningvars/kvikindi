@@ -227,7 +227,8 @@
           "type": "certificate",
           "settings": {
             "issuer": "Killgerm Training",
-            "title": "Veggjalúsavottun (bed bugs)"
+            "title": "Veggjalúsavottun (bed bugs)",
+            "holder": "Róbert Arnarsson · Gísli Einarsson"
           }
         },
         "skotvopn": {
