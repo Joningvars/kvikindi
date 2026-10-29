@@ -116,11 +116,13 @@
         "heading": "Viltu leysa málið sjálf/ur?",
         "text": "Veldu meindýrið og við sýnum þér vörurnar sem virka best.",
         "link_label": "Allir vöruflokkar"
-      }
+      },
+      "disabled": true
     },
     "bestsellers": {
       "type": "featured-products",
-      "settings": {}
+      "settings": {},
+      "disabled": true
     },
     "why": {
       "type": "why-us",
@@ -371,6 +373,8 @@
     "hero",
     "services",
     "steps",
+    "pests",
+    "bestsellers",
     "why",
     "credentials",
     "faq",
