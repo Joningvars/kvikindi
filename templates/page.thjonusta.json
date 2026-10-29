@@ -274,11 +274,96 @@
         "text": "Kvikindi meindýravarnir er með starfsleyfi frá heilbrigðiseftirliti og starfsmenn hafa notendaleyfi og viðurkennda þjálfun í meindýravörnum.",
         "tinted": true
       }
+    },
+    "pestinfo": {
+      "type": "pest-info",
+      "blocks": {
+        "mys": {
+          "type": "pest",
+          "settings": {
+            "icon": "mouse",
+            "name": "Mýs og rottur",
+            "text": "Smjúga inn um litlar glufur í leit að fæðu og skjóli.",
+            "link": "https://www.natt.is/is/biota/animalia/chordata/mammalia/rodentia/husamus-mus-musculus"
+          }
+        },
+        "geit": {
+          "type": "pest",
+          "settings": {
+            "icon": "wasp",
+            "name": "Geitungar",
+            "text": "Gera bú undir þakskeggi, í veggjum, jörð og gróðri yfir sumarið.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/hymenoptera/vespidae/holugeitungur-vespula-vulgaris"
+          }
+        },
+        "veggjalus": {
+          "type": "pest",
+          "settings": {
+            "icon": "bedbug",
+            "name": "Veggjalús",
+            "text": "Felur sig í rúmum og húsgögnum og nærist á blóði.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/hemiptera/cimicidae/veggjalus-cimex-lectularius"
+          }
+        },
+        "kakkalakki": {
+          "type": "pest",
+          "settings": {
+            "icon": "cockroach",
+            "name": "Kakkalakkar",
+            "text": "Halda sig í hlýju og raka, oft í eldhúsum og við lagnir.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/dictyoptera/ectobiidae/huskakkalakki-blattella-germanica"
+          }
+        },
+        "silfurskotta": {
+          "type": "pest",
+          "settings": {
+            "icon": "silverfish",
+            "name": "Silfurskottur",
+            "text": "Algengar í rökum rýmum eins og baðherbergjum og kjöllurum.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/zygentoma/lepismatidae/silfurskotta-lepisma-saccharina"
+          }
+        },
+        "maur": {
+          "type": "pest",
+          "settings": {
+            "icon": "ant",
+            "name": "Maurar",
+            "text": "Koma inn í leit að mat og fylgja föstum slóðum.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/hymenoptera/formicidae/faraomaur-monomorium-pharaonis"
+          }
+        },
+        "klaufhali": {
+          "type": "pest",
+          "settings": {
+            "icon": "earwig",
+            "name": "Klaufhalar",
+            "text": "Sækja í raka og skjól og leita stundum inn í hús.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/dermaptera/forficulidae/gardaklaufhali-forficula-auricularia"
+          }
+        }
+      },
+      "block_order": [
+        "mys",
+        "geit",
+        "veggjalus",
+        "kakkalakki",
+        "silfurskotta",
+        "maur",
+        "klaufhali"
+      ],
+      "settings": {
+        "eyebrow": "Meindýr",
+        "heading": "Algeng meindýr á Íslandi",
+        "text": "Smelltu á dýrið til að lesa meira um það hjá Náttúrufræðistofnun.",
+        "link_label": "Nánar á natt.is",
+        "source_note": ""
+      }
     }
   },
   "order": [
     "hero",
     "services",
+    "pestinfo",
     "steps",
     "credentials",
     "faq",

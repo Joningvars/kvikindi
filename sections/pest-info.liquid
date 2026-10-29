@@ -1,0 +1,74 @@
+<section class="page-width section-y" id="meindyr">
+  <div class="max-w-2xl">
+    {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
+    <h2 class="h-section mt-3">{{ section.settings.heading }}</h2>
+    {%- if section.settings.text != blank -%}<p class="lede mt-4">{{ section.settings.text }}</p>{%- endif -%}
+  </div>
+  <ul class="mt-10 flex flex-wrap justify-center gap-3 md:mt-14 md:gap-5">
+    {%- for block in section.blocks -%}
+      <li class="w-[calc(50%-0.375rem)] md:w-[calc(33.333%-0.834rem)] lg:w-[calc(25%-0.9375rem)] xl:w-[calc(14.285%-1.0715rem)]" {{ block.shopify_attributes }}>
+        {%- if block.settings.link != blank -%}
+          <a href="{{ block.settings.link }}" target="_blank" rel="noopener" class="group card flex h-full flex-col items-center px-3 py-6 text-center transition duration-200 hover:-translate-y-0.5 hover:border-brand-400 hover:shadow-card md:px-4 md:py-7">
+        {%- else -%}
+          <div class="card flex h-full flex-col items-center px-3 py-6 text-center md:px-4 md:py-7">
+        {%- endif -%}
+          <span class="flex size-20 items-center justify-center rounded-full bg-brand-50 text-brand-600 transition-colors duration-200 group-hover:bg-brand-100 md:size-24">
+            {% render 'pest-icon', icon: block.settings.icon, class: 'size-12 md:size-14' %}
+          </span>
+          <h3 class="mt-5 font-display text-lg font-bold md:text-xl">{{ block.settings.name }}</h3>
+          {%- if block.settings.text != blank -%}<p class="mt-2 text-sm leading-relaxed text-muted">{{ block.settings.text }}</p>{%- endif -%}
+          {%- if block.settings.link != blank and section.settings.link_label != blank -%}
+            <span class="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-semibold text-brand-700 group-hover:underline">
+              {{ section.settings.link_label }}{% render 'icon', icon: 'arrow-up-right', class: 'size-3.5' %}
+            </span>
+          {%- endif -%}
+        {%- if block.settings.link != blank -%}</a>{%- else -%}</div>{%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+  {%- if section.settings.source_note != blank -%}
+    <p class="mt-6 text-sm text-muted">{{ section.settings.source_note }}</p>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "Pest guide",
+  "tag": "div",
+  "max_blocks": 12,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Small label", "default": "Meindýr" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Algeng meindýr á Íslandi" },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "text", "id": "link_label", "label": "Card link label", "default": "Nánar hjá Náttúrufræðistofnun" },
+    { "type": "text", "id": "source_note", "label": "Source note" }
+  ],
+  "blocks": [
+    {
+      "type": "pest",
+      "name": "Pest",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "mouse", "label": "Mouse / rat" },
+            { "value": "wasp", "label": "Wasp" },
+            { "value": "bedbug", "label": "Bed bug" },
+            { "value": "cockroach", "label": "Cockroach" },
+            { "value": "silverfish", "label": "Silverfish" },
+            { "value": "ant", "label": "Ant" },
+            { "value": "earwig", "label": "Earwig" }
+          ],
+          "default": "mouse"
+        },
+        { "type": "text", "id": "name", "label": "Name", "default": "Mýs og rottur" },
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "url", "id": "link", "label": "Link (e.g. Náttúrufræðistofnun)" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Pest guide", "blocks": [{ "type": "pest" }] }]
+}
+{% endschema %}
