@@ -31,7 +31,7 @@
           "settings": {
             "name": "Róbert Arnarsson",
             "role": "Meindýraeyðir",
-            "certs": "Notendaleyfi fyrir útrýmingarefnum\nNotendaleyfi fyrir plöntuverndarvörum\nPrinciples of Insect Control (BASIS)\nUppbygging HACCP-kerfa (Matís)"
+            "certs": "Notendaleyfi fyrir útrýmingarefnum\nNotendaleyfi fyrir plöntuverndarvörum\nPrinciples of Insect Control (BASIS)"
           }
         },
         "gisli": {
@@ -39,7 +39,7 @@
           "settings": {
             "name": "Gísli Einarsson",
             "role": "Meindýraeyðir",
-            "certs": "Notendaleyfi fyrir útrýmingarefnum\nNotendaleyfi fyrir plöntuverndarvörum\nPrinciples of Insect Control (BASIS)\nUppbygging HACCP-kerfa (Matís)\nSkotvopnaleyfi"
+            "certs": "Notendaleyfi fyrir útrýmingarefnum\nNotendaleyfi fyrir plöntuverndarvörum\nPrinciples of Insect Control (BASIS)\nSkotvopnaleyfi"
           }
         }
       },
@@ -98,14 +98,6 @@
             "title": "Veggjalúsavottun (bed bugs)"
           }
         },
-        "haccp": {
-          "type": "certificate",
-          "settings": {
-            "issuer": "Matís",
-            "title": "Uppbygging HACCP-kerfa í matvælafyrirtækjum",
-            "holder": "Róbert Arnarsson · Gísli Einarsson"
-          }
-        },
         "tilbod": {
           "type": "certificate",
           "settings": {
@@ -140,7 +132,6 @@
         "plontu_nam",
         "basis",
         "bedbug",
-        "haccp",
         "tilbod",
         "skotvopn"
       ],

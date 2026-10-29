@@ -230,14 +230,6 @@
             "title": "Veggjalúsavottun (bed bugs)"
           }
         },
-        "haccp": {
-          "type": "certificate",
-          "settings": {
-            "issuer": "Matís",
-            "title": "Uppbygging HACCP-kerfa í matvælafyrirtækjum",
-            "holder": "Róbert Arnarsson · Gísli Einarsson"
-          }
-        },
         "tilbod": {
           "type": "certificate",
           "settings": {
@@ -272,7 +264,6 @@
         "plontu_nam",
         "basis",
         "bedbug",
-        "haccp",
         "tilbod",
         "skotvopn"
       ],
