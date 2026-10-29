@@ -144,7 +144,8 @@
     "holder": "Holder",
     "number": "Certificate no.",
     "date": "Issued",
-    "view": "View certificate"
+    "view": "View certificate",
+    "add_image": "Add an image of the certificate in the editor"
   },
   "meta": {
     "default_description": "Kvikindi provides pest control for homes and businesses in Iceland: mice, rats, wasps and insects."

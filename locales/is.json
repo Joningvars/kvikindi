@@ -144,7 +144,8 @@
     "holder": "Handhafi",
     "number": "Skírteini nr.",
     "date": "Útgefið",
-    "view": "Skoða skírteini"
+    "view": "Skoða skírteini",
+    "add_image": "Bættu við mynd af skírteininu í ritlinum"
   },
   "meta": {
     "default_description": "Kvikindi sinnir meindýravörnum fyrir heimili og fyrirtæki: mýs, rottur, geitungar og skordýr."

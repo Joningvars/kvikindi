@@ -183,39 +183,95 @@
     "credentials": {
       "type": "credentials",
       "blocks": {
-        "cert_hes": {
+        "starfsleyfi": {
           "type": "certificate",
           "settings": {
-            "title": "Starfsleyfi og vottun",
             "issuer": "Heilbrigðiseftirlit",
+            "title": "Starfsleyfi til að starfrækja meindýravarnir",
             "holder": "Kvikindi meindýravarnir"
           }
         },
-        "cert_1": {
+        "vinnueftirlit": {
           "type": "certificate",
           "settings": {
-            "title": "Principles of Insect Control Certificate",
-            "issuer": "BASIS Registration Board · þjálfun hjá Killgerm Training",
-            "holder": "Robert Arnarson",
+            "issuer": "Vinnueftirlitið",
+            "title": "Leyfi frá Vinnueftirlitinu",
+            "holder": "Kvikindi meindýravarnir"
+          }
+        },
+        "utrym": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Umhverfis- og orkustofnun",
+            "title": "Notendaleyfi fyrir útrýmingarefnum",
+            "holder": "Róbert Arnarsson · Gísli Einarsson"
+          }
+        },
+        "plontu": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Umhverfisstofnun",
+            "title": "Notendaleyfi fyrir plöntuverndarvörum",
+            "holder": "Róbert Arnarsson · Gísli Einarsson"
+          }
+        },
+        "basis": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "BASIS · Killgerm Training",
+            "title": "Principles of Insect Control",
+            "holder": "Róbert Arnarsson",
             "number": "PIC/1293",
             "date": "17. september 2026"
           }
         },
-        "cert_bb": {
+        "bedbug": {
           "type": "certificate",
           "settings": {
-            "title": "Veggjalúsavottun (bed bugs)",
-            "issuer": "Killgerm Training"
+            "issuer": "Killgerm Training",
+            "title": "Veggjalúsavottun (bed bugs)"
+          }
+        },
+        "haccp": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Matís",
+            "title": "Uppbygging HACCP-kerfa í matvælafyrirtækjum",
+            "holder": "Róbert Arnarsson · Gísli Einarsson"
+          }
+        },
+        "tilbod": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Námskeið · IÐAN",
+            "title": "Tilboðsgerð verktaka",
+            "holder": "Róbert Arnarsson · Gísli Einarsson"
+          }
+        },
+        "skotvopn": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Lögreglan",
+            "title": "Skotvopnaleyfi",
+            "holder": "Gísli Einarsson"
           }
         }
       },
       "block_order": [
-        "cert_hes",
-        "cert_1",
-        "cert_bb"
+        "starfsleyfi",
+        "vinnueftirlit",
+        "utrym",
+        "plontu",
+        "basis",
+        "bedbug",
+        "haccp",
+        "tilbod",
+        "skotvopn"
       ],
       "settings": {
-        "text": "Kvikindi er með starfsleyfi og vottun frá heilbrigðiseftirliti, og starfsfólk hefur lokið viðurkenndri þjálfun í meindýravörnum."
+        "heading": "Leyfi og vottanir",
+        "text": "Kvikindi meindýravarnir er með starfsleyfi frá heilbrigðiseftirliti og starfsmenn hafa notendaleyfi og viðurkennda þjálfun í meindýravörnum.",
+        "tinted": true
       }
     }
   },

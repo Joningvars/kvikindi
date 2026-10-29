@@ -176,30 +176,42 @@
     "credentials": {
       "type": "credentials",
       "blocks": {
-        "cert_1": {
+        "utrym": {
           "type": "certificate",
           "settings": {
-            "title": "Principles of Insect Control Certificate",
-            "issuer": "BASIS Registration Board · þjálfun hjá Killgerm Training",
-            "holder": "Robert Arnarson",
+            "issuer": "Umhverfis- og orkustofnun",
+            "title": "Notendaleyfi fyrir útrýmingarefnum",
+            "holder": "Róbert Arnarsson · Gísli Einarsson"
+          }
+        },
+        "basis": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "BASIS · Killgerm Training",
+            "title": "Principles of Insect Control",
+            "holder": "Róbert Arnarsson",
             "number": "PIC/1293",
             "date": "17. september 2026"
           }
         },
-        "cert_bb": {
+        "bedbug": {
           "type": "certificate",
           "settings": {
-            "title": "Veggjalúsavottun (bed bugs)",
-            "issuer": "Killgerm Training"
+            "issuer": "Killgerm Training",
+            "title": "Veggjalúsavottun (bed bugs)"
           }
         }
       },
       "block_order": [
-        "cert_1",
-        "cert_bb"
+        "utrym",
+        "basis",
+        "bedbug"
       ],
       "settings": {
-        "text": "Meðhöndlun skordýra krefst þekkingar á tegundum, lífsferli þeirra og öruggri notkun efna."
+        "heading": "Leyfi og vottanir",
+        "text": "Meðhöndlun skordýra krefst þekkingar á tegundum, lífsferli þeirra og öruggri notkun efna.",
+        "columns": "3",
+        "tinted": true
       }
     }
   },

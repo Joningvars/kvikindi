@@ -1,0 +1,161 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "service-hero",
+      "settings": {
+        "eyebrow": "Um okkur",
+        "heading": "Kvikindi meindýravarnir",
+        "text": "Við sinnum meindýravörnum fyrir heimili og fyrirtæki, með tilskilin leyfi og þjálfun.",
+        "fallback_image": "kvikindi-hero-house.jpg",
+        "button_label": "Panta þjónustu",
+        "button_link": "/pages/hafa-samband"
+      }
+    },
+    "team": {
+      "type": "team",
+      "settings": {
+        "text": "Hjá Kvikindum vinna menn með leyfi og þjálfun til að sinna meindýravörnum á öruggan hátt."
+      },
+      "blocks": {
+        "robert": {
+          "type": "person",
+          "settings": {
+            "name": "Róbert Arnarsson",
+            "role": "Meindýraeyðir",
+            "certs": "Notendaleyfi fyrir útrýmingarefnum\nNotendaleyfi fyrir plöntuverndarvörum\nPrinciples of Insect Control (BASIS)\nUppbygging HACCP-kerfa (Matís)"
+          }
+        },
+        "gisli": {
+          "type": "person",
+          "settings": {
+            "name": "Gísli Einarsson",
+            "role": "Meindýraeyðir",
+            "certs": "Notendaleyfi fyrir útrýmingarefnum\nNotendaleyfi fyrir plöntuverndarvörum\nUppbygging HACCP-kerfa (Matís)\nSkotvopnaleyfi"
+          }
+        }
+      },
+      "block_order": [
+        "robert",
+        "gisli"
+      ]
+    },
+    "credentials": {
+      "type": "credentials",
+      "blocks": {
+        "starfsleyfi": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Heilbrigðiseftirlit",
+            "title": "Starfsleyfi til að starfrækja meindýravarnir",
+            "holder": "Kvikindi meindýravarnir"
+          }
+        },
+        "vinnueftirlit": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Vinnueftirlitið",
+            "title": "Leyfi frá Vinnueftirlitinu",
+            "holder": "Kvikindi meindýravarnir"
+          }
+        },
+        "utrym": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Umhverfis- og orkustofnun",
+            "title": "Notendaleyfi fyrir útrýmingarefnum",
+            "holder": "Róbert Arnarsson · Gísli Einarsson"
+          }
+        },
+        "plontu": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Umhverfisstofnun",
+            "title": "Notendaleyfi fyrir plöntuverndarvörum",
+            "holder": "Róbert Arnarsson · Gísli Einarsson"
+          }
+        },
+        "basis": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "BASIS · Killgerm Training",
+            "title": "Principles of Insect Control",
+            "holder": "Róbert Arnarsson",
+            "number": "PIC/1293",
+            "date": "17. september 2026"
+          }
+        },
+        "bedbug": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Killgerm Training",
+            "title": "Veggjalúsavottun (bed bugs)"
+          }
+        },
+        "haccp": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Matís",
+            "title": "Uppbygging HACCP-kerfa í matvælafyrirtækjum",
+            "holder": "Róbert Arnarsson · Gísli Einarsson"
+          }
+        },
+        "tilbod": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Námskeið · IÐAN",
+            "title": "Tilboðsgerð verktaka",
+            "holder": "Róbert Arnarsson · Gísli Einarsson"
+          }
+        },
+        "skotvopn": {
+          "type": "certificate",
+          "settings": {
+            "issuer": "Lögreglan",
+            "title": "Skotvopnaleyfi",
+            "holder": "Gísli Einarsson"
+          }
+        }
+      },
+      "block_order": [
+        "starfsleyfi",
+        "vinnueftirlit",
+        "utrym",
+        "plontu",
+        "basis",
+        "bedbug",
+        "haccp",
+        "tilbod",
+        "skotvopn"
+      ],
+      "settings": {
+        "heading": "Leyfi og vottanir",
+        "text": "Kvikindi meindýravarnir er með starfsleyfi frá heilbrigðiseftirliti og starfsmenn hafa notendaleyfi og viðurkennda þjálfun í meindýravörnum.",
+        "tinted": true
+      }
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "heading": "Vantar þig aðstoð?",
+        "text": "Sendu okkur beiðni og við finnum lausn sem hentar þér.",
+        "button_label": "Panta þjónustu",
+        "button_link": "/pages/hafa-samband"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "team",
+    "credentials",
+    "cta"
+  ]
+}
