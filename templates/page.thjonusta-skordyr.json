@@ -219,7 +219,8 @@
           "settings": {
             "issuer": "BASIS · Killgerm Training",
             "title": "Principles of Insect Control",
-            "holder": "Róbert Arnarsson · Gísli Einarsson"
+            "holder": "Róbert Arnarsson · Gísli Einarsson",
+            "asset_image": "cert-basis-robert.jpg"
           }
         },
         "bedbug": {

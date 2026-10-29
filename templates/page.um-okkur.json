@@ -88,7 +88,8 @@
           "settings": {
             "issuer": "BASIS · Killgerm Training",
             "title": "Principles of Insect Control",
-            "holder": "Róbert Arnarsson · Gísli Einarsson"
+            "holder": "Róbert Arnarsson · Gísli Einarsson",
+            "asset_image": "cert-basis-robert.jpg"
           }
         },
         "bedbug": {
@@ -113,7 +114,8 @@
             "issuer": "Endurmenntun LbhÍ",
             "title": "Réttindanám í meðferð plöntuverndarvara",
             "holder": "Róbert Arnarsson",
-            "date": "25. september 2026"
+            "date": "25. september 2026",
+            "asset_image": "cert-plontuvernd-robert.jpg"
           }
         }
       },
