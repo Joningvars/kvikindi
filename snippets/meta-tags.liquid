@@ -7,7 +7,19 @@
   assign og_url = canonical_url | default: request.origin
   assign og_type = 'website'
   assign default_description = 'meta.default_description' | t
-  assign og_description = page_description | default: shop.description | default: default_description
+  assign page_meta_description = ''
+  if request.page_type == 'page' and template.suffix != blank
+    assign page_meta_key = template.suffix | replace: '-', '_' | prepend: 'meta.pages.'
+    assign page_meta_description = page_meta_key | t
+    if page_meta_description contains 'translation missing'
+      assign page_meta_description = ''
+    endif
+  endif
+  if request.page_type == 'index'
+    assign og_description = page_description | default: default_description
+  else
+    assign og_description = page_description | default: page_meta_description | default: shop.description | default: default_description
+  endif
 
   if request.page_type == 'product'
     assign og_type = 'product'
@@ -46,7 +58,7 @@
 {%- if page_image -%}
   <meta
     property="og:image"
-    content="http:{{ page_image | image_url }}"
+    content="https:{{ page_image | image_url }}"
   >
   <meta
     property="og:image:secure_url"
@@ -106,3 +118,43 @@
   name="description"
   content="{{ og_description | escape }}"
 >
+
+{%- liquid
+  assign org_type = 'Organization'
+  if settings.contact_address != blank
+    assign org_type = 'LocalBusiness'
+  endif
+  assign org_name = settings.company_name | default: shop.name
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": {{ org_type | json }},
+        "@id": {{ request.origin | append: '/#organization' | json }},
+        "name": {{ org_name | json }},
+        "url": {{ request.origin | append: routes.root_url | json }},
+        "logo": {{ 'kvikindi-logo.svg' | asset_url | prepend: 'https:' | json }},
+        "image": {{ 'kvikindi-hero-house.jpg' | asset_img_url: '1200x' | prepend: 'https:' | json }},
+        "description": {{ default_description | json }}
+        {%- if settings.contact_phone != blank -%},"telephone": {{ settings.contact_phone | json }}{%- endif -%}
+        {%- if settings.contact_email != blank -%},"email": {{ settings.contact_email | json }}{%- endif -%}
+        {%- if settings.contact_address != blank -%},"address": {{ settings.contact_address | strip_newlines | json }}{%- endif -%}
+        {%- if settings.company_kennitala != blank -%},"taxID": {{ settings.company_kennitala | json }}{%- endif -%}
+        {%- assign same_as = '' -%}
+        {%- if settings.social_facebook != blank -%}{%- assign same_as = same_as | append: settings.social_facebook | append: '|' -%}{%- endif -%}
+        {%- if settings.social_instagram != blank -%}{%- assign same_as = same_as | append: settings.social_instagram | append: '|' -%}{%- endif -%}
+        {%- if same_as != blank -%},"sameAs": {{ same_as | split: '|' | json }}{%- endif -%}
+      },
+      {
+        "@type": "WebSite",
+        "@id": {{ request.origin | append: '/#website' | json }},
+        "name": {{ org_name | json }},
+        "url": {{ request.origin | append: routes.root_url | json }},
+        "inLanguage": {{ request.locale.iso_code | json }},
+        "publisher": { "@id": {{ request.origin | append: '/#organization' | json }} }
+      }
+    ]
+  }
+</script>

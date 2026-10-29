@@ -18,7 +18,7 @@
         src="{{ hero_asset | asset_img_url: '1500x' }}"
         srcset="{{ hero_asset | asset_img_url: '750x' }} 750w, {{ hero_asset | asset_img_url: '1100x' }} 1100w, {{ hero_asset | asset_img_url: '1500x' }} 1500w, {{ hero_asset | asset_img_url: 'master' }} 2400w"
         sizes="(min-width: 1344px) 1280px, calc(100vw - 40px)"
-        alt=""
+        alt="{{ 'meta.hero_alt' | t | escape }}"
         width="2400"
         height="1029"
         class="absolute inset-0 -z-20 size-full object-cover object-[70%_center]"

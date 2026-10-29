@@ -148,7 +148,18 @@
     "add_image": "Add an image of the certificate in the editor"
   },
   "meta": {
-    "default_description": "Kvikindi provides pest control for homes and businesses in Iceland: mice, rats, wasps and insects."
+    "default_description": "Kvikindi provides pest control for homes and businesses in Iceland: mice, rats, wasps and insects.",
+    "pages": {
+      "thjonusta": "Pest control for homes and businesses in Iceland: mice, rats, wasps and insects. Inspection, treatment and follow-up by licensed professionals.",
+      "thjonusta_mys": "Mice or rats in the house? Kvikindi finds where they get in, removes them and seals the entry points. For homes, summer houses and businesses.",
+      "thjonusta_geitungar": "Wasp nest under the eaves, in a wall or in the garden? Kvikindi removes wasp nests safely with the right equipment.",
+      "thjonusta_skordyr": "Bed bugs, cockroaches, silverfish and ants. Kvikindi identifies the species and chooses a treatment that suits the situation.",
+      "thjonusta_fyrirtaeki": "Regular pest monitoring and prevention for restaurants, shops, warehouses, hotels and housing associations.",
+      "hafa_samband": "Send Kvikindi a pest control request. Tell us what you have seen and where, and we will get back to you.",
+      "um_okkur": "Kvikindi pest control: operating licence from the health authority, user licences and recognised pest control training."
+    },
+    "hero_alt": "Pest control technician placing a bait station by a house",
+    "kitchen_alt": "Pest control technician placing a bait station under kitchen cabinets"
   },
   "shop_closed": {
     "heading": "Our online shop is opening soon",

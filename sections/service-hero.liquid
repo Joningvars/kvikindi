@@ -31,7 +31,8 @@
         {{ section.settings.image | image_url: width: 1600 | image_tag: widths: '600, 900, 1200, 1600', sizes: '(min-width: 1024px) 640px, 100vw', class: 'absolute inset-0 size-full object-cover', loading: 'eager' }}
       {%- else -%}
         {%- assign fallback = section.settings.fallback_image -%}
-        <img src="{{ fallback | asset_img_url: '1200x' }}" srcset="{{ fallback | asset_img_url: '600x' }} 600w, {{ fallback | asset_img_url: '1200x' }} 1200w" sizes="(min-width: 1024px) 640px, 100vw" alt="" class="absolute inset-0 size-full object-cover" width="1200" height="900">
+        {%- if fallback contains 'kitchen' -%}{%- assign fallback_alt = 'meta.kitchen_alt' | t -%}{%- else -%}{%- assign fallback_alt = 'meta.hero_alt' | t -%}{%- endif -%}
+        <img src="{{ fallback | asset_img_url: '1200x' }}" srcset="{{ fallback | asset_img_url: '600x' }} 600w, {{ fallback | asset_img_url: '1200x' }} 1200w" sizes="(min-width: 1024px) 640px, 100vw" alt="{{ fallback_alt | escape }}" class="absolute inset-0 size-full object-cover" width="1200" height="900">
       {%- endif -%}
     </div>
   </div>

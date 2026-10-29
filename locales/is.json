@@ -148,7 +148,18 @@
     "add_image": "Bættu við mynd af skírteininu í ritlinum"
   },
   "meta": {
-    "default_description": "Kvikindi sinnir meindýravörnum fyrir heimili og fyrirtæki: mýs, rottur, geitungar og skordýr."
+    "default_description": "Kvikindi sinnir meindýravörnum fyrir heimili og fyrirtæki: mýs, rottur, geitungar og skordýr.",
+    "pages": {
+      "thjonusta": "Meindýraeyðing fyrir heimili og fyrirtæki: mýs, rottur, geitungar og skordýr. Skoðun, meðhöndlun og eftirfylgni frá fagfólki með tilskilin leyfi.",
+      "thjonusta_mys": "Mýs eða rottur í húsinu? Kvikindi finnur hvaðan nagdýrin koma, fjarlægir þau og lokar leiðum inn. Fyrir heimili, sumarhús og fyrirtæki.",
+      "thjonusta_geitungar": "Geitungabú í þakskeggi, vegg eða garði? Kvikindi fjarlægir geitungabú á öruggan hátt með réttum búnaði.",
+      "thjonusta_skordyr": "Veggjalús, kakkalakkar, silfurskottur og maurar. Kvikindi greinir tegundina og velur meðhöndlun sem hentar aðstæðum.",
+      "thjonusta_fyrirtaeki": "Reglubundið meindýraeftirlit og varnir fyrir veitingastaði, verslanir, lagera, hótel og húsfélög.",
+      "hafa_samband": "Sendu Kvikindi beiðni um meindýravarnir. Segðu okkur hvað þú hefur séð og hvar, og við höfum samband.",
+      "um_okkur": "Kvikindi meindýravarnir: starfsleyfi frá heilbrigðiseftirliti, notendaleyfi og viðurkennd þjálfun í meindýravörnum."
+    },
+    "hero_alt": "Meindýraeyðir setur upp beitustöð við hús",
+    "kitchen_alt": "Meindýraeyðir kemur fyrir beitustöð undir eldhúsinnréttingu"
   },
   "shop_closed": {
     "heading": "Vefverslunin opnar fljótlega",

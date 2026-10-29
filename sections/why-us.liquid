@@ -14,7 +14,7 @@
             src="{{ why_asset | asset_img_url: '900x' }}"
             srcset="{{ why_asset | asset_img_url: '600x' }} 600w, {{ why_asset | asset_img_url: '900x' }} 900w, {{ why_asset | asset_img_url: 'master' }} 1400w"
             sizes="(min-width: 1024px) 600px, 100vw"
-            alt=""
+            alt="{{ 'meta.kitchen_alt' | t | escape }}"
             width="1400"
             height="1867"
             loading="lazy"
