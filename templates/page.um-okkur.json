@@ -39,7 +39,7 @@
           "settings": {
             "name": "Gísli Einarsson",
             "role": "Meindýraeyðir",
-            "certs": "Notendaleyfi fyrir útrýmingarefnum\nNotendaleyfi fyrir plöntuverndarvörum\nUppbygging HACCP-kerfa (Matís)\nSkotvopnaleyfi"
+            "certs": "Notendaleyfi fyrir útrýmingarefnum\nNotendaleyfi fyrir plöntuverndarvörum\nPrinciples of Insect Control (BASIS)\nUppbygging HACCP-kerfa (Matís)\nSkotvopnaleyfi"
           }
         }
       },
@@ -88,9 +88,7 @@
           "settings": {
             "issuer": "BASIS · Killgerm Training",
             "title": "Principles of Insect Control",
-            "holder": "Róbert Arnarsson",
-            "number": "PIC/1293",
-            "date": "17. september 2026"
+            "holder": "Róbert Arnarsson · Gísli Einarsson"
           }
         },
         "bedbug": {
