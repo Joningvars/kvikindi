@@ -230,14 +230,6 @@
             "title": "Veggjalúsavottun (bed bugs)"
           }
         },
-        "tilbod": {
-          "type": "certificate",
-          "settings": {
-            "issuer": "Námskeið · IÐAN",
-            "title": "Tilboðsgerð verktaka",
-            "holder": "Róbert Arnarsson · Gísli Einarsson"
-          }
-        },
         "skotvopn": {
           "type": "certificate",
           "settings": {
@@ -264,7 +256,6 @@
         "plontu_nam",
         "basis",
         "bedbug",
-        "tilbod",
         "skotvopn"
       ],
       "settings": {
