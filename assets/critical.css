@@ -1,11 +1,14 @@
-/** Critical CSS, loaded on every page before tailwind.css. Keep this tiny. */
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100svh;
-  margin: 0;
+/** Critical CSS, loaded on every page before tailwind.css. Keep this tiny.
+ *  Wrapped in @layer base so Tailwind utilities (size-full, hidden, etc.) can override it. */
+@layer base {
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    margin: 0;
+  }
+  main { flex: 1 0 auto; }
+  html:has(dialog[scroll-lock][open], details[scroll-lock][open]) { overflow: hidden; }
+  img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
+  .shopify-section { position: relative; }
 }
-main { flex: 1 0 auto; }
-html:has(dialog[scroll-lock][open], details[scroll-lock][open]) { overflow: hidden; }
-img, picture, video, canvas, svg { display: block; max-width: 100%; height: auto; }
-.shopify-section { position: relative; }
