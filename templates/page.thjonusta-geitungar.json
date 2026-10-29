@@ -27,13 +27,13 @@
         "p2": {
           "type": "point",
           "settings": {
-            "text": "Réttur búnaður og hlífðarfatnaður"
+            "text": "Réttur búnaður"
           }
         },
         "p3": {
           "type": "point",
           "settings": {
-            "text": "Ráð um hvernig draga má úr líkum á nýjum búum"
+            "text": "Ráðgjöf um forvarnir"
           }
         }
       },
