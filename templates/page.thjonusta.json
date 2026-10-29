@@ -193,6 +193,14 @@
     "credentials": {
       "type": "credentials",
       "blocks": {
+        "cert_hes": {
+          "type": "certificate",
+          "settings": {
+            "title": "Starfsleyfi og vottun",
+            "issuer": "Heilbrigðiseftirlit",
+            "holder": "Kvikindi meindýravarnir"
+          }
+        },
         "cert_1": {
           "type": "certificate",
           "settings": {
@@ -202,12 +210,23 @@
             "number": "PIC/1293",
             "date": "17. september 2026"
           }
+        },
+        "cert_bb": {
+          "type": "certificate",
+          "settings": {
+            "title": "Veggjalúsavottun (bed bugs)",
+            "issuer": "Killgerm Training"
+          }
         }
       },
       "block_order": [
-        "cert_1"
+        "cert_hes",
+        "cert_1",
+        "cert_bb"
       ],
-      "settings": {}
+      "settings": {
+        "text": "Kvikindi er með starfsleyfi og vottun frá heilbrigðiseftirliti, og starfsfólk hefur lokið viðurkenndri þjálfun í meindýravörnum."
+      }
     }
   },
   "order": [

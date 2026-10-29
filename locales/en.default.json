@@ -106,7 +106,9 @@
   },
   "footer": {
     "contact": "Contact",
-    "payment_methods": "Payment methods"
+    "payment_methods": "Payment methods",
+    "kennitala": "Reg. no.",
+    "vat": "VAT no."
   },
   "pagination": {
     "label": "Pagination",

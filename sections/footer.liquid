@@ -72,7 +72,11 @@
 
   <div class="border-t border-white/10">
     <div class="page-width flex flex-col gap-4 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
-      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}</p>
+      <p>
+        &copy; {{ 'now' | date: '%Y' }} {{ settings.company_name | default: shop.name }}
+        {%- if settings.company_kennitala != blank %} · {{ 'footer.kennitala' | t }} {{ settings.company_kennitala }}{% endif -%}
+        {%- if settings.company_vat != blank %} · {{ 'footer.vat' | t }} {{ settings.company_vat }}{% endif -%}
+      </p>
       <div class="flex flex-wrap items-center gap-4">
         {% render 'language-switcher', active_class: 'bg-white/10 text-white' %}
         {%- if section.settings.show_payment_icons -%}
@@ -92,7 +96,7 @@
   "name": "Footer",
   "enabled_on": { "groups": ["footer"] },
   "settings": [
-    { "type": "textarea", "id": "text", "label": "Text", "default": "Meindýravarnir og vörur fyrir heimili og fyrirtæki um allt land." },
+    { "type": "textarea", "id": "text", "label": "Text", "default": "Meindýravarnir fyrir heimili og fyrirtæki." },
     { "type": "checkbox", "id": "show_newsletter", "label": "Show newsletter signup", "default": true },
     { "type": "text", "id": "newsletter_heading", "label": "Newsletter heading", "default": "Fáðu ráð og tilboð í pósti" },
     { "type": "link_list", "id": "menu_1", "label": "Menu 1", "default": "main-menu" },

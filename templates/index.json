@@ -327,6 +327,44 @@
         "st3",
         "st4"
       ]
+    },
+    "credentials": {
+      "type": "credentials",
+      "blocks": {
+        "cert_hes": {
+          "type": "certificate",
+          "settings": {
+            "title": "Starfsleyfi og vottun",
+            "issuer": "Heilbrigðiseftirlit",
+            "holder": "Kvikindi meindýravarnir"
+          }
+        },
+        "cert_1": {
+          "type": "certificate",
+          "settings": {
+            "title": "Principles of Insect Control Certificate",
+            "issuer": "BASIS Registration Board · þjálfun hjá Killgerm Training",
+            "holder": "Robert Arnarson",
+            "number": "PIC/1293",
+            "date": "17. september 2026"
+          }
+        },
+        "cert_bb": {
+          "type": "certificate",
+          "settings": {
+            "title": "Veggjalúsavottun (bed bugs)",
+            "issuer": "Killgerm Training"
+          }
+        }
+      },
+      "block_order": [
+        "cert_hes",
+        "cert_1",
+        "cert_bb"
+      ],
+      "settings": {
+        "text": "Kvikindi er með starfsleyfi og vottun frá heilbrigðiseftirliti, og starfsfólk hefur lokið viðurkenndri þjálfun í meindýravörnum."
+      }
     }
   },
   "order": [
@@ -334,6 +372,7 @@
     "services",
     "steps",
     "why",
+    "credentials",
     "faq",
     "cta"
   ]

@@ -185,10 +185,18 @@
             "number": "PIC/1293",
             "date": "17. september 2026"
           }
+        },
+        "cert_bb": {
+          "type": "certificate",
+          "settings": {
+            "title": "Veggjalúsavottun (bed bugs)",
+            "issuer": "Killgerm Training"
+          }
         }
       },
       "block_order": [
-        "cert_1"
+        "cert_1",
+        "cert_bb"
       ],
       "settings": {
         "text": "Meðhöndlun skordýra krefst þekkingar á tegundum, lífsferli þeirra og öruggri notkun efna."

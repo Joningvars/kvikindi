@@ -51,6 +51,26 @@
         "type": "text",
         "id": "contact_address",
         "label": "Address"
+      },
+      {
+        "type": "header",
+        "content": "Company"
+      },
+      {
+        "type": "text",
+        "id": "company_name",
+        "label": "Company name",
+        "default": "Kvikindi meindýravarnir"
+      },
+      {
+        "type": "text",
+        "id": "company_kennitala",
+        "label": "Kennitala"
+      },
+      {
+        "type": "text",
+        "id": "company_vat",
+        "label": "VSK-númer"
       }
     ]
   },

@@ -12,6 +12,7 @@
     "contact_phone": "",
     "contact_email": "",
     "contact_address": "",
-    "shop_enabled": false
+    "shop_enabled": false,
+    "company_name": "Kvikindi meindýravarnir"
   }
 }
