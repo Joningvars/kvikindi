@@ -9,27 +9,18 @@
  */
 {
   "sections": {
-    "hero": {
-      "type": "service-hero",
-      "settings": {
-        "eyebrow": "Hafa samband",
-        "heading": "Hafðu samband",
-        "text": "Sendu okkur beiðni um þjónustu eða spurningu. Við svörum eins fljótt og við getum.",
-        "fallback_image": "kvikindi-why-kitchen.jpg",
-        "button_label": "Fylla út beiðni"
-      }
-    },
     "request": {
       "type": "service-request",
       "settings": {
-        "eyebrow": "Beiðni",
-        "heading": "Hvernig getum við aðstoðað?",
-        "services": "Mýs og rottur, Geitungar, Skordýr, Fyrirtækjaþjónusta"
+        "eyebrow": "Hafa samband",
+        "heading": "Hafðu samband",
+        "services": "Mýs og rottur, Geitungar, Skordýr, Fyrirtækjaþjónusta",
+        "text": "Sendu okkur beiðni um þjónustu eða spurningu. Lýstu því sem þú hefur séð og hvar, og við svörum eins fljótt og við getum.",
+        "page_top": true
       }
     }
   },
   "order": [
-    "hero",
     "request"
   ]
 }

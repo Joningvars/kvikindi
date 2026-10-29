@@ -76,6 +76,7 @@
         &copy; {{ 'now' | date: '%Y' }} {{ settings.company_name | default: shop.name }}
         {%- if settings.company_kennitala != blank %} · {{ 'footer.kennitala' | t }} {{ settings.company_kennitala }}{% endif -%}
         {%- if settings.company_vat != blank %} · {{ 'footer.vat' | t }} {{ settings.company_vat }}{% endif -%}
+        {%- if shop.privacy_policy %} · <a href="{{ shop.privacy_policy.url }}" class="hover:text-white hover:underline">{{ shop.privacy_policy.title }}</a>{% endif -%}
       </p>
       <div class="flex flex-wrap items-center gap-4">
         {% render 'language-switcher', active_class: 'bg-white/10 text-white' %}

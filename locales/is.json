@@ -138,7 +138,9 @@
     "submit": "Senda beiðni",
     "success": "Takk! Beiðnin þín er komin til okkar og við höfum samband fljótlega.",
     "required_note": "Reitir merktir * eru nauðsynlegir.",
-    "source_label": "Sent af síðu"
+    "source_label": "Sent af síðu",
+    "privacy_note": "Við notum upplýsingarnar eingöngu til að svara beiðninni, sjá",
+    "privacy_link": "persónuverndarstefnu"
   },
   "credentials": {
     "holder": "Handhafi",
@@ -156,7 +158,9 @@
       "thjonusta_skordyr": "Veggjalús, kakkalakkar, silfurskottur og maurar. Kvikindi greinir tegundina og velur meðhöndlun sem hentar aðstæðum.",
       "thjonusta_fyrirtaeki": "Reglubundið meindýraeftirlit og varnir fyrir veitingastaði, verslanir, lagera, hótel og húsfélög.",
       "hafa_samband": "Sendu Kvikindi beiðni um meindýravarnir. Segðu okkur hvað þú hefur séð og hvar, og við höfum samband.",
-      "um_okkur": "Kvikindi meindýravarnir: starfsleyfi frá heilbrigðiseftirliti, notendaleyfi og viðurkennd þjálfun í meindýravörnum."
+      "um_okkur": "Kvikindi meindýravarnir: starfsleyfi frá heilbrigðiseftirliti, notendaleyfi og viðurkennd þjálfun í meindýravörnum.",
+      "meindyr": "Algeng meindýr og pöddur í íslenskum húsum: mýs, rottur, geitungar, veggjalús, kakkalakkar, silfurskottur, flær og fleiri. Ummerki og hvenær á að fá aðstoð.",
+      "spurningar": "Svör við algengum spurningum um meindýravarnir: mýs og rottur, geitunga, skordýr og þjónustu við fyrirtæki."
     },
     "hero_alt": "Meindýraeyðir setur upp beitustöð við hús",
     "kitchen_alt": "Meindýraeyðir kemur fyrir beitustöð undir eldhúsinnréttingu"

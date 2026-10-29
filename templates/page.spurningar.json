@@ -1,0 +1,247 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "almennt": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "Spurt og svarað",
+        "heading": "Almennt",
+        "text": "Finnurðu ekki svarið? Sendu okkur beiðni.",
+        "open_first": false
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Hvaða meindýr sinnið þið?",
+            "answer": "<p>Mýs, rottur, geitunga og skordýr eins og veggjalýs, kakkalakka, silfurskottur og maura. Við sinnum bæði heimilum og fyrirtækjum.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Hvernig panta ég þjónustu?",
+            "answer": "<p>Fylltu út beiðni hér á síðunni eða hringdu í okkur. Segðu okkur hvað þú hefur séð og hvar, og við höfum samband til að finna tíma.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Er öruggt að vera heima með börn og gæludýr?",
+            "answer": "<p>Við förum yfir öryggisatriði með þér áður en við hefjumst handa og veljum aðferðir sem henta aðstæðum á heimilinu.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "Hvað kostar þjónustan?",
+            "answer": "<p>[Settu inn verðskrá eða hvernig verð er ákveðið.]</p>"
+          }
+        },
+        "q5": {
+          "type": "question",
+          "settings": {
+            "question": "Hvaða svæði þjónustið þið?",
+            "answer": "<p>[Settu inn þjónustusvæði.]</p>"
+          }
+        },
+        "q6": {
+          "type": "question",
+          "settings": {
+            "question": "Hversu fljótt getið þið komið?",
+            "answer": "<p>[Settu inn hefðbundinn biðtíma.]</p>"
+          }
+        },
+        "q7": {
+          "type": "question",
+          "settings": {
+            "question": "Get ég leyst vandamálið sjálf/ur?",
+            "answer": "<p>Minni vandamál má stundum leysa sjálf/ur, en ef vandinn er stór eða kemur aftur og aftur er best að fá fagmann. Hafðu samband og við ráðleggjum þér.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5",
+        "q6",
+        "q7"
+      ]
+    },
+    "mys": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Mýs og rottur",
+        "text": "",
+        "open_first": false
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Hvað tekur meðhöndlun langan tíma?",
+            "answer": "<p>[Settu inn hefðbundinn tíma og fjölda heimsókna.]</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Þarf ég að fara að heiman?",
+            "answer": "<p>[Útskýrðu hvort og hvenær þess er þörf.]</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Hvernig kem ég í veg fyrir að þær komi aftur?",
+            "answer": "<p>Lokaðu glufum og opum, geymdu mat í lokuðum ílátum og haltu geymslum snyrtilegum. Við förum yfir þetta með þér í heimsókninni.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ]
+    },
+    "geit": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Geitungar",
+        "text": "",
+        "open_first": false
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Get ég fjarlægt búið sjálf/ur?",
+            "answer": "<p>Lítil bú má stundum fjarlægja með réttum búnaði, en stungur geta verið hættulegar. Ef þú ert í vafa, hafðu samband.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Hvað kostar að fjarlægja bú?",
+            "answer": "<p>[Settu inn verð eða hvernig verð er ákveðið.]</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Koma geitungarnir aftur?",
+            "answer": "<p>[Útskýrðu hvað gerist eftir að bú er fjarlægt og hvort nýtt bú geti myndast.]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ]
+    },
+    "skordyr": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Skordýr",
+        "text": "",
+        "open_first": false
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Hvernig undirbý ég heimilið fyrir meðhöndlun?",
+            "answer": "<p>[Settu inn leiðbeiningar fyrir hverja tegund.]</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Hversu margar heimsóknir þarf?",
+            "answer": "<p>[Útskýrðu hefðbundinn fjölda heimsókna.]</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Hvernig veit ég hvaða skordýr þetta er?",
+            "answer": "<p>Þú þarft ekki að vita það. Lýstu því sem þú hefur séð, hvar og hvenær, og við hjálpum þér að greina tegundina.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ]
+    },
+    "fyrirtaeki": {
+      "type": "faq",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Fyrirtæki",
+        "text": "",
+        "open_first": false
+      },
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "Hvernig virkar þjónustusamningur?",
+            "answer": "<p>[Lýstu samningum: tíðni heimsókna, hvað er innifalið og uppsagnarfrestur.]</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "Hvað kostar fyrirtækjaþjónusta?",
+            "answer": "<p>[Útskýrðu verðlagningu, t.d. eftir stærð og fjölda heimsókna.]</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "Fáum við skýrslur?",
+            "answer": "<p>[Lýstu skráningu og skýrslugerð ef hún er í boði.]</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3"
+      ]
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "heading": "Ertu með aðra spurningu?",
+        "text": "Sendu okkur línu og við svörum eins fljótt og við getum.",
+        "button_label": "Hafa samband",
+        "button_link": "/pages/hafa-samband"
+      }
+    }
+  },
+  "order": [
+    "almennt",
+    "mys",
+    "geit",
+    "skordyr",
+    "fyrirtaeki",
+    "cta"
+  ]
+}

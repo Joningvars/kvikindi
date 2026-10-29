@@ -1,0 +1,191 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "service-hero",
+      "settings": {
+        "eyebrow": "Fróðleikur",
+        "heading": "Meindýr og pöddur í húsum",
+        "text": "Ekki eru öll smádýr sem skríða um húsið meindýr. Hér eru þau algengustu sem við fáumst við. Smelltu á dýr til að lesa meira um það hjá Náttúrufræðistofnun.",
+        "fallback_image": "kvikindi-why-kitchen.jpg",
+        "button_label": "Panta þjónustu",
+        "button_link": "/pages/hafa-samband"
+      },
+      "blocks": {
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Þú þarft ekki að vita hvaða dýr þetta er"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "Lýstu því sem þú sérð og við hjálpum þér að greina það"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2"
+      ]
+    },
+    "pests": {
+      "type": "pest-info",
+      "settings": {
+        "eyebrow": "Meindýr",
+        "heading": "Algengustu tegundirnar",
+        "text": "",
+        "link_label": "Nánar á natt.is",
+        "source_note": "Upplýsingar um tegundir: Náttúrufræðistofnun (natt.is).",
+        "layout": "grid"
+      },
+      "blocks": {
+        "mys": {
+          "type": "pest",
+          "settings": {
+            "icon": "mouse",
+            "name": "Mýs og rottur",
+            "text": "Smjúga inn um litlar glufur í leit að fæðu og skjóli. Skítur, nagför og krafs í veggjum eru algeng ummerki.",
+            "link": "https://www.natt.is/is/biota/animalia/chordata/mammalia/rodentia/husamus-mus-musculus"
+          }
+        },
+        "geit": {
+          "type": "pest",
+          "settings": {
+            "icon": "wasp",
+            "name": "Geitungar",
+            "text": "Gera bú undir þakskeggi, í veggjum, jörð og gróðri yfir sumarið. Stungur geta verið hættulegar fólki með ofnæmi.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/hymenoptera/vespidae/holugeitungur-vespula-vulgaris"
+          }
+        },
+        "veggjalus": {
+          "type": "pest",
+          "settings": {
+            "icon": "bedbug",
+            "name": "Veggjalús",
+            "text": "Felur sig í rúmum og húsgögnum og nærist á blóði. Berst oft með farangri á milli staða.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/hemiptera/cimicidae/veggjalus-cimex-lectularius"
+          }
+        },
+        "kakkalakki": {
+          "type": "pest",
+          "settings": {
+            "icon": "cockroach",
+            "name": "Kakkalakkar",
+            "text": "Halda sig í hlýju og raka, oft í eldhúsum og við lagnir. Fjölga sér hratt ef ekkert er að gert.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/dictyoptera/ectobiidae/huskakkalakki-blattella-germanica"
+          }
+        },
+        "silfurskotta": {
+          "type": "pest",
+          "settings": {
+            "icon": "silverfish",
+            "name": "Silfurskottur",
+            "text": "Algengar í rökum rýmum eins og baðherbergjum og kjöllurum. Benda oft til þess að raki sé of mikill.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/zygentoma/lepismatidae/silfurskotta-lepisma-saccharina"
+          }
+        },
+        "flo": {
+          "type": "pest",
+          "settings": {
+            "icon": "flea",
+            "name": "Flær",
+            "text": "Berast oft inn með gæludýrum eða úr fuglahreiðrum við hús.",
+            "link": "https://www.natt.is/is/flaer-siphonaptera"
+          }
+        },
+        "klaufhali": {
+          "type": "pest",
+          "settings": {
+            "icon": "earwig",
+            "name": "Klaufhalar",
+            "text": "Sækja í raka og skjól og leita stundum inn í hús.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/dermaptera/forficulidae/gardaklaufhali-forficula-auricularia"
+          }
+        },
+        "maur": {
+          "type": "pest",
+          "settings": {
+            "icon": "ant",
+            "name": "Maurar",
+            "text": "Koma inn í leit að mat og fylgja föstum slóðum. Faraómaur getur myndað mörg bú í sama húsi.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/hymenoptera/formicidae/faraomaur-monomorium-pharaonis"
+          }
+        },
+        "gaerur": {
+          "type": "pest",
+          "settings": {
+            "icon": "beetle",
+            "name": "Hamgærur og feldgærur",
+            "text": "Lirfurnar nærast á þurrkuðum matvælum, ull, skinni og öðrum dýraafurðum.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/coleoptera/dermestidae/feldgaera-attagenus-smirnovi"
+          }
+        },
+        "veggjatitla": {
+          "type": "pest",
+          "settings": {
+            "icon": "woodworm",
+            "name": "Veggjatítla",
+            "text": "Lirfurnar éta sig inn í við. Lítil göt og fínt sag eru helstu ummerkin.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/coleoptera/anobiidae/veggjatitla-anobium-punctatum"
+          }
+        },
+        "molur": {
+          "type": "pest",
+          "settings": {
+            "icon": "moth",
+            "name": "Fatamölur",
+            "text": "Lirfurnar nærast á ull, loðfeldi og öðrum dýratrefjum í fatnaði og teppum.",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/lepidoptera/tineidae/fatamolur-tineola-bisselliella"
+          }
+        },
+        "stari": {
+          "type": "pest",
+          "settings": {
+            "icon": "bird",
+            "name": "Starar",
+            "text": "Gera sér hreiður í þakskeggi og loftrásum, og hreiðrin geta borið flær inn í hús.",
+            "link": "https://www.natt.is/is/biota/animalia/chordata/aves/passeriformes/stari-sturnus-vulgaris"
+          }
+        }
+      },
+      "block_order": [
+        "mys",
+        "geit",
+        "veggjalus",
+        "kakkalakki",
+        "silfurskotta",
+        "flo",
+        "klaufhali",
+        "maur",
+        "gaerur",
+        "veggjatitla",
+        "molur",
+        "stari"
+      ]
+    },
+    "cta": {
+      "type": "cta-banner",
+      "settings": {
+        "heading": "Ertu ekki viss hvað þetta er?",
+        "text": "Lýstu því sem þú hefur séð og hvar, og við hjálpum þér að finna næstu skref.",
+        "button_label": "Panta þjónustu",
+        "button_link": "/pages/hafa-samband"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "pests",
+    "cta"
+  ]
+}

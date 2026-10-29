@@ -1,6 +1,6 @@
 <section class="page-width pt-4 md:pt-6">
   <div class="grid overflow-hidden rounded-panel bg-brand-50 lg:grid-cols-2">
-    <div class="flex flex-col justify-center px-6 py-12 sm:px-10 md:px-14 md:py-16">
+    <div class="flex flex-col justify-center px-6 py-8 sm:px-10 md:px-14 md:py-16">
       {%- if section.settings.eyebrow != blank -%}<p class="eyebrow">{{ section.settings.eyebrow }}</p>{%- endif -%}
       <h1 class="h-section mt-3 md:text-5xl">{{ section.settings.heading | default: page.title }}</h1>
       {%- if section.settings.text != blank -%}<p class="lede mt-4 max-w-xl">{{ section.settings.text }}</p>{%- endif -%}
@@ -26,7 +26,7 @@
         {%- endif -%}
       </div>
     </div>
-    <div class="relative min-h-72 lg:min-h-full">
+    <div class="relative min-h-52 sm:min-h-72 lg:min-h-full">
       {%- if section.settings.image != blank -%}
         {{ section.settings.image | image_url: width: 1600 | image_tag: widths: '600, 900, 1200, 1600', sizes: '(min-width: 1024px) 640px, 100vw', class: 'absolute inset-0 size-full object-cover', loading: 'eager' }}
       {%- else -%}

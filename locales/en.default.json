@@ -138,7 +138,9 @@
     "submit": "Send request",
     "success": "Thanks! We've received your request and will be in touch soon.",
     "required_note": "Fields marked * are required.",
-    "source_label": "Sent from page"
+    "source_label": "Sent from page",
+    "privacy_note": "We only use your details to respond to your request, see our",
+    "privacy_link": "privacy policy"
   },
   "credentials": {
     "holder": "Holder",
@@ -156,7 +158,9 @@
       "thjonusta_skordyr": "Bed bugs, cockroaches, silverfish and ants. Kvikindi identifies the species and chooses a treatment that suits the situation.",
       "thjonusta_fyrirtaeki": "Regular pest monitoring and prevention for restaurants, shops, warehouses, hotels and housing associations.",
       "hafa_samband": "Send Kvikindi a pest control request. Tell us what you have seen and where, and we will get back to you.",
-      "um_okkur": "Kvikindi pest control: operating licence from the health authority, user licences and recognised pest control training."
+      "um_okkur": "Kvikindi pest control: operating licence from the health authority, user licences and recognised pest control training.",
+      "meindyr": "Common pests in Icelandic homes: mice, rats, wasps, bed bugs, cockroaches, silverfish, fleas and more. Signs to look for and when to get help.",
+      "spurningar": "Answers to common questions about pest control: mice and rats, wasps, insects and services for businesses."
     },
     "hero_alt": "Pest control technician placing a bait station by a house",
     "kitchen_alt": "Pest control technician placing a bait station under kitchen cabinets"
