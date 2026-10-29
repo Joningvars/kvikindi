@@ -8,6 +8,18 @@
     "theme_support_url": "https://support.shopify.com/"
   },
   {
+    "name": "Online shop",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "shop_enabled",
+        "label": "Online shop is open",
+        "default": false,
+        "info": "When off: cart and account icons are hidden, and product, collection and cart pages show an 'opening soon' message."
+      }
+    ]
+  },
+  {
     "name": "Brand",
     "settings": [
       {

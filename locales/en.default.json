@@ -143,5 +143,14 @@
     "number": "Certificate no.",
     "date": "Issued",
     "view": "View certificate"
+  },
+  "meta": {
+    "default_description": "Kvikindi provides pest control for homes and businesses in Iceland: mice, rats, wasps and insects."
+  },
+  "shop_closed": {
+    "heading": "Our online shop is opening soon",
+    "text": "In the meantime we're happy to help with pest control for your home or business.",
+    "cta": "Request service",
+    "services": "Our services"
   }
 }

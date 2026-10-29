@@ -1,3 +1,4 @@
+{%- if settings.shop_enabled or request.design_mode -%}
 {%- liquid
   assign current_variant = product.selected_or_first_available_variant
   assign collection_ref = collection | default: product.collections.first
@@ -177,7 +178,16 @@
           </details>
         {%- endif -%}
         {%- for block in section.blocks -%}
-          {%- if block.type == 'collapsible' -%}
+          {%- liquid
+            assign tab_text = block.settings.content | append: ''
+            assign hide_tab = false
+            if block.type == 'collapsible' and tab_text contains '[' and tab_text contains ']' and block.settings.page == blank
+              unless request.design_mode
+                assign hide_tab = true
+              endunless
+            endif
+          -%}
+          {%- if block.type == 'collapsible' and hide_tab == false -%}
             <details class="accordion group/acc" {{ block.shopify_attributes }}>
               <summary class="py-5 font-display text-base font-bold">
                 {{ block.settings.title }}
@@ -272,6 +282,9 @@
     );
   });
 </script>
+{%- else -%}
+  {% render 'shop-closed' %}
+{%- endif -%}
 
 {% schema %}
 {

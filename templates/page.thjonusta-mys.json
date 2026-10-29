@@ -179,15 +179,6 @@
       "settings": {
         "preselect": "Mýs og rottur"
       }
-    },
-    "shop": {
-      "type": "featured-products",
-      "settings": {
-        "eyebrow": "Vefverslun",
-        "heading": "Gerðu það sjálf/ur",
-        "text": "Gildrur og varnir gegn músum og rottum úr vefversluninni.",
-        "link_label": "Skoða vefverslun"
-      }
     }
   },
   "order": [
@@ -195,7 +186,6 @@
     "info",
     "steps",
     "faq",
-    "shop",
     "request"
   ]
 }

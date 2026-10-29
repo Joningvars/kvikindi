@@ -31,9 +31,9 @@
         "trust_3": {
           "type": "trust",
           "settings": {
-            "icon": "truck",
-            "title": "Vefverslun",
-            "text": "Gildrur og varnir sendar heim til þín."
+            "icon": "shield-check",
+            "title": "Vottuð þekking",
+            "text": "Starfsfólk með viðurkennda þjálfun í meindýravörnum."
           }
         }
       },
@@ -44,11 +44,11 @@
       ],
       "settings": {
         "heading": "Meindýravarnir sem þú getur treyst",
-        "text": "Kvikindi sinnir meindýravörnum fyrir heimili og fyrirtæki — og í vefversluninni finnurðu vörurnar sem við notum sjálf.",
+        "text": "Kvikindi sinnir meindýravörnum fyrir heimili og fyrirtæki. Við finnum vandann, leysum hann og hjálpum þér að koma í veg fyrir að hann komi aftur.",
         "button_1_label": "Panta þjónustu",
         "button_1_link": "/pages/hafa-samband",
-        "button_2_label": "Versla vörur",
-        "button_2_link": "/collections/all"
+        "button_2_label": "Skoða þjónustu",
+        "button_2_link": "/pages/thjonusta"
       }
     },
     "pests": {
@@ -129,8 +129,8 @@
           "type": "feature",
           "settings": {
             "icon": "badge-check",
-            "title": "Prófaðar lausnir",
-            "text": "Við seljum það sem við notum sjálf í starfi."
+            "title": "Vottuð þekking",
+            "text": "Viðurkennd þjálfun í meindýravörnum."
           }
         },
         "f2": {
@@ -164,7 +164,12 @@
         "f3",
         "f4"
       ],
-      "settings": {}
+      "settings": {
+        "heading": "Fagþekking úr meindýravörnum",
+        "text": "Við vinnum við meindýravarnir alla daga. Við metum aðstæður, veljum aðferð sem hentar og förum yfir það með þér hvernig best er að koma í veg fyrir að vandinn komi aftur.",
+        "button_label": "Panta þjónustu",
+        "button_link": "/pages/hafa-samband"
+      }
     },
     "faq": {
       "type": "faq",
@@ -172,36 +177,36 @@
         "q1": {
           "type": "question",
           "settings": {
-            "question": "Hvernig vel ég rétta vöru?",
-            "answer": "<p>Byrjaðu á að velja meindýrið sem er að angra þig. Ef þú ert ekki viss, sendu okkur lýsingu eða mynd og við mælum með lausn sem hentar.</p>"
+            "question": "Hvaða meindýr sinnið þið?",
+            "answer": "<p>Mýs, rottur, geitunga og skordýr eins og veggjalýs, kakkalakka, silfurskottur og maura. Við sinnum bæði heimilum og fyrirtækjum.</p>"
           }
         },
         "q2": {
           "type": "question",
           "settings": {
-            "question": "Eru vörurnar öruggar í kringum börn og gæludýr?",
-            "answer": "<p>Það fer eftir vörunni. Á hverri vörusíðu kemur fram hvernig á að nota hana og hvaða varúðarráðstafanir gilda.</p>"
+            "question": "Hvernig panta ég þjónustu?",
+            "answer": "<p>Fylltu út beiðni hér á síðunni eða hringdu í okkur. Segðu okkur hvað þú hefur séð og hvar, og við höfum samband til að finna tíma.</p>"
           }
         },
         "q3": {
           "type": "question",
           "settings": {
-            "question": "Hvað tekur langan tíma að fá pöntunina?",
-            "answer": "<p>[Settu inn afhendingartíma og sendingarmáta.]</p>"
+            "question": "Er öruggt að vera heima með börn og gæludýr?",
+            "answer": "<p>Við förum yfir öryggisatriði með þér áður en við hefjumst handa og veljum aðferðir sem henta aðstæðum á heimilinu.</p>"
           }
         },
         "q4": {
           "type": "question",
           "settings": {
-            "question": "Get ég skilað vöru?",
-            "answer": "<p>[Settu inn skilareglur verslunarinnar.]</p>"
+            "question": "Hvað kostar þjónustan?",
+            "answer": "<p>[Settu inn verðskrá eða hvernig verð er ákveðið.]</p>"
           }
         },
         "q5": {
           "type": "question",
           "settings": {
-            "question": "Takið þið líka að ykkur meindýravarnir?",
-            "answer": "<p>[Lýstu þjónustu Kvikinda og hvernig á að panta.]</p>"
+            "question": "Hvaða svæði þjónustið þið?",
+            "answer": "<p>[Settu inn þjónustusvæði.]</p>"
           }
         }
       },
@@ -212,7 +217,9 @@
         "q4",
         "q5"
       ],
-      "settings": {}
+      "settings": {
+        "text": "Finnurðu ekki svarið? Sendu okkur beiðni eða hringdu."
+      }
     },
     "cta": {
       "type": "cta-banner",
@@ -326,8 +333,6 @@
     "hero",
     "services",
     "steps",
-    "pests",
-    "bestsellers",
     "why",
     "faq",
     "cta"

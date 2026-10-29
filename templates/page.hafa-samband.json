@@ -14,7 +14,7 @@
       "settings": {
         "eyebrow": "Hafa samband",
         "heading": "Hafðu samband",
-        "text": "Sendu okkur beiðni um þjónustu, spurningu um vöru eða hvað sem er. Við svörum eins fljótt og við getum.",
+        "text": "Sendu okkur beiðni um þjónustu eða spurningu. Við svörum eins fljótt og við getum.",
         "fallback_image": "kvikindi-why-kitchen.jpg",
         "button_label": "Fylla út beiðni"
       }
@@ -24,7 +24,7 @@
       "settings": {
         "eyebrow": "Beiðni",
         "heading": "Hvernig getum við aðstoðað?",
-        "services": "Mýs og rottur, Geitungar, Skordýr, Fyrirtækjaþjónusta, Spurning um vöru"
+        "services": "Mýs og rottur, Geitungar, Skordýr, Fyrirtækjaþjónusta"
       }
     }
   },

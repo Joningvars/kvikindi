@@ -24,6 +24,14 @@
 
     <div class="flex flex-col gap-3">
       {%- for block in section.blocks -%}
+        {%- liquid
+          assign qa = block.settings.question | append: block.settings.answer
+          if qa contains '[' and qa contains ']'
+            unless request.design_mode
+              continue
+            endunless
+          endif
+        -%}
         <details class="accordion card group/faq transition-colors open:border-brand-300 open:bg-brand-50/40" {% if forloop.first and section.settings.open_first %}open{% endif %} {{ block.shopify_attributes }}>
           <summary class="px-5 py-5 font-display text-base font-bold md:px-7 md:text-lg">
             {{ block.settings.question }}

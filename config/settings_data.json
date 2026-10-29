@@ -11,6 +11,7 @@
   "current": {
     "contact_phone": "",
     "contact_email": "",
-    "contact_address": ""
+    "contact_address": "",
+    "shop_enabled": false
   }
 }

@@ -13,8 +13,14 @@
   "sections": {
     "footer": {
       "type": "footer",
-      "settings": {}
+      "settings": {
+        "text": "Meindýravarnir fyrir heimili og fyrirtæki.",
+        "menu_1_title": "Kvikindi",
+        "newsletter_heading": "Fáðu ráð um meindýravarnir í pósti"
+      }
     }
   },
-  "order": ["footer"]
+  "order": [
+    "footer"
+  ]
 }

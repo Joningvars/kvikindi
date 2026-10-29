@@ -16,7 +16,17 @@
         {%- if settings.contact_email != blank -%}
           <li><a href="mailto:{{ settings.contact_email }}" class="flex items-center gap-3 hover:underline"><span class="flex size-10 items-center justify-center rounded-full bg-white/10">{% render 'icon', icon: 'mail', class: 'size-5' %}</span><span class="font-semibold">{{ settings.contact_email }}</span></a></li>
         {%- endif -%}
-        {%- if section.settings.note != blank -%}
+        {%- liquid
+          assign show_note = true
+          if section.settings.note == blank
+            assign show_note = false
+          elsif section.settings.note contains '[' and section.settings.note contains ']'
+            unless request.design_mode
+              assign show_note = false
+            endunless
+          endif
+        -%}
+        {%- if show_note -%}
           <li class="flex items-center gap-3 text-white/75"><span class="flex size-10 items-center justify-center rounded-full bg-white/10">{% render 'icon', icon: 'headset', class: 'size-5' %}</span>{{ section.settings.note }}</li>
         {%- endif -%}
       </ul>

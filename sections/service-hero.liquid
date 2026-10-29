@@ -7,6 +7,9 @@
       {%- if section.blocks.size > 0 -%}
         <ul class="mt-6 flex flex-col gap-2.5">
           {%- for block in section.blocks -%}
+            {%- if block.settings.text contains '[' and block.settings.text contains ']' -%}
+              {%- unless request.design_mode -%}{%- continue -%}{%- endunless -%}
+            {%- endif -%}
             <li class="flex items-start gap-3 text-[15px]" {{ block.shopify_attributes }}>
               <span class="mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white">{% render 'icon', icon: 'check', class: 'size-3' %}</span>
               {{ block.settings.text }}

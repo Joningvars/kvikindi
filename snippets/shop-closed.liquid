@@ -1,0 +1,14 @@
+{%- doc -%}
+  Shown on shop pages while Theme settings → Online shop is off.
+{%- enddoc -%}
+<div class="page-width py-20 md:py-28">
+  <div class="mx-auto max-w-xl rounded-panel bg-brand-50 px-6 py-14 text-center md:px-12">
+    <span class="mx-auto flex size-14 items-center justify-center rounded-full bg-white text-brand-600 shadow-card">{% render 'icon', icon: 'shopping-bag', class: 'size-6' %}</span>
+    <h1 class="mt-5 font-display text-2xl font-bold md:text-3xl">{{ 'shop_closed.heading' | t }}</h1>
+    <p class="mt-3 text-muted">{{ 'shop_closed.text' | t }}</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a href="{{ routes.root_url }}pages/hafa-samband" class="btn btn-primary">{{ 'shop_closed.cta' | t }}</a>
+      <a href="{{ routes.root_url }}pages/thjonusta" class="btn btn-secondary">{{ 'shop_closed.services' | t }}</a>
+    </div>
+  </div>
+</div>

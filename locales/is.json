@@ -143,5 +143,14 @@
     "number": "Skírteini nr.",
     "date": "Útgefið",
     "view": "Skoða skírteini"
+  },
+  "meta": {
+    "default_description": "Kvikindi sinnir meindýravörnum fyrir heimili og fyrirtæki: mýs, rottur, geitungar og skordýr."
+  },
+  "shop_closed": {
+    "heading": "Vefverslunin opnar fljótlega",
+    "text": "Þangað til hjálpum við þér gjarnan með meindýravarnir fyrir heimilið eða fyrirtækið.",
+    "cta": "Panta þjónustu",
+    "services": "Þjónustan okkar"
   }
 }

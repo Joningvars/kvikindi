@@ -1,3 +1,4 @@
+{%- if settings.shop_enabled or request.design_mode -%}
 {%- assign page_title = 'collections.title' | t -%}
 {% render 'page-header', title: page_title %}
 
@@ -23,6 +24,9 @@
     {%- endfor -%}
   </ul>
 </div>
+{%- else -%}
+  {% render 'shop-closed' %}
+{%- endif -%}
 
 {% schema %}
 {

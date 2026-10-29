@@ -90,17 +90,19 @@
       <a href="{{ routes.search_url }}" class="flex size-10 items-center justify-center rounded-full hover:bg-mist" aria-label="{{ 'search.title' | t }}">
         {%- render 'icon', icon: 'search', class: 'size-5' -%}
       </a>
-      {%- if shop.customer_accounts_enabled -%}
+      {%- if shop.customer_accounts_enabled and settings.shop_enabled -%}
         <a href="{{ routes.account_url }}" class="hidden size-10 items-center justify-center rounded-full hover:bg-mist sm:flex" aria-label="{{ 'header.account' | t }}">
           {%- render 'icon', icon: 'user', class: 'size-5' -%}
         </a>
       {%- endif -%}
+      {%- if settings.shop_enabled -%}
       <a href="{{ routes.cart_url }}" class="relative flex size-10 items-center justify-center rounded-full hover:bg-mist" aria-label="{{ 'header.cart_count' | t: count: cart.item_count }}">
         {%- render 'icon', icon: 'shopping-bag', class: 'size-5' -%}
         {%- if cart.item_count > 0 -%}
           <span class="absolute top-0.5 right-0.5 flex min-w-[1.125rem] items-center justify-center rounded-full bg-brand-600 px-1 text-[10px] leading-[1.125rem] font-bold text-white">{{ cart.item_count }}</span>
         {%- endif -%}
       </a>
+      {%- endif -%}
       {%- if section.settings.cta_label != blank -%}
         <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn btn-primary ml-3 hidden lg:inline-flex">
           {{ section.settings.cta_label }}

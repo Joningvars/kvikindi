@@ -2,6 +2,7 @@
   Shopify's automatic product recommendations. The shell renders empty, then JS fetches this
   same section through the Section Rendering API with the product id, which fills `recommendations`.
 {%- endcomment -%}
+{%- if settings.shop_enabled or request.design_mode -%}
 <div
   class="bg-mist"
   data-recommendations
@@ -50,6 +51,7 @@
     })();
   </script>
 {%- endunless -%}
+{%- endif -%}
 
 {% schema %}
 {

@@ -172,15 +172,6 @@
       "settings": {
         "preselect": "Geitungar"
       }
-    },
-    "shop": {
-      "type": "featured-products",
-      "settings": {
-        "eyebrow": "Vefverslun",
-        "heading": "Geitungagildrur og varnir",
-        "text": "Vörur til að halda geitungum frá pallinum og garðinum.",
-        "link_label": "Skoða vefverslun"
-      }
     }
   },
   "order": [
@@ -188,7 +179,6 @@
     "info",
     "steps",
     "faq",
-    "shop",
     "request"
   ]
 }

@@ -13,7 +13,10 @@
   "sections": {
     "announcement": {
       "type": "announcement-bar",
-      "settings": {}
+      "settings": {
+        "text": "Meindýravarnir fyrir heimili og fyrirtæki · Ráðgjöf frá fagfólki",
+        "icon": "shield-check"
+      }
     },
     "header": {
       "type": "header",
