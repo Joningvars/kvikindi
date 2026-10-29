@@ -11,9 +11,16 @@
     <div class="grid gap-4 sm:grid-cols-2">
       {%- for block in section.blocks -%}
         <div class="rounded-card bg-mist p-6" {{ block.shopify_attributes }}>
-          <span class="flex size-10 items-center justify-center rounded-full bg-white text-brand-600 shadow-card">{% render 'icon', icon: block.settings.icon, class: 'size-5' %}</span>
+          {%- if block.settings.pest_icon != blank -%}
+            <span class="flex size-16 items-center justify-center rounded-full bg-white text-brand-600 shadow-card">{% render 'pest-icon', icon: block.settings.pest_icon, class: 'size-10' %}</span>
+          {%- else -%}
+            <span class="flex size-10 items-center justify-center rounded-full bg-white text-brand-600 shadow-card">{% render 'icon', icon: block.settings.icon, class: 'size-5' %}</span>
+          {%- endif -%}
           <h3 class="mt-4 font-display text-lg font-bold">{{ block.settings.title }}</h3>
           <div class="rte mt-2 text-sm text-muted">{{ block.settings.text }}</div>
+          {%- if block.settings.link != blank and section.settings.link_label != blank -%}
+            <a href="{{ block.settings.link }}" target="_blank" rel="noopener" class="mt-3 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:underline">{{ section.settings.link_label }}{% render 'icon', icon: 'arrow-up-right', class: 'size-3.5' %}</a>
+          {%- endif -%}
         </div>
       {%- endfor -%}
     </div>
@@ -48,6 +55,12 @@
       "label": "Show the page's own content",
       "info": "Text written in Online Store → Pages",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Column link label",
+      "default": "Nánar á natt.is"
     }
   ],
   "blocks": [
@@ -144,6 +157,50 @@
           ]
         },
         {
+          "type": "select",
+          "id": "pest_icon",
+          "label": "Pest illustration (replaces icon)",
+          "options": [
+            {
+              "value": "",
+              "label": "None"
+            },
+            {
+              "value": "mouse",
+              "label": "Mouse / rat"
+            },
+            {
+              "value": "wasp",
+              "label": "Wasp"
+            },
+            {
+              "value": "bedbug",
+              "label": "Bed bug"
+            },
+            {
+              "value": "cockroach",
+              "label": "Cockroach"
+            },
+            {
+              "value": "silverfish",
+              "label": "Silverfish"
+            },
+            {
+              "value": "ant",
+              "label": "Ant"
+            },
+            {
+              "value": "earwig",
+              "label": "Earwig"
+            },
+            {
+              "value": "flea",
+              "label": "Flea"
+            }
+          ],
+          "default": ""
+        },
+        {
           "type": "text",
           "id": "title",
           "label": "Title",
@@ -153,6 +210,11 @@
           "type": "richtext",
           "id": "text",
           "label": "Text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (e.g. Náttúrufræðistofnun)"
         }
       ]
     }

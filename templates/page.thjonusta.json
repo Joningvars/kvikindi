@@ -323,15 +323,6 @@
             "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/zygentoma/lepismatidae/silfurskotta-lepisma-saccharina"
           }
         },
-        "maur": {
-          "type": "pest",
-          "settings": {
-            "icon": "ant",
-            "name": "Maurar",
-            "text": "Koma inn í leit að mat og fylgja föstum slóðum.",
-            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/hymenoptera/formicidae/faraomaur-monomorium-pharaonis"
-          }
-        },
         "klaufhali": {
           "type": "pest",
           "settings": {
@@ -339,6 +330,15 @@
             "name": "Klaufhalar",
             "text": "Sækja í raka og skjól og leita stundum inn í hús.",
             "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/dermaptera/forficulidae/gardaklaufhali-forficula-auricularia"
+          }
+        },
+        "flo": {
+          "type": "pest",
+          "settings": {
+            "icon": "flea",
+            "name": "Flær",
+            "text": "Berast oft inn með gæludýrum eða úr fuglahreiðrum við hús.",
+            "link": "https://www.natt.is/is/flaer-siphonaptera"
           }
         }
       },
@@ -348,7 +348,7 @@
         "veggjalus",
         "kakkalakki",
         "silfurskotta",
-        "maur",
+        "flo",
         "klaufhali"
       ],
       "settings": {

@@ -55,7 +55,9 @@
           "settings": {
             "icon": "bug",
             "title": "Veggjalús",
-            "text": "<p>Smá, brún skordýr sem leynast í rúmum og húsgögnum og bíta á nóttunni. Breiðast auðveldlega út með farangri.</p>"
+            "text": "<p>Smá, brún skordýr sem leynast í rúmum og húsgögnum og bíta á nóttunni. Breiðast auðveldlega út með farangri.</p>",
+            "pest_icon": "bedbug",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/hemiptera/cimicidae/veggjalus-cimex-lectularius"
           }
         },
         "c2": {
@@ -63,7 +65,9 @@
           "settings": {
             "icon": "bug",
             "title": "Kakkalakkar",
-            "text": "<p>Halda sig í hlýju og raka, oft í eldhúsum og við lagnir. Fjölga sér hratt.</p>"
+            "text": "<p>Halda sig í hlýju og raka, oft í eldhúsum og við lagnir. Fjölga sér hratt.</p>",
+            "pest_icon": "cockroach",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/dictyoptera/ectobiidae/huskakkalakki-blattella-germanica"
           }
         },
         "c3": {
@@ -71,7 +75,9 @@
           "settings": {
             "icon": "bug",
             "title": "Silfurskottur",
-            "text": "<p>Algengar í rökum rýmum eins og baðherbergjum og kjöllurum.</p>"
+            "text": "<p>Algengar í rökum rýmum eins og baðherbergjum og kjöllurum.</p>",
+            "pest_icon": "silverfish",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/zygentoma/lepismatidae/silfurskotta-lepisma-saccharina"
           }
         },
         "c4": {
@@ -79,7 +85,29 @@
           "settings": {
             "icon": "bug",
             "title": "Maurar",
-            "text": "<p>Koma oft inn í leit að mat og fylgja föstum slóðum.</p>"
+            "text": "<p>Koma oft inn í leit að mat og fylgja föstum slóðum.</p>",
+            "pest_icon": "ant",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/hymenoptera/formicidae/faraomaur-monomorium-pharaonis"
+          }
+        },
+        "c5": {
+          "type": "column",
+          "settings": {
+            "icon": "bug",
+            "pest_icon": "flea",
+            "title": "Flær",
+            "text": "<p>Blóðsugur sem berast oft inn með gæludýrum eða úr fuglahreiðrum við hús.</p>",
+            "link": "https://www.natt.is/is/flaer-siphonaptera"
+          }
+        },
+        "c6": {
+          "type": "column",
+          "settings": {
+            "icon": "bug",
+            "pest_icon": "earwig",
+            "title": "Klaufhalar",
+            "text": "<p>Sækja í raka og skjól og leita stundum inn í hús.</p>",
+            "link": "https://www.natt.is/is/biota/animalia/arthropoda/hexapoda/insecta/dermaptera/forficulidae/gardaklaufhali-forficula-auricularia"
           }
         }
       },
@@ -87,6 +115,8 @@
         "c1",
         "c2",
         "c3",
+        "c5",
+        "c6",
         "c4"
       ]
     },
